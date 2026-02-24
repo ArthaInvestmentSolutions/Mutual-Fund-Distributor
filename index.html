@@ -1,1640 +1,581 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-  <!-- Primary SEO -->
-  <title>Artha Investment Solutions | Financial Planning, Mutual Funds, PMS, Insurance</title>
-  <meta name="description" content="Artha Investment Solutions (ARN-337744) provides financial planning, portfolio analysis, mutual funds, PMS, insurance, and intelligent advisory products. Goal-based investing with periodic reviews." />
-  <meta name="keywords" content="financial planning, portfolio analysis, mutual funds, SIP, PMS, insurance, wealth management, investment advisory, Artha Investment Solutions" />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://example.com/" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Artha Investment Solutions | Goal-based wealth guidance" />
-  <meta property="og:description" content="Financial planning, portfolio analysis, mutual funds, PMS, insurance and intelligent advisory products. ARN-337744." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://example.com/" />
-  <meta property="og:image" content="https://example.com/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0a0e1a" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "Artha Investment Solutions",
-    "description": "Financial planning, portfolio analysis, mutual funds, PMS, insurance, and intelligent advisory products.",
-    "areaServed": "IN",
-    "url": "https://example.com/",
-    "telephone": "+91-XXXXXXXXXX",
-    "email": "hello@arthainvestmentsolutions.com",
-    "brand": "Artha Investment Solutions",
-    "identifier": "ARN-337744",
-    "sameAs": [
-      "https://www.instagram.com/yourhandle",
-      "https://www.youtube.com/@yourchannel"
-    ]
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --gold: #c9a96e;
-      --gold-light: #e8c98a;
-      --gold-dim: rgba(201,169,110,0.15);
-      --cream: #f5f0e8;
-      --ink: #0a0e1a;
-      --ink2: #121828;
-      --ink3: #1c2438;
-      --mist: rgba(245,240,232,0.06);
-      --mist2: rgba(245,240,232,0.10);
-      --line: rgba(201,169,110,0.18);
-      --line2: rgba(245,240,232,0.08);
-      --radius: 4px;
-      --radius-lg: 12px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--ink);
-      color: var(--cream);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ─── NOISE OVERLAY ─── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.022;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    /* ─── TYPOGRAPHY ─── */
-    h1, h2, h3, .display {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── LAYOUT ─── */
-    .wrap { max-width: 1160px; margin: auto; padding: 0 40px; }
-
-    @media (max-width: 768px) {
-      .wrap { padding: 0 20px; }
-    }
-
-    /* ─── NAV ─── */
-    nav.topnav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      background: rgba(10,14,26,0.85);
-      backdrop-filter: blur(20px) saturate(1.4);
-      border-bottom: 1px solid var(--line2);
-      transition: padding 0.3s ease;
-    }
-
-    .navInner {
-      max-width: 1160px; margin: auto; padding: 0 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 24px;
-    }
-
-    .navLogo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    }
-
-    .navLogo span {
-      display: block;
-      font-size: 9px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(201,169,110,0.6);
-      margin-top: 1px;
-    }
-
-    .navLinks {
-      display: flex; gap: 32px; flex-wrap: wrap;
-    }
-
-    .navLinks a {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.65);
-      transition: color 0.2s;
-      position: relative;
-    }
-
-    .navLinks a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0; right: 0;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.2s;
-    }
-
-    .navLinks a:hover { color: var(--gold); }
-    .navLinks a:hover::after { transform: scaleX(1); }
-
-    .navCta {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 9px 20px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      border-radius: var(--radius);
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .navCta:hover {
-      background: var(--gold);
-      color: var(--ink);
-    }
-
-    @media (max-width: 900px) {
-      .navLinks { display: none; }
-    }
-
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 120px 0 80px;
-    }
-
-    .heroGrid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--line2) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line2) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-    }
-
-    .heroGlow {
-      position: absolute;
-      width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 65%);
-      top: -200px; right: -200px;
-      pointer-events: none;
-    }
-
-    .heroGlow2 {
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(100,130,200,0.05) 0%, transparent 65%);
-      bottom: 0; left: -100px;
-      pointer-events: none;
-    }
-
-    .heroContent {
-      position: relative; z-index: 2;
-      max-width: 1160px; margin: auto; padding: 0 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 80px;
-    }
-
-    .heroEyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .heroEyebrow::before {
-      content: '';
-      width: 32px; height: 1px;
-      background: var(--gold);
-    }
-
-    h1.heroTitle {
-      font-size: clamp(42px, 5vw, 68px);
-      color: var(--cream);
-      margin-bottom: 22px;
-    }
-
-    h1.heroTitle em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .heroSub {
-      font-size: 16px;
-      color: rgba(245,240,232,0.6);
-      max-width: 480px;
-      line-height: 1.75;
-      margin-bottom: 36px;
-    }
-
-    .heroActions {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .btnPrimary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: var(--gold);
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: var(--radius);
-      transition: all 0.25s;
-    }
-
-    .btnPrimary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(201,169,110,0.25);
-    }
-
-    .btnSecondary {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgba(245,240,232,0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s;
-    }
-
-    .btnSecondary:hover { color: var(--gold); }
-
-    /* Hero chart visual */
-    .heroVisual {
-      position: relative;
-    }
-
-    .chartCard {
-      background: var(--ink2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .chartCard::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .chartLabel {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.4);
-      margin-bottom: 4px;
-    }
-
-    .chartValue {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 42px;
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .chartDelta {
-      font-size: 13px;
-      color: #5ec98d;
-      font-weight: 600;
-    }
-
-    .chartBars {
-      display: flex;
-      align-items: flex-end;
-      gap: 6px;
-      height: 80px;
-      margin-top: 20px;
-    }
-
-    .bar {
-      flex: 1;
-      background: var(--gold-dim);
-      border-radius: 3px 3px 0 0;
-      border: 1px solid rgba(201,169,110,0.25);
-      border-bottom: none;
-      position: relative;
-      transition: background 0.3s;
-      animation: growBar 1.2s ease-out backwards;
-    }
-
-    .bar:hover { background: rgba(201,169,110,0.28); }
-
-    .bar.active { background: rgba(201,169,110,0.35); }
-
-    @keyframes growBar {
-      from { transform: scaleY(0); transform-origin: bottom; }
-      to { transform: scaleY(1); }
-    }
-
-    .bar:nth-child(1) { height: 45%; animation-delay: 0.05s; }
-    .bar:nth-child(2) { height: 62%; animation-delay: 0.1s; }
-    .bar:nth-child(3) { height: 55%; animation-delay: 0.15s; }
-    .bar:nth-child(4) { height: 78%; animation-delay: 0.2s; }
-    .bar:nth-child(5) { height: 68%; animation-delay: 0.25s; }
-    .bar:nth-child(6) { height: 85%; animation-delay: 0.3s; }
-    .bar:nth-child(7) { height: 72%; animation-delay: 0.35s; }
-    .bar:nth-child(8) { height: 90%; animation-delay: 0.4s; background: rgba(201,169,110,0.5); }
-
-    .chartFooter {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-    }
-
-    .chartFooter span {
-      font-size: 10px;
-      color: rgba(245,240,232,0.25);
-      letter-spacing: 0.05em;
-    }
-
-    .statRow {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .statBox {
-      background: var(--mist);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-    }
-
-    .statNum {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .statLabel {
-      font-size: 11px;
-      color: rgba(245,240,232,0.45);
-      margin-top: 2px;
-    }
-
-    .socialPills {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .socialPill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: rgba(245,240,232,0.7);
-      transition: all 0.2s;
-    }
-
-    .socialPill svg { width: 14px; height: 14px; }
-    .socialPill:hover { border-color: var(--gold); color: var(--gold); }
-
-    /* ─── SECTION BASE ─── */
-    section {
-      padding: 100px 0;
-      position: relative;
-    }
-
-    section + section {
-      border-top: 1px solid var(--line2);
-    }
-
-    .sectionEyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .sectionEyebrow::before {
-      content: '';
-      width: 24px; height: 1px;
-      background: var(--gold);
-    }
-
-    h2.secTitle {
-      font-size: clamp(32px, 4vw, 48px);
-      color: var(--cream);
-      margin-bottom: 16px;
-    }
-
-    .secSub {
-      font-size: 16px;
-      color: rgba(245,240,232,0.55);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 48px;
-    }
-
-    /* ─── SERVICES ─── */
-    .servicesGrid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .serviceCard {
-      background: var(--ink2);
-      padding: 36px 32px;
-      position: relative;
-      transition: background 0.25s;
-      cursor: default;
-    }
-
-    .serviceCard:hover {
-      background: var(--ink3);
-    }
-
-    .serviceCard::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 32px; right: 32px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .serviceCard:hover::after { opacity: 1; }
-
-    .serviceIcon {
-      width: 40px; height: 40px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      color: var(--gold);
-    }
-
-    .serviceIcon svg { width: 18px; height: 18px; }
-
-    .serviceCard h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 10px;
-    }
-
-    .serviceCard p {
-      font-size: 14px;
-      color: rgba(245,240,232,0.55);
-      line-height: 1.7;
-    }
-
-    .disclosure {
-      margin-top: 20px;
-      padding: 16px 20px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-size: 12px;
-      color: rgba(245,240,232,0.45);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .disclosure svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; color: var(--gold); }
-
-    /* ─── CERTIFICATIONS ─── */
-    .certGrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .certCard {
-      background: var(--ink2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .certCard::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-    }
-
-    .certCard h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 20px;
-    }
-
-    .certItem {
-      display: flex;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--line2);
-    }
-
-    .certItem:last-of-type { border-bottom: none; }
-
-    .certDot {
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    .certItemTitle {
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--cream);
-      margin-bottom: 2px;
-    }
-
-    .certItemSub {
-      font-size: 13px;
-      color: rgba(245,240,232,0.45);
-    }
-
-    .arnBadge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 10px 16px;
-      background: var(--gold-dim);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-    }
-
-    /* ─── BLOG ─── */
-    .blogGrid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .blogCard {
-      background: var(--ink2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    .blogCard:hover {
-      border-color: var(--line);
-      transform: translateY(-4px);
-    }
-
-    .blogThumb {
-      height: 180px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .blogThumb img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .blogCard:hover .blogThumb img {
-      transform: scale(1.05);
-    }
-
-    .blogThumb-1 { background: linear-gradient(135deg, #0d1826 0%, #1a2a40 100%); }
-    .blogThumb-2 { background: linear-gradient(135deg, #0e1a10 0%, #1a3020 100%); }
-    .blogThumb-3 { background: linear-gradient(135deg, #1a100e 0%, #2d1a18 100%); }
-
-    .blogThumbIcon {
-      width: 64px; height: 64px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      position: relative;
-      z-index: 1;
-    }
-
-    .blogThumbIcon svg { width: 28px; height: 28px; }
-
-    .blogThumb::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%);
-    }
-
-    .blogBody { padding: 24px; }
-
-    .blogMeta {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.35);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .blogMeta::before {
-      content: '';
-      width: 16px; height: 1px;
-      background: var(--gold);
-      opacity: 0.5;
-    }
-
-    .blogTitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--cream);
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-
-    .blogExcerpt {
-      font-size: 14px;
-      color: rgba(245,240,232,0.5);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .blogReadMore {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-
-    .blogReadMore:hover { gap: 10px; }
-
-    .blogNote {
-      margin-bottom: 32px;
-      padding: 16px 20px;
-      border: 1px dashed rgba(201,169,110,0.25);
-      border-radius: var(--radius);
-      font-size: 13px;
-      color: rgba(245,240,232,0.45);
-    }
-
-    .blogNote strong { color: var(--gold); }
-
-    /* ─── CONTACT ─── */
-    .contactGrid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .formCard {
-      background: var(--ink2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-    }
-
-    .formTitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 28px;
-    }
-
-    .formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-    .formGroup { margin-bottom: 16px; }
-
-    .formGroup label {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.45);
-      margin-bottom: 8px;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 12px 16px;
-      background: rgba(245,240,232,0.04);
-      border: 1px solid rgba(245,240,232,0.1);
-      border-radius: var(--radius);
-      color: var(--cream);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    input::placeholder, textarea::placeholder { color: rgba(245,240,232,0.25); }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--gold);
-      background: rgba(201,169,110,0.04);
-    }
-
-    select option { background: var(--ink2); }
-
-    textarea { min-height: 110px; resize: vertical; }
-
-    .formSubmit {
-      width: 100%;
-      padding: 14px;
-      background: var(--gold);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 4px;
-    }
-
-    .formSubmit:hover {
-      background: var(--gold-light);
-      transform: translateY(-1px);
-    }
-
-    .formConsent {
-      font-size: 12px;
-      color: rgba(245,240,232,0.3);
-      margin-top: 12px;
-      text-align: center;
-    }
-
-    /* Info panel */
-    .infoPanel {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .infoCard {
-      background: var(--ink2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-    }
-
-    .infoCard h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      color: var(--cream);
-      margin-bottom: 16px;
-    }
-
-    .infoRow {
-      display: flex;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--line2);
-      font-size: 14px;
-    }
-
-    .infoRow:last-of-type { border-bottom: none; }
-
-    .infoKey {
-      font-weight: 600;
-      color: rgba(245,240,232,0.4);
-      min-width: 70px;
-      font-size: 12px;
-      padding-top: 1px;
-    }
-
-    .infoVal { color: rgba(245,240,232,0.8); }
-
-    /* ─── DISCLOSURES ─── */
-    .discCard {
-      background: var(--ink2);
-      border: 1px solid var(--line2);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-    }
-
-    .discCard p {
-      font-size: 14px;
-      color: rgba(245,240,232,0.5);
-      margin-bottom: 16px;
-      line-height: 1.75;
-    }
-
-    .discCard p:last-child { margin-bottom: 0; }
-
-    .discCard strong { color: var(--gold); font-weight: 600; }
-
-    .seoNote {
-      margin-top: 16px;
-      padding: 14px 20px;
-      border: 1px dashed rgba(201,169,110,0.25);
-      border-radius: var(--radius);
-      font-size: 12px;
-      color: rgba(245,240,232,0.4);
-    }
-
-    .seoNote code {
-      background: rgba(201,169,110,0.1);
-      padding: 1px 6px;
-      border-radius: 3px;
-      font-size: 11px;
-      color: var(--gold);
-    }
-
-    /* ─── AMFI BANNER ─── */
-    .amfiBanner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 22px 28px;
-      background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(201,169,110,0.04));
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      margin-bottom: 28px;
-    }
-
-    .amfiBannerLeft {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .amfiSeal {
-      flex-shrink: 0;
-      width: 56px; height: 56px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(201,169,110,0.06);
-    }
-
-    .amfiTitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 3px;
-    }
-
-    .amfiSub {
-      font-size: 13px;
-      color: rgba(245,240,232,0.45);
-      letter-spacing: 0.04em;
-    }
-
-    .amfiBadge {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #5ec98d;
-      padding: 6px 14px;
-      border: 1px solid rgba(94,201,141,0.3);
-      border-radius: 999px;
-      background: rgba(94,201,141,0.07);
-      white-space: nowrap;
-    }
-
-    @media (max-width: 600px) {
-      .amfiBanner { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* ─── PHOTO SECTION ─── */
-    .photoSection {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-
-    .photoCard {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 16/10;
-    }
-
-    .photoCard img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.75) saturate(0.85);
-      transition: filter 0.4s, transform 0.4s;
-    }
-
-    .photoCard:hover img {
-      filter: brightness(0.85) saturate(0.95);
-      transform: scale(1.03);
-    }
-
-    .photoCaption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 20px 22px 18px;
-      background: linear-gradient(to top, rgba(10,14,26,0.85) 0%, transparent 100%);
-      font-size: 13px;
-      color: rgba(245,240,232,0.85);
-      font-weight: 500;
-    }
-
-    .photoCaption strong {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      color: var(--cream);
-      margin-bottom: 2px;
-    }
-
-    @media (max-width: 640px) {
-      .photoSection { grid-template-columns: 1fr; }
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--line2);
-      padding: 48px 0;
-    }
-
-    .footerInner {
-      max-width: 1160px; margin: auto; padding: 0 40px;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .footBrand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .footTagline {
-      font-size: 13px;
-      color: rgba(245,240,232,0.35);
-      max-width: 240px;
-      line-height: 1.6;
-    }
-
-    .footCopyright {
-      font-size: 12px;
-      color: rgba(245,240,232,0.25);
-      margin-top: 20px;
-    }
-
-    .footNav h4 {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.4);
-      margin-bottom: 14px;
-    }
-
-    .footNav a {
-      display: block;
-      font-size: 14px;
-      color: rgba(245,240,232,0.55);
-      margin-bottom: 8px;
-      transition: color 0.2s;
-    }
-
-    .footNav a:hover { color: var(--gold); }
-
-    /* ─── FADE-IN ANIMATION ─── */
-    .fadeIn {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fadeIn.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      .heroContent { grid-template-columns: 1fr; gap: 48px; }
-      .heroVisual { display: none; }
-      .servicesGrid { grid-template-columns: repeat(2, 1fr); }
-      .blogGrid { grid-template-columns: repeat(2, 1fr); }
-      .certGrid { grid-template-columns: 1fr; }
-      .contactGrid { grid-template-columns: 1fr; }
-      .footerInner { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      section { padding: 64px 0; }
-      .servicesGrid { grid-template-columns: 1fr; }
-      .blogGrid { grid-template-columns: 1fr; }
-      .formRow { grid-template-columns: 1fr; }
-      .footerInner { grid-template-columns: 1fr; }
-      .navInner { padding: 0 20px; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Artha Investment Solutions | Financial Planning, Mutual Funds, PMS, Insurance</title>
+<meta name="description" content="Artha Investment Solutions (ARN-337744) is an AMFI-Registered Mutual Fund Distributor providing financial planning, portfolio analysis, mutual funds, PMS, insurance, and intelligent advisory products."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://example.com/"/>
+<meta property="og:title" content="Artha Investment Solutions | AMFI-Registered MFD"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#0a0e1a"/>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FinancialService","name":"Artha Investment Solutions","description":"AMFI-Registered Mutual Fund Distributor. ARN-337744.","areaServed":"IN","url":"https://example.com/","identifier":"ARN-337744"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a96e;--gold-l:#e8c98a;--gold-d:rgba(201,169,110,0.14);--cream:#f5f0e8;--ink:#0a0e1a;--ink2:#111624;--ink3:#1a2034;--green:#5ec98d;--line:rgba(201,169,110,0.20);--line2:rgba(245,240,232,0.07);--r:4px;--rl:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+.wrap{max-width:1160px;margin:auto;padding:0 40px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rgba(10,14,26,0.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line2);transition:padding .3s}
+.ni{max-width:1160px;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:.02em;flex-shrink:0}
+.logo small{display:block;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1px}
+.nl{display:flex;gap:24px;flex-wrap:wrap}
+.nl a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.58);transition:color .2s}
+.nl a:hover{color:var(--gold)}
+.ncta{flex-shrink:0;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--gold);color:var(--gold);border-radius:var(--r);transition:all .2s}
+.ncta:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:900px){.nl{display:none}}
+@media(max-width:600px){.ni,.wrap{padding-left:20px;padding-right:20px}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:130px 0 80px}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+.hglow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 65%);top:-150px;right:-80px;pointer-events:none}
+.hcontent{position:relative;z-index:2;max-width:1160px;margin:auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px}
+@media(max-width:1024px){.hcontent{grid-template-columns:1fr}.hvisual{display:none}}
+@media(max-width:600px){.hcontent{padding:0 20px}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold)}
+h1.ht{font-size:clamp(38px,5vw,64px);color:var(--cream);margin-bottom:18px}
+h1.ht em{font-style:italic;color:var(--gold)}
+.hsub{font-size:16px;color:rgba(245,240,232,0.56);max-width:460px;line-height:1.78;margin-bottom:32px}
+.hact{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.bg{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r);transition:all .2s}
+.bg:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,169,110,0.22)}
+.gh{font-size:12px;font-weight:500;color:rgba(245,240,232,0.62);display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+.gh:hover{color:var(--gold)}
+.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;color:rgba(245,240,232,0.62);transition:all .2s}
+.pill svg{width:13px;height:13px}
+.pill:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Hero chart */
+.chartcard{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
+.chartcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.clabel{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:3px}
+.cval{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:4px}
+.cdelta{font-size:13px;color:var(--green);font-weight:600}
+.cbars{display:flex;align-items:flex-end;gap:5px;height:76px;margin-top:18px}
+.bar{flex:1;background:var(--gold-d);border-radius:3px 3px 0 0;border:1px solid rgba(201,169,110,0.2);border-bottom:none;animation:gb 1s ease-out backwards}
+@keyframes gb{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1)}}
+.bar:nth-child(1){height:42%;animation-delay:.05s}.bar:nth-child(2){height:60%;animation-delay:.1s}.bar:nth-child(3){height:52%;animation-delay:.15s}.bar:nth-child(4){height:76%;animation-delay:.2s}.bar:nth-child(5){height:65%;animation-delay:.25s}.bar:nth-child(6){height:83%;animation-delay:.3s}.bar:nth-child(7){height:70%;animation-delay:.35s}.bar:nth-child(8){height:93%;animation-delay:.4s;background:rgba(201,169,110,0.42)}
+.cxl{display:flex;justify-content:space-between;margin-top:6px}
+.cxl span{font-size:9px;color:rgba(245,240,232,0.2)}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.sbox{background:rgba(245,240,232,0.04);border:1px solid var(--line2);border-radius:var(--r);padding:12px 14px}
+.snum{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600}
+.slbl{font-size:11px;color:rgba(245,240,232,0.38);margin-top:1px}
+
+/* SECTIONS */
+section{padding:92px 0}
+section+section{border-top:1px solid var(--line2)}
+h2.st{font-size:clamp(28px,4vw,44px);color:var(--cream);margin-bottom:12px}
+.ss{font-size:16px;color:rgba(245,240,232,0.5);max-width:520px;line-height:1.78;margin-bottom:40px}
+
+/* SERVICES */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden}
+@media(max-width:860px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.sgrid{grid-template-columns:1fr}}
+.sc{background:var(--ink2);padding:32px 28px;transition:background .25s}
+.sc:hover{background:var(--ink3)}
+.si{width:38px;height:38px;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:16px}
+.si svg{width:17px;height:17px}
+.sc h3{font-size:20px;color:var(--cream);margin-bottom:8px}
+.sc p{font-size:14px;color:rgba(245,240,232,0.52);line-height:1.7}
+.disc{margin-top:16px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:rgba(245,240,232,0.42);display:flex;align-items:flex-start;gap:8px}
+.disc svg{width:13px;height:13px;flex-shrink:0;margin-top:2px;color:var(--gold)}
+
+/* AMFI */
+.amfi{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:linear-gradient(135deg,rgba(201,169,110,0.09),rgba(201,169,110,0.04));border:1px solid var(--line);border-radius:var(--rl);margin-bottom:24px}
+.amfil{display:flex;align-items:center;gap:14px}
+.amfiseal{flex-shrink:0;width:52px;height:52px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,169,110,0.06)}
+.amfit{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--cream);margin-bottom:2px}
+.amfis{font-size:12px;color:rgba(245,240,232,0.42)}
+.amfibadge{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding:5px 13px;border:1px solid rgba(94,201,141,0.28);border-radius:999px;background:rgba(94,201,141,0.07)}
+@media(max-width:580px){.amfi{flex-direction:column;align-items:flex-start}}
+
+/* CERTS */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.cgrid{grid-template-columns:1fr}}
+.cc{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:32px;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),transparent)}
+.cc h3{font-size:21px;color:var(--cream);margin-bottom:16px}
+.ci{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line2)}
+.ci:last-of-type{border-bottom:none}
+.cdot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:8px}
+.cit{font-weight:600;font-size:14px;color:var(--cream);margin-bottom:1px}
+.cis{font-size:13px;color:rgba(245,240,232,0.42)}
+.arn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 13px;background:var(--gold-d);border:1px solid var(--line);border-radius:var(--r);font-size:13px;font-weight:700;color:var(--gold)}
+
+/* PHOTOS */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:620px){.pgrid{grid-template-columns:1fr}}
+.pc{border-radius:var(--rl);overflow:hidden;position:relative;aspect-ratio:16/10}
+.pc img{width:100%;height:100%;object-fit:cover;filter:brightness(0.68) saturate(0.78);transition:filter .4s,transform .4s}
+.pc:hover img{filter:brightness(0.82) saturate(0.9);transform:scale(1.04)}
+.pcap{position:absolute;bottom:0;left:0;right:0;padding:18px 20px 16px;background:linear-gradient(to top,rgba(10,14,26,0.88) 0%,transparent 100%)}
+.pcap strong{display:block;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:1px}
+.pcap span{font-size:13px;color:rgba(245,240,232,0.7)}
+
+/* BLOG */
+.medium-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;margin-bottom:28px;background:rgba(245,240,232,0.04);border:1px dashed rgba(201,169,110,0.3);border-radius:var(--rl)}
+.medium-banner-l{display:flex;align-items:center;gap:14px}
+.medium-icon{width:36px;height:36px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.medium-icon svg{width:18px;height:18px}
+.medium-banner p{font-size:13px;color:rgba(245,240,232,0.5);line-height:1.5}
+.medium-banner p strong{color:var(--cream);display:block;font-size:14px;margin-bottom:2px}
+.mlink{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:7px 16px;border-radius:var(--r);white-space:nowrap;transition:all .2s;flex-shrink:0}
+.mlink:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:640px){.medium-banner{flex-direction:column;align-items:flex-start}}
+
+.blog-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.bfilt{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;border:1px solid var(--line2);color:rgba(245,240,232,0.5);cursor:pointer;background:none;transition:all .2s;font-family:'DM Sans',sans-serif}
+.bfilt:hover{border-color:var(--line);color:var(--cream)}
+.bfilt.active{border-color:var(--gold);color:var(--gold);background:var(--gold-d)}
+
+.bl-featured{display:grid;grid-template-columns:1.1fr 0.9fr;border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;margin-bottom:20px;background:var(--ink2);transition:border-color .25s}
+.bl-featured:hover{border-color:var(--line)}
+.bl-featured .blt{height:100%;min-height:260px}
+.bl-featured .blb{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+.bl-featured .bltitle{font-size:27px}
+.bl-featured .blex{font-size:15px}
+.featured-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.featured-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+@media(max-width:760px){.bl-featured{grid-template-columns:1fr}.bl-featured .blt{min-height:200px}.bl-featured .blb{padding:24px}}
+
+.blgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.blgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.blgrid{grid-template-columns:1fr}}
+
+.blc{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;transition:border-color .25s,transform .25s}
+.blc:hover{border-color:var(--line);transform:translateY(-4px)}
+.blc.hidden{display:none}
+
+.blt{overflow:hidden;position:relative}
+.blt img{width:100%;height:185px;object-fit:cover;filter:brightness(0.62) saturate(0.74);transition:transform .4s}
+.bl-featured .blt img{height:100%;min-height:260px;filter:brightness(0.55) saturate(0.7)}
+.blc:hover .blt img,.bl-featured:hover .blt img{transform:scale(1.05)}
+.cat-tag{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(10,14,26,0.82);border:1px solid var(--line);color:var(--gold)}
+
+.blb{padding:22px}
+.blmeta{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(245,240,232,0.33);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.blmeta span{width:3px;height:3px;background:rgba(245,240,232,0.2);border-radius:50%}
+.bltitle{font-size:20px;color:var(--cream);margin-bottom:9px;line-height:1.3}
+.blex{font-size:14px;color:rgba(245,240,232,0.48);line-height:1.7;margin-bottom:17px}
+.bllink{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.bllink:hover{gap:10px}
+
+.add-guide{margin-top:28px;padding:20px 24px;border:1px dashed rgba(201,169,110,0.22);border-radius:var(--rl);display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+@media(max-width:700px){.add-guide{grid-template-columns:1fr}}
+.gs{display:flex;gap:12px;align-items:flex-start}
+.gn{width:24px;height:24px;border-radius:50%;background:var(--gold-d);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--gold);flex-shrink:0}
+.gs p{font-size:13px;color:rgba(245,240,232,0.44);line-height:1.55}
+.gs p strong{display:block;color:rgba(245,240,232,0.72);font-size:13px;margin-bottom:2px}
+code.c{font-size:11px;color:var(--gold);background:var(--gold-d);padding:1px 5px;border-radius:3px}
+
+/* CONTACT */
+.ctgrid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px;align-items:start}
+@media(max-width:860px){.ctgrid{grid-template-columns:1fr}}
+.fcard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:36px}
+.fcard h3{font-size:24px;color:var(--cream);margin-bottom:24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:540px){.frow{grid-template-columns:1fr}}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(245,240,232,0.38);margin-bottom:6px}
+input,textarea,select{width:100%;padding:10px 14px;background:rgba(245,240,232,0.04);border:1px solid rgba(245,240,232,0.09);border-radius:var(--r);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;appearance:none;transition:border-color .2s}
+input::placeholder,textarea::placeholder{color:rgba(245,240,232,0.22)}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);background:rgba(201,169,110,0.04)}
+select option{background:var(--ink2)}
+textarea{min-height:104px;resize:vertical}
+.sbtn{width:100%;padding:12px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;border:none;border-radius:var(--r);cursor:pointer;transition:all .2s;margin-top:4px}
+.sbtn:hover{background:var(--gold-l);transform:translateY(-1px)}
+.fcon{font-size:12px;color:rgba(245,240,232,0.26);margin-top:9px;text-align:center}
+.ipanel{display:flex;flex-direction:column;gap:13px}
+.icard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:24px}
+.icard h3{font-size:18px;color:var(--cream);margin-bottom:13px}
+.ir{display:flex;gap:11px;padding:8px 0;border-bottom:1px solid var(--line2);font-size:14px}
+.ir:last-of-type{border-bottom:none}
+.ik{font-size:12px;font-weight:600;color:rgba(245,240,232,0.36);min-width:62px;padding-top:1px}
+.iv{color:rgba(245,240,232,0.76)}
+.snote{padding:12px 16px;border:1px dashed rgba(201,169,110,0.22);border-radius:var(--r);font-size:12px;color:rgba(245,240,232,0.36)}
+
+/* DISCLOSURES */
+.dcard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:34px}
+.dcard p{font-size:14px;color:rgba(245,240,232,0.46);line-height:1.78;margin-bottom:13px}
+.dcard p:last-child{margin-bottom:0}
+.dcard strong{color:var(--gold);font-weight:600}
+.dnote{margin-top:13px;padding:12px 16px;border:1px dashed rgba(201,169,110,0.22);border-radius:var(--r);font-size:12px;color:rgba(245,240,232,0.36)}
+.dnote code{background:rgba(201,169,110,0.1);padding:1px 5px;border-radius:3px;font-size:11px;color:var(--gold)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line2);padding:46px 0}
+.fi{max-width:1160px;margin:auto;padding:0 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;align-items:start}
+@media(max-width:760px){.fi{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fi{grid-template-columns:1fr;padding:0 20px}}
+.fb{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);margin-bottom:7px}
+.ftag{font-size:13px;color:rgba(245,240,232,0.33);max-width:220px;line-height:1.6}
+.famfi{font-size:11px;color:rgba(201,169,110,0.58);margin-top:7px;font-weight:600;letter-spacing:.04em}
+.fcp{font-size:11px;color:rgba(245,240,232,0.2);margin-top:16px;line-height:1.6}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:13px}
+.fcol a{display:block;font-size:14px;color:rgba(245,240,232,0.52);margin-bottom:8px;transition:color .2s}
+.fcol a:hover{color:var(--gold)}
+
+/* HERO ENTRANCE — CSS only, no JS needed */
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.a1{animation:fu .7s .05s ease both}
+.a2{animation:fu .7s .15s ease both}
+.a3{animation:fu .7s .25s ease both}
+.a4{animation:fu .7s .35s ease both}
+</style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav class="topnav" role="navigation" aria-label="Main navigation">
-  <div class="navInner">
-    <a href="#top" class="navLogo">
-      Artha
-      <span>Investment Solutions · AMFI-Registered MFD</span>
-    </a>
-    <div class="navLinks">
+<nav id="top">
+  <div class="ni">
+    <a href="#top" class="logo">Artha Investment Solutions<small>AMFI-Registered Mutual Fund Distributor &middot; ARN-337744</small></a>
+    <div class="nl">
       <a href="#services">Services</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#blog">Insights</a>
+      <a href="#certifications">Credentials</a>
+      <a href="#approach">Approach</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
       <a href="#disclosures">Disclosures</a>
     </div>
-    <a href="#contact" class="navCta">Get in Touch</a>
+    <a href="#contact" class="ncta">Get in Touch</a>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
-<div id="top" class="hero">
-  <div class="heroGrid" aria-hidden="true"></div>
-  <div class="heroGlow" aria-hidden="true"></div>
-  <div class="heroGlow2" aria-hidden="true"></div>
-
-  <div class="heroContent">
+<!-- HERO -->
+<div class="hero">
+  <div class="hgrid" aria-hidden="true"></div>
+  <div class="hglow" aria-hidden="true"></div>
+  <div class="hcontent">
     <div>
-      <div class="heroEyebrow">AMFI-Registered Mutual Fund Distributor · ARN-337744</div>
-      <h1 class="heroTitle">
-        Wealth built on<br><em>clarity,</em> not guesswork
-      </h1>
-      <p class="heroSub">
-        Goal-based financial planning and investment advisory — designed around your risk profile, time horizon, and life goals.
-      </p>
-      <div class="heroActions">
-        <a href="#contact" class="btnPrimary">
-          Start Planning
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#services" class="btnSecondary">
-          Explore Services
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div class="eyebrow a1">AMFI-Registered MFD &middot; ARN-337744</div>
+      <h1 class="ht a2">Wealth built on<br><em>clarity,</em> not guesswork</h1>
+      <p class="hsub a3">Goal-based financial planning and investment advisory &mdash; designed around your risk profile, time horizon, and life goals.</p>
+      <div class="hact a4">
+        <a href="#contact" class="bg">Start Planning <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#services" class="gh">Explore Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="socialPills" aria-label="Social media links" style="margin-top:28px">
-        <a class="socialPill" href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="5"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          Instagram
+      <div class="pills a4">
+        <a class="pill" href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram
         </a>
-        <a class="socialPill" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M22 8s-.27-1.81-1.08-2.6c-1.03-1.09-2.18-1.09-2.71-1.16C15.63 4 12 4 12 4s-3.63 0-6.21.24c-.53.07-1.68.07-2.71 1.16C2.27 6.19 2 8 2 8S1.73 10.07 1.73 12.14v1.93C1.73 16.14 2 18 2 18s.27 1.81 1.08 2.6c1.03 1.09 2.43 1.05 3.04 1.16C8.12 22 12 22 12 22s3.63 0 6.21-.27c.53-.07 1.68-.07 2.71-1.16C21.73 19.81 22 18 22 18s.27-2.07.27-4.13v-1.73C22.27 10.07 22 8 22 8z"/>
-            <polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/>
-          </svg>
-          YouTube
+        <a class="pill" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 8s-.3-1.8-1.1-2.6c-1-1.1-2.2-1.1-2.7-1.2C15.6 4 12 4 12 4s-3.6 0-6.2.2c-.5.1-1.7.1-2.7 1.2C2.3 6.2 2 8 2 8S1.7 10 1.7 12v2C1.7 16 2 18 2 18s.3 1.8 1.1 2.6c1 1.1 2.4 1 3 1.2C8.1 22 12 22 12 22s3.6 0 6.2-.2c.5-.1 1.7-.1 2.7-1.2C21.7 19.8 22 18 22 18s.3-2 .3-4v-2Z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/></svg>YouTube
         </a>
-        <a class="socialPill" href="#blog">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <path d="M4 4h16v16H4V4Z"/>
-            <path d="M7 8h10M7 12h10M7 16h7" stroke-linecap="round"/>
-          </svg>
-          Insights
-        </a>
+        <a class="pill" href="#blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Blog</a>
       </div>
     </div>
-
-    <div class="heroVisual" aria-hidden="true">
-      <div class="chartCard">
-        <div class="chartLabel">Portfolio Growth</div>
-        <div class="chartValue">₹18.4L</div>
-        <div class="chartDelta">▲ 12.8% CAGR · 5 Year</div>
-        <div class="chartBars">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar active"></div>
-        </div>
-        <div class="chartFooter">
-          <span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span>
-        </div>
-        <div class="statRow">
-          <div class="statBox">
-            <div class="statNum">6+</div>
-            <div class="statLabel">Services</div>
-          </div>
-          <div class="statBox">
-            <div class="statNum">NISM</div>
-            <div class="statLabel">Certified</div>
-          </div>
+    <div class="hvisual" aria-hidden="true">
+      <div class="chartcard">
+        <div class="clabel">Portfolio Growth</div>
+        <div class="cval">&#8377;18.4L</div>
+        <div class="cdelta">&#9650; 12.8% CAGR &middot; 5 Year</div>
+        <div class="cbars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <div class="cxl"><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
+        <div class="srow">
+          <div class="sbox"><div class="snum">6+</div><div class="slbl">Services</div></div>
+          <div class="sbox"><div class="snum">NISM</div><div class="slbl">Certified</div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── SERVICES ── -->
+<!-- SERVICES -->
 <section id="services">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">What We Offer</div>
-      <h2 class="secTitle">Comprehensive wealth<br>planning services</h2>
-      <p class="secSub">Goal-based planning and investing support — built around your risk profile and time horizon.</p>
+    <div class="eyebrow">What We Offer</div>
+    <h2 class="st">Comprehensive wealth planning services</h2>
+    <p class="ss">Goal-based planning and investing support &mdash; built around your risk profile and time horizon.</p>
+    <div class="sgrid">
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3>Financial Planning</h3><p>Goal planning covering retirement, education, emergency fund, and wealth creation mapped to your timeline.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><h3>Portfolio Analysis</h3><p>Risk assessment, asset allocation review, overlap analysis, and a rebalancing roadmap tailored to your goals.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Mutual Funds</h3><p>Fund selection, SIP/STP strategy, ongoing monitoring, and periodic reviews to keep your plan on track.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>PMS</h3><p>Evaluate fit, strategy, fees and risk behaviour. Monitor and review Portfolio Management Service performance.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/><path d="M9 12l2 2 4-5"/></svg></div><h3>Insurance</h3><p>Term and health insurance planning aligned to your liabilities, income, and dependents for complete protection.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3>Intelligent Advisory</h3><p>Model portfolios and rules-based solutions for disciplined, systematic investing with minimal emotion.</p></div>
     </div>
-
-    <div class="servicesGrid fadeIn">
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/>
-          </svg>
-        </div>
-        <h3>Financial Planning</h3>
-        <p>Goal planning covering retirement, education, emergency fund, and wealth creation — mapped to your timeline.</p>
-      </div>
-
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-        </div>
-        <h3>Portfolio Analysis</h3>
-        <p>Risk assessment, asset allocation review, overlap analysis, and a rebalancing roadmap tailored to your goals.</p>
-      </div>
-
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-        </div>
-        <h3>Mutual Funds</h3>
-        <p>Fund selection, SIP/STP strategy, ongoing monitoring, and periodic reviews to keep your plan on track.</p>
-      </div>
-
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8M12 17v4"/>
-          </svg>
-        </div>
-        <h3>PMS</h3>
-        <p>Evaluate fit, strategy, fees and risk behaviour. Monitor and review Portfolio Management Service performance.</p>
-      </div>
-
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/>
-            <path d="M9 12l2 2 4-5"/>
-          </svg>
-        </div>
-        <h3>Insurance</h3>
-        <p>Term and health insurance planning aligned to your liabilities, income, and dependents for complete protection.</p>
-      </div>
-
-      <div class="serviceCard">
-        <div class="serviceIcon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-          </svg>
-        </div>
-        <h3>Intelligent Advisory</h3>
-        <p>Model portfolios and rules-based solutions for disciplined, systematic investing with minimal emotion.</p>
-      </div>
-    </div>
-
-    <div class="disclosure fadeIn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      <span><strong style="color:var(--gold)">Mutual Fund Disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</span>
-    </div>
+    <div class="disc" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span><strong style="color:var(--gold)">Mutual Fund Disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</span></div>
   </div>
 </section>
 
-<!-- ── CERTIFICATIONS ── -->
+<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">Credentials</div>
-      <h2 class="secTitle">Certifications &<br>Registration</h2>
-      <p class="secSub">Presented for transparency. Our credentials reflect rigorous testing and regulatory compliance.</p>
-    </div>
-
-    <!-- AMFI Registration Banner -->
-    <div class="amfiBanner fadeIn">
-      <div class="amfiBannerLeft">
-        <div class="amfiSeal" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="22" stroke="#c9a96e" stroke-width="2"/>
-            <circle cx="24" cy="24" r="17" stroke="#c9a96e" stroke-width="1" stroke-dasharray="3 2"/>
-            <path d="M14 30l5-10 5 8 5-12 5 14" stroke="#c9a96e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="eyebrow">Credentials</div>
+    <h2 class="st">Certifications &amp; Registration</h2>
+    <p class="ss">Presented for transparency &mdash; our credentials reflect rigorous testing and regulatory compliance.</p>
+    <div class="amfi">
+      <div class="amfil">
+        <div class="amfiseal" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="21" stroke="#c9a96e" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#c9a96e" stroke-width="1" stroke-dasharray="3 2"/><path d="M13 30l5-10 5 8 5-13 5 15" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div>
-          <div class="amfiTitle">AMFI-Registered Mutual Fund Distributor</div>
-          <div class="amfiSub">Association of Mutual Funds in India · ARN-337744 · NISM Certified</div>
+          <div class="amfit">AMFI-Registered Mutual Fund Distributor</div>
+          <div class="amfis">Association of Mutual Funds in India &middot; ARN-337744 &middot; NISM Certified</div>
         </div>
       </div>
-      <div class="amfiBadge">✓ Verified & Registered</div>
+      <div class="amfibadge">&#10003; Verified &amp; Registered</div>
     </div>
-
-    <div class="certGrid fadeIn">
-      <div class="certCard">
+    <div class="cgrid">
+      <div class="cc">
         <h3>NISM Certifications</h3>
-        <div class="certItem">
-          <div class="certDot"></div>
-          <div>
-            <div class="certItemTitle">NISM Series 5A</div>
-            <div class="certItemSub">Mutual Fund Distribution</div>
-          </div>
-        </div>
-        <div class="certItem">
-          <div class="certDot"></div>
-          <div>
-            <div class="certItemTitle">NISM Series 21A</div>
-            <div class="certItemSub">Portfolio Management / Advisory</div>
-          </div>
-        </div>
-        <div class="arnBadge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/></svg>
-          AMFI ARN: ARN-337744
-        </div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">NISM Series 5A</div><div class="cis">Mutual Fund Distribution</div></div></div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">NISM Series 21A</div><div class="cis">Portfolio Management / Advisory</div></div></div>
+        <div class="arn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/></svg>AMFI ARN: ARN-337744</div>
       </div>
-
-      <div class="certCard">
+      <div class="cc">
         <h3>Affiliations</h3>
-        <div class="certItem">
-          <div class="certDot"></div>
-          <div>
-            <div class="certItemTitle">Sub-broker: Motilal Oswal</div>
-            <div class="certItemSub">Registered sub-broker for equities and derivatives</div>
-          </div>
-        </div>
-        <div class="certItem">
-          <div class="certDot"></div>
-          <div>
-            <div class="certItemTitle">Associated with: Wealthy</div>
-            <div class="certItemSub">Partner platform for investment management</div>
-          </div>
-        </div>
-        <div class="disclosure" style="margin-top:16px">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          <span style="font-size:12px;color:rgba(245,240,232,0.4)">Edit this block to add your partner codes, EUIN, or additional contact details.</span>
-        </div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">Sub-broker: Motilal Oswal</div><div class="cis">Registered sub-broker for equities and derivatives</div></div></div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">Associated with: Wealthy</div><div class="cis">Partner platform for investment management</div></div></div>
+        <div class="disc" style="margin-top:13px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span style="font-size:12px;color:rgba(245,240,232,0.36)">Edit this block to add partner codes, EUIN, or additional contact details.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PHOTO SECTION ── -->
-<section style="padding:64px 0">
+<!-- APPROACH / PHOTOS -->
+<section id="approach">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">Our Approach</div>
-      <h2 class="secTitle">Planning with purpose,<br>investing with discipline</h2>
-      <p class="secSub">Wealth is not just about numbers — it's about clarity, peace of mind, and a plan that holds across every market cycle.</p>
-    </div>
-    <div class="photoSection fadeIn">
-      <div class="photoCard">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80&auto=format&fit=crop" alt="Financial planning session" loading="lazy"/>
-        <div class="photoCaption"><strong>Goal-Based Planning</strong>Every rupee mapped to a purpose</div>
-      </div>
-      <div class="photoCard">
-        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop" alt="Investment growth chart analysis" loading="lazy"/>
-        <div class="photoCaption"><strong>Portfolio Reviews</strong>Data-driven, periodic rebalancing</div>
-      </div>
-      <div class="photoCard">
-        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=80&auto=format&fit=crop" alt="Professional advisor meeting" loading="lazy"/>
-        <div class="photoCaption"><strong>Personal Advisory</strong>Guidance built around your life goals</div>
-      </div>
-      <div class="photoCard">
-        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80&auto=format&fit=crop" alt="Family wealth and financial security" loading="lazy"/>
-        <div class="photoCaption"><strong>Long-Term Security</strong>Protection through insurance planning</div>
-      </div>
+    <div class="eyebrow">Our Approach</div>
+    <h2 class="st">Planning with purpose,<br>investing with discipline</h2>
+    <p class="ss">Wealth is not just about numbers &mdash; it's about clarity, peace of mind, and a plan that holds across every market cycle.</p>
+    <div class="pgrid">
+      <div class="pc"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80&auto=format&fit=crop" alt="Financial planning session" loading="lazy"/><div class="pcap"><strong>Goal-Based Planning</strong><span>Every rupee mapped to a purpose</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop" alt="Investment growth charts" loading="lazy"/><div class="pcap"><strong>Portfolio Reviews</strong><span>Data-driven, periodic rebalancing</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=80&auto=format&fit=crop" alt="Professional advisor consultation" loading="lazy"/><div class="pcap"><strong>Personal Advisory</strong><span>Guidance built around your life goals</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80&auto=format&fit=crop" alt="Family financial security" loading="lazy"/><div class="pcap"><strong>Long-Term Security</strong><span>Protection through insurance planning</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ── BLOG ── -->
+<!-- BLOG -->
 <section id="blog">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">Insights & Education</div>
-      <h2 class="secTitle">Financial insights<br>worth reading</h2>
-      <p class="secSub">Practical knowledge on investing, planning, and protecting your financial future.</p>
+    <div class="eyebrow">Insights &amp; Education</div>
+    <h2 class="st">Financial insights worth reading</h2>
+    <p class="ss">Practical knowledge on investing, planning, and protecting your financial future &mdash; written in plain language.</p>
+
+    <!-- Medium setup banner -->
+    <div class="medium-banner">
+      <div class="medium-banner-l">
+        <div class="medium-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="white"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></div>
+        <p><strong>Connect to Medium when you're ready</strong>Once your Medium account is live, replace each card's link with your article URL. Your handle will be <code class="c">medium.com/@yourhandle</code></p>
+      </div>
+      <a class="mlink" href="https://medium.com/m/signin" target="_blank" rel="noopener">Create Medium Account</a>
     </div>
 
-    <div class="blogNote fadeIn">
-      <strong>How to add a new blog post:</strong> Duplicate any <code>blogCard</code> block below and update the date, title, summary, and optional image. Replace the <code>blogThumb</code> background or add an <code>&lt;img&gt;</code> tag inside it.
+    <!-- Category filters -->
+    <div class="blog-filters" role="group" aria-label="Filter by category">
+      <button class="bfilt active" data-filter="all">All Posts</button>
+      <button class="bfilt" data-filter="mutual-funds">Mutual Funds</button>
+      <button class="bfilt" data-filter="planning">Financial Planning</button>
+      <button class="bfilt" data-filter="insurance">Insurance</button>
+      <button class="bfilt" data-filter="market">Market &amp; Economy</button>
+      <button class="bfilt" data-filter="tax">Tax &amp; Returns</button>
     </div>
 
-    <div class="blogGrid fadeIn" aria-label="Blog posts">
-      <article class="blogCard" itemscope itemtype="https://schema.org/BlogPosting">
-        <div class="blogThumb blogThumb-1" aria-hidden="true" style="background:none">
-          <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80&auto=format&fit=crop" alt="Portfolio health check" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.65) saturate(0.8)"/>
-        </div>
-        <div class="blogBody">
-          <div class="blogMeta"><time itemprop="datePublished" datetime="2026-02-21">Feb 21, 2026</time> · 3 min read</div>
-          <h3 class="blogTitle" itemprop="headline">Portfolio Health-Check in 30 Minutes</h3>
-          <p class="blogExcerpt" itemprop="description">A simple checklist to review allocation, overlap, and risk — before making any changes.</p>
-          <a class="blogReadMore" href="#" itemprop="url">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <!-- FEATURED POST — update href to your Medium article URL -->
+    <a class="bl-featured" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" data-cat="planning" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blt"><img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=900&q=80&auto=format&fit=crop" alt="Portfolio health check" loading="lazy"/><span class="cat-tag">Financial Planning</span></div>
+      <div class="blb">
+        <div class="featured-tag">Featured</div>
+        <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-21">Feb 21, 2026</time><span></span>3 min read</div>
+        <h3 class="bltitle" itemprop="headline">Portfolio Health-Check in 30 Minutes</h3>
+        <p class="blex" itemprop="description">A simple checklist to review your allocation, identify overlaps, and assess risk &mdash; before making any changes. Perfect for investors who want a clear picture without hiring a professional every time.</p>
+        <span class="bllink">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+
+    <!-- BLOG GRID
+         TO ADD A NEW POST: Copy one article block, paste it here, then update:
+         1. data-cat  →  mutual-funds | planning | insurance | market | tax
+         2. href      →  your Medium article URL
+         3. img src   →  your image or an Unsplash URL
+         4. cat-tag   →  category label shown on image
+         5. date, read time, title, excerpt
+    -->
+    <div class="blgrid">
+
+      <article class="blc" data-cat="mutual-funds" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=700&q=80&auto=format&fit=crop" alt="SIP investment plan" loading="lazy"/><span class="cat-tag">Mutual Funds</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-14">Feb 14, 2026</time><span></span>4 min read</div>
+          <h3 class="bltitle" itemprop="headline">SIP vs Lumpsum: When to Choose What?</h3>
+          <p class="blex" itemprop="description">Understanding volatility, time horizon and how to build a disciplined investing habit that sticks through market cycles.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </article>
 
-      <article class="blogCard" itemscope itemtype="https://schema.org/BlogPosting">
-        <div class="blogThumb blogThumb-2" aria-hidden="true" style="background:none">
-          <img src="https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=600&q=80&auto=format&fit=crop" alt="SIP investing systematic plan" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(0.75)"/>
-        </div>
-        <div class="blogBody">
-          <div class="blogMeta"><time itemprop="datePublished" datetime="2026-02-21">Feb 21, 2026</time> · 4 min read</div>
-          <h3 class="blogTitle" itemprop="headline">SIP vs Lumpsum: When to Choose What?</h3>
-          <p class="blogExcerpt" itemprop="description">Understanding volatility, time horizon and how to build a disciplined investing habit that sticks.</p>
-          <a class="blogReadMore" href="#" itemprop="url">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <article class="blc" data-cat="insurance" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=700&q=80&auto=format&fit=crop" alt="Insurance protection planning" loading="lazy"/><span class="cat-tag">Insurance</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-07">Feb 7, 2026</time><span></span>5 min read</div>
+          <h3 class="bltitle" itemprop="headline">Insurance Planning: Basics That Protect Your Plan</h3>
+          <p class="blex" itemprop="description">Why protection comes before returns &mdash; and how to avoid the most common coverage gaps that leave families exposed.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </article>
 
-      <article class="blogCard" itemscope itemtype="https://schema.org/BlogPosting">
-        <div class="blogThumb blogThumb-3" aria-hidden="true" style="background:none">
-          <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=600&q=80&auto=format&fit=crop" alt="Insurance and protection planning" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.55) saturate(0.7)"/>
-        </div>
-        <div class="blogBody">
-          <div class="blogMeta"><time itemprop="datePublished" datetime="2026-02-21">Feb 21, 2026</time> · 5 min read</div>
-          <h3 class="blogTitle" itemprop="headline">Insurance Planning: Basics That Protect Your Plan</h3>
-          <p class="blogExcerpt" itemprop="description">Why protection comes before returns — and how to avoid the most common coverage gaps.</p>
-          <a class="blogReadMore" href="#" itemprop="url">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <article class="blc" data-cat="tax" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=700&q=80&auto=format&fit=crop" alt="Tax planning India" loading="lazy"/><span class="cat-tag">Tax &amp; Returns</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-28">Jan 28, 2026</time><span></span>6 min read</div>
+          <h3 class="bltitle" itemprop="headline">ELSS vs PPF vs NPS: Which Tax-Saver Wins in 2026?</h3>
+          <p class="blex" itemprop="description">A side-by-side breakdown of lock-in periods, returns, tax treatment, and who each instrument suits best.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </article>
+
+      <article class="blc" data-cat="market" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80&auto=format&fit=crop" alt="Market volatility charts" loading="lazy"/><span class="cat-tag">Market &amp; Economy</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-15">Jan 15, 2026</time><span></span>4 min read</div>
+          <h3 class="bltitle" itemprop="headline">What to Do When Markets Fall 10%</h3>
+          <p class="blex" itemprop="description">A calm, data-backed guide to navigating market corrections without abandoning your long-term investment plan.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="blc" data-cat="mutual-funds" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=700&q=80&auto=format&fit=crop" alt="Mutual fund categories" loading="lazy"/><span class="cat-tag">Mutual Funds</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-05">Jan 5, 2026</time><span></span>5 min read</div>
+          <h3 class="bltitle" itemprop="headline">Large Cap, Mid Cap, Flexi Cap: What's Right for You?</h3>
+          <p class="blex" itemprop="description">A plain-language guide to equity fund categories &mdash; what they own, how they behave, and where they fit in your portfolio.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="blc" data-cat="planning" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&auto=format&fit=crop" alt="Retirement planning early start" loading="lazy"/><span class="cat-tag">Financial Planning</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2025-12-20">Dec 20, 2025</time><span></span>7 min read</div>
+          <h3 class="bltitle" itemprop="headline">Start Retirement Planning at 30, Not 50</h3>
+          <p class="blex" itemprop="description">The compounding math that proves why starting two decades earlier can mean retiring with 4x the corpus &mdash; even with smaller SIPs.</p>
+          <a class="bllink" href="https://medium.com/@yourhandle/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+    </div><!-- end .blgrid -->
+
+    <!-- HOW TO ADD MORE POSTS -->
+    <div class="add-guide">
+      <div class="gs"><div class="gn">1</div><p><strong>Write on Medium</strong>Create your account at medium.com, write your article, publish it, and copy the article URL.</p></div>
+      <div class="gs"><div class="gn">2</div><p><strong>Duplicate a card</strong>Copy any <code class="c">&lt;article class="blc"&gt;</code> block and paste it inside the <code class="c">.blgrid</code> div above.</p></div>
+      <div class="gs"><div class="gn">3</div><p><strong>Update 5 fields</strong>Change the <code class="c">href</code>, image, <code class="c">data-cat</code>, date, title and excerpt. Done &mdash; the filter works automatically.</p></div>
     </div>
+
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">Let's Talk</div>
-      <h2 class="secTitle">Share your requirement,<br>we'll get back to you</h2>
-    </div>
-
-    <div class="contactGrid fadeIn">
-      <div class="formCard">
-        <div class="formTitle">Send a message</div>
+    <div class="eyebrow">Let's Talk</div>
+    <h2 class="st">Share your requirement,<br>we'll get back to you</h2>
+    <div class="ctgrid">
+      <div class="fcard">
+        <h3>Send a message</h3>
         <form>
-          <div class="formRow">
-            <div class="formGroup">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Rajesh Kumar" required>
-            </div>
-            <div class="formGroup">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="rajesh@email.com" required>
-            </div>
+          <div class="frow">
+            <div class="fg"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="Rajesh Kumar" required></div>
+            <div class="fg"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="rajesh@email.com" required></div>
           </div>
-          <div class="formGroup">
-            <label for="phone">Phone Number (optional)</label>
-            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
-          </div>
-          <div class="formGroup">
-            <label for="service">Service of Interest</label>
-            <select id="service" name="service" required>
-              <option value="">Select a service</option>
-              <option>Financial Planning</option>
-              <option>Portfolio Analysis</option>
-              <option>Mutual Funds</option>
-              <option>PMS</option>
-              <option>Insurance</option>
-              <option>Intelligent Advisory</option>
-            </select>
-          </div>
-          <div class="formGroup">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" placeholder="Tell us about your financial goals…"></textarea>
-          </div>
-          <button class="formSubmit" type="submit">Send Message</button>
-          <p class="formConsent">By submitting, you agree to be contacted by Artha Investment Solutions.</p>
+          <div class="fg"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone" placeholder="+91 98765 43210"></div>
+          <div class="fg"><label for="service">Service of Interest</label><select id="service" name="service" required><option value="">Select a service</option><option>Financial Planning</option><option>Portfolio Analysis</option><option>Mutual Funds</option><option>PMS</option><option>Insurance</option><option>Intelligent Advisory</option></select></div>
+          <div class="fg"><label for="msg">Your Message</label><textarea id="msg" name="message" placeholder="Tell us about your financial goals..."></textarea></div>
+          <button class="sbtn" type="submit">Send Message</button>
+          <p class="fcon">By submitting, you agree to be contacted by Artha Investment Solutions.</p>
         </form>
       </div>
-
-      <div class="infoPanel">
-        <div class="infoCard">
+      <div class="ipanel">
+        <div class="icard">
           <h3>Contact Details</h3>
-          <div class="infoRow">
-            <div class="infoKey">Email</div>
-            <div class="infoVal"><a href="/cdn-cgi/l/email-protection#a0c8c5cccccfe0c1d2d4c8c1c9ced6c5d3d4cdc5ced4d3cfccd5d4c9cfced38ec3cfcd" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="08606d64646748697a7c606961667e6d7b7c656d667c7b67647d7c6167667b266b6765">[email&#160;protected]</span></a></div>
-          </div>
-          <div class="infoRow">
-            <div class="infoKey">Phone</div>
-            <div class="infoVal">+91-XXXXXXXXXX</div>
-          </div>
-          <div class="infoRow">
-            <div class="infoKey">Location</div>
-            <div class="infoVal">India</div>
-          </div>
-          <div class="infoRow">
-            <div class="infoKey">Hours</div>
-            <div class="infoVal">Mon–Sat, 10:00 AM – 7:00 PM</div>
-          </div>
+          <div class="ir"><span class="ik">Email</span><span class="iv"><a href="mailto:parikshitartha@gmail.com" style="color:var(--gold)">parikshitartha@gmail.com</a></span></div>
+          <div class="ir"><span class="ik">Phone</span><span class="iv"><a href="tel:+919818038954" style="color:var(--gold)">+91 98180 38954</a></span></div>
+          <div class="ir"><span class="ik">Location</span><span class="iv">India</span></div>
+          <div class="ir"><span class="ik">Hours</span><span class="iv">Mon&ndash;Sat, 10 AM &ndash; 7 PM</span></div>
         </div>
-        <div class="infoCard">
+        <div class="icard">
           <h3>Connect</h3>
-          <div class="socialPills" style="flex-direction:column;gap:10px">
-            <a class="socialPill" href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener" style="justify-content:flex-start">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-              @yourhandle on Instagram
-            </a>
-            <a class="socialPill" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener" style="justify-content:flex-start">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 8s-.27-1.81-1.08-2.6c-1.03-1.09-2.18-1.09-2.71-1.16C15.63 4 12 4 12 4s-3.63 0-6.21.24c-.53.07-1.68.07-2.71 1.16C2.27 6.19 2 8 2 8S1.73 10.07 1.73 12.14v1.93C1.73 16.14 2 18 2 18s.27 1.81 1.08 2.6c1.03 1.09 2.43 1.05 3.04 1.16C8.12 22 12 22 12 22s3.63 0 6.21-.27c.53-.07 1.68-.07 2.71-1.16C21.73 19.81 22 18 22 18s.27-2.07.27-4.13v-1.73C22.27 10.07 22 8 22 8z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/></svg>
-              @yourchannel on YouTube
-            </a>
-          </div>
-          <div class="seoNote" style="margin-top:14px">
-            Replace placeholder social handles with your real URLs for better SEO and trust signals.
+          <div class="pills" style="flex-direction:column;gap:9px">
+            <a class="pill" href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener" style="justify-content:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@yourhandle on Instagram</a>
+            <a class="pill" href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener" style="justify-content:flex-start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 8s-.3-1.8-1.1-2.6c-1-1.1-2.2-1.1-2.7-1.2C15.6 4 12 4 12 4s-3.6 0-6.2.2c-.5.1-1.7.1-2.7 1.2C2.3 6.2 2 8 2 8S1.7 10 1.7 12v2C1.7 16 2 18 2 18s.3 1.8 1.1 2.6c1 1.1 2.4 1 3 1.2C8.1 22 12 22 12 22s3.6 0 6.2-.2c.5-.1 1.7-.1 2.7-1.2C21.7 19.8 22 18 22 18s.3-2 .3-4v-2Z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/></svg>@yourchannel on YouTube</a>
           </div>
         </div>
+        <div class="snote">Replace placeholder social handles with your real URLs for better SEO and trust signals.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── DISCLOSURES ── -->
+<!-- DISCLOSURES -->
 <section id="disclosures">
   <div class="wrap">
-    <div class="fadeIn">
-      <div class="sectionEyebrow">Legal</div>
-      <h2 class="secTitle">Disclosures</h2>
-    </div>
-    <div class="discCard fadeIn">
-      <p><strong>ARN:</strong> ARN-337744</p>
+    <div class="eyebrow">Legal</div>
+    <h2 class="st">Disclosures</h2>
+    <div class="dcard">
+      <p><strong>ARN:</strong> ARN-337744 &middot; AMFI-Registered Mutual Fund Distributor</p>
       <p><strong>Mutual Fund disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</p>
-      <p><strong>General disclaimer:</strong> The information on this website is for educational and informational purposes only and does not constitute investment advice or a recommendation to buy or sell any securities. Suitability of any investment depends on individual profile and risk tolerance. Past performance is not indicative of future results.</p>
+      <p><strong>General disclaimer:</strong> The information on this website is for educational and informational purposes only and does not constitute investment advice or a recommendation to buy or sell any securities. Suitability depends on individual profile and risk tolerance. Past performance is not indicative of future results.</p>
     </div>
-    <div class="seoNote fadeIn">
-      <strong style="color:var(--gold)">SEO note:</strong> Replace <code>https://example.com/</code> in the canonical and Open Graph tags with your actual domain after purchase for best search results.
-    </div>
+    <div class="dnote"><strong style="color:var(--gold)">SEO note:</strong> Replace <code>https://example.com/</code> in the canonical and OG tags with your real domain after purchase.</div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <div class="footerInner">
+  <div class="fi">
     <div>
-      <div class="footBrand">Artha Investment Solutions</div>
-      <p class="footTagline">AMFI-Registered Mutual Fund Distributor. Goal-based financial planning and investment advisory.</p>
-      <p class="footCopyright">© <span id="year"></span> Artha Investment Solutions. All rights reserved.<br>ARN-337744 · AMFI-Registered Mutual Fund Distributor</p>
+      <div class="fb">Artha Investment Solutions</div>
+      <p class="ftag">Goal-based financial planning and investment advisory for every stage of life.</p>
+      <p class="famfi">AMFI-Registered Mutual Fund Distributor &middot; ARN-337744</p>
+      <p class="fcp">&copy; <span id="yr"></span> Artha Investment Solutions. All rights reserved.</p>
     </div>
-
-    <div class="footNav">
+    <div class="fcol">
       <h4>Navigation</h4>
-      <a href="#services">Services</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#blog">Insights</a>
-      <a href="#contact">Contact</a>
-      <a href="#disclosures">Disclosures</a>
+      <a href="#services">Services</a><a href="#certifications">Credentials</a><a href="#approach">Approach</a><a href="#blog">Blog</a><a href="#contact">Contact</a><a href="#disclosures">Disclosures</a>
     </div>
-
-    <div class="footNav">
+    <div class="fcol">
       <h4>Social</h4>
       <a href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://medium.com/@yourhandle" target="_blank" rel="noopener">Medium</a>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Year
-  document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+// Nav shrink on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.padding = window.scrollY > 50 ? '10px 0' : '16px 0';
+}, { passive: true });
 
-  document.querySelectorAll('.fadeIn').forEach((el, i) => {
-    el.style.transitionDelay = (
+// Category filter
+document.querySelectorAll('.bfilt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bfilt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.blgrid .blc').forEach(card => {
+      card.c
