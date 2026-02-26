@@ -1,0 +1,8 @@
+# robots.txt for Artha Investment Solutions
+# https://arthainvestmentsolutions.github.io/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://arthainvestmentsolutions.github.io/sitemap.xml
