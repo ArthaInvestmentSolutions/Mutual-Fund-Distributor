@@ -548,7 +548,7 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
           <h3>Contact Details</h3>
           <div class="ir">
             <span class="ik">Email</span>
-            <span class="iv"><a href="mailto:parikshitartha@gmail.com" style="color:var(--gold)">parikshitartha@gmail.com</a></span>
+            <span class="iv"><a href="/cdn-cgi/l/email-protection#89f9e8fbe0e2fae1e0fde8fbfde1e8c9eee4e8e0e5a7eae6e4" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="b7c7d6c5dedcc4dfdec3d6c5c3dfd6f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></span>
           </div>
           <div class="ir">
             <span class="ik">Phone</span>
@@ -624,7 +624,7 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── Year ───────────────────────────────────────────────
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -647,7 +647,7 @@ document.querySelectorAll('.bfilt').forEach(btn => {
 });
 
 // ─── Google Sheets Form Integration ─────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxkELJn6aEWZFQ_ryDFxhzGq48O2_UJKzhTOggdK5KgUxF3tyL0EnedcnawCGwJVahf/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1JRJl_SBDsCOG3B8irrNo2dHediPrFO5UM2I7w5OD5Gvgn2-WeuO2gDp-Mbf3xccftA/exec';
 
 document.getElementById('leadForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -686,19 +686,4 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     // Fire GA event if Analytics is loaded
     if (typeof gtag !== 'undefined') {
       gtag('event', 'lead_form_submit', {
-        event_category: 'Lead',
-        event_label: payload.service
-      });
-    }
-
-  } catch (err) {
-    error.style.display = 'block';
-  } finally {
-    btn.disabled    = false;
-    btn.textContent = 'Send Message';
-  }
-});
-</script>
-
-</body>
-</html>
+  
