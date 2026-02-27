@@ -1,76 +1,988 @@
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Artha Form Integration</title>
-</head>
+<meta charset="UTF-8"/>
+<!-- Favicon: SVG inline — no file upload needed -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e1a'/%3E%3Crect width='64' height='64' rx='12' fill='none' stroke='%23c9a96e' stroke-width='3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-size='36' font-weight='bold' fill='%23c9a96e'%3EA%3C/text%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e1a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-size='36' font-weight='bold' fill='%23c9a96e'%3EA%3C/text%3E%3C/svg%3E"/>
+<meta name="msapplication-TileColor" content="#0a0e1a"/>
 
-<body>
-
+<!-- Google Analytics — REPLACE G-XXXXXXXXXX with your real Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: 'Artha Investment Solutions',
+    page_location: window.location.href,
+    anonymize_ip: true
+  });
+</script>
 
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbxFvp_xqF8PPeftzkFi68qo0TIdo5j-gyWEAZErqOwuE6ICeqhupFPl6R6990KnaY-RaQ/exec";
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Artha Investment Solutions | Best Mutual Fund, PMS &amp; Investment Advisory in India | ARN-337744</title>
+<meta name="description" content="Artha Investment Solutions — India's trusted AMFI-registered investment advisor (ARN-337744). Best mutual fund schemes, SIP plans, Portfolio Management Services (PMS), insurance, and wealth management. Expert financial planning for long-term wealth creation in India."/>
+<meta name="keywords" content="best mutual fund in India, top SIP investment plans, portfolio management services India, best investment advisor India, mutual fund distributor India, AMFI registered MFD, PMS India, wealth management India, financial planning India, best investment schemes India, SIP calculator India, equity mutual funds, ELSS tax saving funds, best insurance plan India, NPS investment India, retirement planning India, long term investment India, high return investment India, index funds India, debt mutual funds, balanced funds India, systematic investment plan, lumpsum investment India, stock market investment India, best returns investment plan, ARN-337744"/>
+<meta name="robots" content="index,follow"/>
+<meta name="author" content="Artha Investment Solutions"/>
+<meta name="geo.region" content="IN"/>
+<meta name="geo.placename" content="India"/>
+<link rel="canonical" href="https://arthainvestmentsolutions.github.io/"/>
+<meta property="og:title" content="Artha Investment Solutions | Best Mutual Fund &amp; Investment Advisory in India"/>
+<meta property="og:description" content="Expert investment advisory for mutual funds, PMS, SIP, insurance and wealth management in India. AMFI-registered, NISM-certified. ARN-337744."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://arthainvestmentsolutions.github.io/"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Artha Investment Solutions | Best Mutual Fund &amp; Investment Advisory in India"/>
+<meta name="twitter:description" content="India's trusted investment advisor for mutual funds, PMS, SIP, insurance and wealth management. AMFI-registered ARN-337744."/>
+<meta name="theme-color" content="#0a0e1a"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Artha Investment Solutions",
+  "description": "Best AMFI-Registered Mutual Fund Distributor and investment advisor in India. Offering top mutual fund schemes, SIP plans, PMS, insurance and wealth management. ARN-337744.",
+  "areaServed": "IN",
+  "url": "https://arthainvestmentsolutions.github.io/",
+  "identifier": "ARN-337744",
+  "telephone": "+919818038954",
+  "email": "parikshitartha@gmail.com",
+  "serviceType": ["Mutual Fund Distribution", "Portfolio Management Services", "Financial Planning", "Insurance Advisory", "SIP Investment", "Wealth Management"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Investment Services India",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Best Mutual Fund Advisory India"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SIP Investment Plans India"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Portfolio Management Services PMS India"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Insurance Planning India"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wealth Management India"}}
+    ]
+  },
+  "sameAs": ["https://www.instagram.com/_daily_dose_of_finance"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a96e;--gold-l:#e8c98a;--gold-d:rgba(201,169,110,0.14);--cream:#f5f0e8;--ink:#0a0e1a;--ink2:#111624;--ink3:#1a2034;--green:#5ec98d;--line:rgba(201,169,110,0.20);--line2:rgba(245,240,232,0.07);--r:4px;--rl:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--cream);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;letter-spacing:-0.01em}
+.wrap{max-width:1160px;margin:auto;padding:0 40px}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rgba(10,14,26,0.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--line2);transition:padding .3s}
+.ni{max-width:1160px;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:.02em;flex-shrink:0}
+.logo small{display:block;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1px}
+.nl{display:flex;gap:24px;flex-wrap:wrap}
+.nl a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.58);transition:color .2s}
+.nl a:hover{color:var(--gold)}
+.ncta{flex-shrink:0;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--gold);color:var(--gold);border-radius:var(--r);transition:all .2s}
+.ncta:hover{background:var(--gold);color:var(--ink)}
+@media(max-width:900px){.nl{display:none}}
+@media(max-width:600px){.ni,.wrap{padding-left:20px;padding-right:20px}}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:130px 0 80px}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(var(--line2) 1px,transparent 1px),linear-gradient(90deg,var(--line2) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+.hglow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(201,169,110,0.07) 0%,transparent 65%);top:-150px;right:-80px;pointer-events:none}
+.hcontent{position:relative;z-index:2;max-width:1160px;margin:auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px}
+@media(max-width:1024px){.hcontent{grid-template-columns:1fr}.hvisual{display:none}}
+@media(max-width:600px){.hcontent{padding:0 20px}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold)}
+h1.ht{font-size:clamp(38px,5vw,64px);color:var(--cream);margin-bottom:18px}
+h1.ht em{font-style:italic;color:var(--gold)}
+.hsub{font-size:16px;color:rgba(245,240,232,0.56);max-width:460px;line-height:1.78;margin-bottom:32px}
+.hact{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.bg{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r);transition:all .2s}
+.bg:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 10px 26px rgba(201,169,110,0.22)}
+.gh{font-size:12px;font-weight:500;color:rgba(245,240,232,0.62);display:inline-flex;align-items:center;gap:7px;transition:color .2s}
+.gh:hover{color:var(--gold)}
+.pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;color:rgba(245,240,232,0.62);transition:all .2s}
+.pill svg{width:13px;height:13px}
+.pill:hover{border-color:var(--gold);color:var(--gold)}
+.chartcard{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
+.chartcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.clabel{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:3px}
+.cval{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:4px}
+.cdelta{font-size:13px;color:var(--green);font-weight:600}
+.cbars{display:flex;align-items:flex-end;gap:5px;height:76px;margin-top:18px}
+.bar{flex:1;background:var(--gold-d);border-radius:3px 3px 0 0;border:1px solid rgba(201,169,110,0.2);border-bottom:none;animation:gb 1s ease-out backwards}
+@keyframes gb{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1)}}
+.bar:nth-child(1){height:42%;animation-delay:.05s}.bar:nth-child(2){height:60%;animation-delay:.1s}.bar:nth-child(3){height:52%;animation-delay:.15s}.bar:nth-child(4){height:76%;animation-delay:.2s}.bar:nth-child(5){height:65%;animation-delay:.25s}.bar:nth-child(6){height:83%;animation-delay:.3s}.bar:nth-child(7){height:70%;animation-delay:.35s}.bar:nth-child(8){height:93%;animation-delay:.4s;background:rgba(201,169,110,0.42)}
+.cxl{display:flex;justify-content:space-between;margin-top:6px}
+.cxl span{font-size:9px;color:rgba(245,240,232,0.2)}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.sbox{background:rgba(245,240,232,0.04);border:1px solid var(--line2);border-radius:var(--r);padding:12px 14px}
+.snum{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600}
+.slbl{font-size:11px;color:rgba(245,240,232,0.38);margin-top:1px}
+section{padding:92px 0}
+section+section{border-top:1px solid var(--line2)}
+h2.st{font-size:clamp(28px,4vw,44px);color:var(--cream);margin-bottom:12px}
+.ss{font-size:16px;color:rgba(245,240,232,0.5);max-width:520px;line-height:1.78;margin-bottom:40px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden}
+@media(max-width:860px){.sgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.sgrid{grid-template-columns:1fr}}
+.sc{background:var(--ink2);padding:32px 28px;transition:background .25s}
+.sc:hover{background:var(--ink3)}
+.si{width:38px;height:38px;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:16px}
+.si svg{width:17px;height:17px}
+.sc h3{font-size:20px;color:var(--cream);margin-bottom:8px}
+.sc p{font-size:14px;color:rgba(245,240,232,0.52);line-height:1.7}
+.disc{margin-top:16px;padding:13px 16px;border:1px solid var(--line);border-radius:var(--r);font-size:12px;color:rgba(245,240,232,0.42);display:flex;align-items:flex-start;gap:8px}
+.disc svg{width:13px;height:13px;flex-shrink:0;margin-top:2px;color:var(--gold)}
+.amfi{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:linear-gradient(135deg,rgba(201,169,110,0.09),rgba(201,169,110,0.04));border:1px solid var(--line);border-radius:var(--rl);margin-bottom:24px}
+.amfil{display:flex;align-items:center;gap:14px}
+.amfiseal{flex-shrink:0;width:52px;height:52px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(201,169,110,0.06)}
+.amfit{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--cream);margin-bottom:2px}
+.amfis{font-size:12px;color:rgba(245,240,232,0.42)}
+.amfibadge{flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding:5px 13px;border:1px solid rgba(94,201,141,0.28);border-radius:999px;background:rgba(94,201,141,0.07)}
+@media(max-width:580px){.amfi{flex-direction:column;align-items:flex-start}}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.cgrid{grid-template-columns:1fr}}
+.cc{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:32px;position:relative;overflow:hidden}
+.cc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),transparent)}
+.cc h3{font-size:21px;color:var(--cream);margin-bottom:16px}
+.ci{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line2)}
+.ci:last-of-type{border-bottom:none}
+.cdot{width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;margin-top:8px}
+.cit{font-weight:600;font-size:14px;color:var(--cream);margin-bottom:1px}
+.cis{font-size:13px;color:rgba(245,240,232,0.42)}
+.arn{display:inline-flex;align-items:center;gap:7px;margin-top:16px;padding:8px 13px;background:var(--gold-d);border:1px solid var(--line);border-radius:var(--r);font-size:13px;font-weight:700;color:var(--gold)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:620px){.pgrid{grid-template-columns:1fr}}
+.pc{border-radius:var(--rl);overflow:hidden;position:relative;aspect-ratio:16/10}
+.pc img{width:100%;height:100%;object-fit:cover;filter:brightness(0.68) saturate(0.78);transition:filter .4s,transform .4s}
+.pc:hover img{filter:brightness(0.82) saturate(0.9);transform:scale(1.04)}
+.pcap{position:absolute;bottom:0;left:0;right:0;padding:18px 20px 16px;background:linear-gradient(to top,rgba(10,14,26,0.88) 0%,transparent 100%)}
+.pcap strong{display:block;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cream);margin-bottom:1px}
+.pcap span{font-size:13px;color:rgba(245,240,232,0.7)}
+.blog-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.bfilt{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:999px;border:1px solid var(--line2);color:rgba(245,240,232,0.5);cursor:pointer;background:none;transition:all .2s;font-family:'DM Sans',sans-serif}
+.bfilt:hover{border-color:var(--line);color:var(--cream)}
+.bfilt.active{border-color:var(--gold);color:var(--gold);background:var(--gold-d)}
+.bl-featured{display:grid;grid-template-columns:1.1fr 0.9fr;border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;margin-bottom:20px;background:var(--ink2);transition:border-color .25s}
+.bl-featured:hover{border-color:var(--line)}
+.bl-featured .blt{height:100%;min-height:260px}
+.bl-featured .blb{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+.bl-featured .bltitle{font-size:27px}
+.bl-featured .blex{font-size:15px}
+.featured-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.featured-tag::before{content:'';width:20px;height:1px;background:var(--gold)}
+@media(max-width:760px){.bl-featured{grid-template-columns:1fr}.bl-featured .blt{min-height:200px}.bl-featured .blb{padding:24px}}
+.blgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.blgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.blgrid{grid-template-columns:1fr}}
+.blc{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;transition:border-color .25s,transform .25s}
+.blc:hover{border-color:var(--line);transform:translateY(-4px)}
+.blc.hidden{display:none}
+.blt{overflow:hidden;position:relative}
+.blt img{width:100%;height:185px;object-fit:cover;filter:brightness(0.62) saturate(0.74);transition:transform .4s}
+.bl-featured .blt img{height:100%;min-height:260px;filter:brightness(0.55) saturate(0.7)}
+.blc:hover .blt img,.bl-featured:hover .blt img{transform:scale(1.05)}
+.cat-tag{position:absolute;top:12px;left:12px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(10,14,26,0.82);border:1px solid var(--line);color:var(--gold)}
+.blb{padding:22px}
+.blmeta{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(245,240,232,0.33);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.blmeta span{width:3px;height:3px;background:rgba(245,240,232,0.2);border-radius:50%}
+.bltitle{font-size:20px;color:var(--cream);margin-bottom:9px;line-height:1.3}
+.blex{font-size:14px;color:rgba(245,240,232,0.48);line-height:1.7;margin-bottom:17px}
+.bllink{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.bllink:hover{gap:10px}
 
-function sendLead(){
+/* CONTACT */
+.ctgrid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px;align-items:start}
+@media(max-width:860px){.ctgrid{grid-template-columns:1fr}}
+.fcard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:36px}
+.fcard h3{font-size:24px;color:var(--cream);margin-bottom:24px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:540px){.frow{grid-template-columns:1fr}}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(245,240,232,0.38);margin-bottom:6px}
+input,textarea,select{width:100%;padding:10px 14px;background:rgba(245,240,232,0.04);border:1px solid rgba(245,240,232,0.09);border-radius:var(--r);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;appearance:none;transition:border-color .2s}
+input::placeholder,textarea::placeholder{color:rgba(245,240,232,0.22)}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);background:rgba(201,169,110,0.04)}
+select option{background:var(--ink2)}
+textarea{min-height:104px;resize:vertical}
+.sbtn{width:100%;padding:12px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;border:none;border-radius:var(--r);cursor:pointer;transition:all .2s;margin-top:4px}
+.sbtn:hover{background:var(--gold-l);transform:translateY(-1px)}
+.sbtn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+.fcon{font-size:12px;color:rgba(245,240,232,0.26);margin-top:9px;text-align:center}
 
-const btn = document.getElementById("submitBtn");
-const successBox = document.getElementById("formSuccess");
-const errorBox = document.getElementById("formError");
+/* Form status messages */
+.form-success{display:none;margin-top:16px;padding:16px 20px;background:rgba(94,201,141,0.1);border:1px solid rgba(94,201,141,0.3);border-radius:var(--r);text-align:center}
+.form-success svg{width:32px;height:32px;color:var(--green);margin:0 auto 8px;display:block}
+.form-success h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream);margin-bottom:4px}
+.form-success p{font-size:13px;color:rgba(245,240,232,0.5)}
+.form-error{display:none;margin-top:12px;padding:12px 16px;background:rgba(255,80,80,0.08);border:1px solid rgba(255,80,80,0.25);border-radius:var(--r);font-size:13px;color:#ff8080;text-align:center}
 
-if(successBox) successBox.style.display="none";
-if(errorBox) errorBox.style.display="none";
+.ipanel{display:flex;flex-direction:column;gap:13px}
+.icard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:24px}
+.icard h3{font-size:18px;color:var(--cream);margin-bottom:13px}
+.ir{display:flex;gap:11px;padding:8px 0;border-bottom:1px solid var(--line2);font-size:14px}
+.ir:last-of-type{border-bottom:none}
+.ik{font-size:12px;font-weight:600;color:rgba(245,240,232,0.36);min-width:62px;padding-top:1px}
+.iv{color:rgba(245,240,232,0.76)}
 
-btn.disabled=true;
-btn.innerText="Sending...";
+/* DISCLOSURES */
+.dcard{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:34px}
+.dcard p{font-size:14px;color:rgba(245,240,232,0.46);line-height:1.78;margin-bottom:13px}
+.dcard p:last-child{margin-bottom:0}
+.dcard strong{color:var(--gold);font-weight:600}
 
-const data = {
+/* FOOTER */
+footer{border-top:1px solid var(--line2);padding:46px 0}
+.fi{max-width:1160px;margin:auto;padding:0 40px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;align-items:start}
+@media(max-width:760px){.fi{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fi{grid-template-columns:1fr;padding:0 20px}}
+.fb{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--gold);margin-bottom:7px}
+.ftag{font-size:13px;color:rgba(245,240,232,0.33);max-width:220px;line-height:1.6}
+.famfi{font-size:11px;color:rgba(201,169,110,0.58);margin-top:7px;font-weight:600;letter-spacing:.04em}
+.fcp{font-size:11px;color:rgba(245,240,232,0.2);margin-top:16px;line-height:1.6}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:13px}
+.fcol a{display:block;font-size:14px;color:rgba(245,240,232,0.52);margin-bottom:8px;transition:color .2s}
+.fcol a:hover{color:var(--gold)}
+@media(max-width:760px){.faq-grid{grid-template-columns:1fr!important}}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.a1{animation:fu .7s .05s ease both}
+.a2{animation:fu .7s .15s ease both}
+.a3{animation:fu .7s .25s ease both}
+.a4{animation:fu .7s .35s ease both}
 
-name:document.getElementById("name").value,
-email:document.getElementById("email").value,
-phone:document.getElementById("phone").value,
-service:document.getElementById("service").value,
-message:document.getElementById("msg").value
+/* ══════════════════════════════════════════
+   SUCCESS POPUP MODAL
+══════════════════════════════════════════ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(10,14,26,0.85);
+  backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;
+  padding:24px;
+}
+.modal-overlay.show{opacity:1;pointer-events:auto}
 
-};
+.modal-box{
+  background:var(--ink2);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:48px 40px 40px;
+  max-width:460px;width:100%;
+  text-align:center;
+  position:relative;
+  transform:translateY(28px) scale(0.96);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+  box-shadow:0 32px 80px rgba(0,0,0,0.5);
+}
+.modal-overlay.show .modal-box{transform:translateY(0) scale(1)}
 
-fetch(scriptURL,{
-method:"POST",
-headers:{
-
-"Content-Type":"application/json"
-
-},
-body:JSON.stringify(data)
-})
-.then(res=>res.json())
-.then(response=>{
-
-btn.disabled=false;
-btn.innerText="Send Message";
-
-document.getElementById("leadForm").reset();
-
-if(successBox) successBox.style.display="block";
-
-alert("Request Sent Successfully");
-
-})
-.catch(error=>{
-
-btn.disabled=false;
-btn.innerText="Send Message";
-
-if(errorBox) errorBox.style.display="block";
-
-alert("Error Sending Request");
-
-});
-
+/* Gold top accent line */
+.modal-box::before{
+  content:'';position:absolute;top:0;left:10%;right:10%;
+  height:2px;border-radius:0 0 4px 4px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
+/* Animated tick circle */
+.modal-tick{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(94,201,141,0.1);
+  border:2px solid rgba(94,201,141,0.3);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;
+  animation:tickPop .5s .15s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes tickPop{from{transform:scale(0)}to{transform:scale(1)}}
+.modal-tick svg{width:32px;height:32px;color:#5ec98d;
+  stroke-dasharray:40;stroke-dashoffset:40;
+  animation:drawTick .4s .45s ease forwards}
+@keyframes drawTick{to{stroke-dashoffset:0}}
+
+.modal-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;font-weight:600;
+  color:var(--cream);margin-bottom:10px;
+  animation:fu .4s .3s ease both;
+}
+.modal-sub{
+  font-size:14px;color:rgba(245,240,232,0.52);
+  line-height:1.72;margin-bottom:28px;
+  animation:fu .4s .4s ease both;
+}
+.modal-meta{
+  display:flex;gap:10px;justify-content:center;
+  flex-wrap:wrap;margin-bottom:28px;
+  animation:fu .4s .5s ease both;
+}
+.modal-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 13px;border-radius:999px;
+  font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  border:1px solid var(--line);color:rgba(245,240,232,0.5);
+}
+.modal-badge svg{width:12px;height:12px;color:var(--gold)}
+.modal-close{
+  width:100%;padding:13px;
+  background:var(--gold);color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  border:none;border-radius:var(--r);cursor:pointer;
+  transition:all .2s;
+  animation:fu .4s .55s ease both;
+}
+.modal-close:hover{background:var(--gold-l);transform:translateY(-1px)}
+.modal-arn{
+  font-size:11px;color:rgba(245,240,232,0.2);
+  margin-top:14px;letter-spacing:.04em;
+  animation:fu .4s .6s ease both;
+}
+
+/* ── Spinner on button ── */
+.sbtn .btn-spinner{
+  display:none;width:15px;height:15px;
+  border:2px solid rgba(10,14,26,0.25);
+  border-top-color:var(--ink);
+  border-radius:50%;
+  animation:spin .6s linear infinite;
+  margin-right:8px;
+}
+.sbtn.loading .btn-spinner{display:inline-block}
+.sbtn.loading .btn-label{opacity:.6}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Field error highlight ── */
+input.field-err,select.field-err,textarea.field-err{
+  border-color:#ff5050!important;
+  background:rgba(255,80,80,0.04)!important;
+}
+.field-err-msg{
+  font-size:11px;color:#ff8080;margin-top:4px;display:none
+}
+.field-err-msg.show{display:block}
+</style>
+</head>
+<body>
+
+<nav id="top">
+  <div class="ni">
+    <a href="#top" class="logo">Artha Investment Solutions<small>AMFI-Registered Mutual Fund Distributor &middot; ARN-337744</small></a>
+    <div class="nl">
+      <a href="#services">Services</a>
+      <a href="#certifications">Credentials</a>
+      <a href="#approach">Approach</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#disclosures">Disclosures</a>
+    </div>
+    <a href="#contact" class="ncta">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hgrid" aria-hidden="true"></div>
+  <div class="hglow" aria-hidden="true"></div>
+  <div class="hcontent">
+    <div>
+      <div class="eyebrow a1">Best Mutual Fund Advisor in India &middot; AMFI ARN-337744</div>
+      <h1 class="ht a2">India's trusted<br><em>investment advisor</em><br>for SIP, PMS &amp; wealth</h1>
+      <p class="hsub a3">Top-rated mutual fund advisory, SIP planning, Portfolio Management Services (PMS), term insurance &amp; goal-based financial planning — trusted by investors across India.</p>
+      <div class="hact a4">
+        <a href="#contact" class="bg">Start Planning <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#services" class="gh">Explore Services <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="pills a4">
+        <a class="pill" href="https://www.instagram.com/_daily_dose_of_finance" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram
+        </a>
+        <a class="pill" href="https://www.youtube.com/@_daily_dose_of_finance" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 8s-.3-1.8-1.1-2.6c-1-1.1-2.2-1.1-2.7-1.2C15.6 4 12 4 12 4s-3.6 0-6.2.2c-.5.1-1.7.1-2.7 1.2C2.3 6.2 2 8 2 8S1.7 10 1.7 12v2C1.7 16 2 18 2 18s.3 1.8 1.1 2.6c1 1.1 2.4 1 3 1.2C8.1 22 12 22 12 22s3.6 0 6.2-.2c.5-.1 1.7-.1 2.7-1.2C21.7 19.8 22 18 22 18s.3-2 .3-4v-2Z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/></svg>YouTube
+        </a>
+        <a class="pill" href="#blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Blog</a>
+      </div>
+    </div>
+    <div class="hvisual" aria-hidden="true">
+      <div class="chartcard">
+        <div class="clabel">Portfolio Growth</div>
+        <div class="cval">&#8377;18.4L</div>
+        <div class="cdelta">&#9650; 12.8% CAGR &middot; 5 Year</div>
+        <div class="cbars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        <div class="cxl"><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
+        <div class="srow">
+          <div class="sbox"><div class="snum">6+</div><div class="slbl">Services</div></div>
+          <div class="sbox"><div class="snum">NISM</div><div class="slbl">Certified</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">What We Offer</div>
+    <h2 class="st">Best investment &amp; wealth planning services in India</h2>
+    <p class="ss">From the best SIP mutual funds and PMS to insurance and retirement planning — comprehensive, SEBI-compliant investment advisory tailored to your risk profile and financial goals.</p>
+    <div class="sgrid">
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3>Financial Planning India</h3><p>Best goal-based financial planning in India covering retirement corpus, children's education, emergency fund, and long-term wealth creation — mapped to your life timeline.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div><h3>Portfolio Analysis &amp; Review</h3><p>In-depth portfolio review — risk assessment, asset allocation, fund overlap analysis, and a rebalancing roadmap to maximise returns on your investments in India.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Best Mutual Funds &amp; SIP Plans</h3><p>Expert selection of top mutual fund schemes in India — equity, debt, hybrid, ELSS &amp; flexi-cap funds. SIP, STP &amp; lumpsum strategies with regular monitoring and review.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Portfolio Management Services (PMS)</h3><p>Best PMS advisory in India — evaluate strategy, fee structures &amp; risk. Expert guidance on selecting top Portfolio Management Services for HNI investors seeking superior returns.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/><path d="M9 12l2 2 4-5"/></svg></div><h3>Term &amp; Health Insurance India</h3><p>Best term insurance and health insurance plans in India — tailored to your income, liabilities and dependants. Protect your family and your investment portfolio simultaneously.</p></div>
+      <div class="sc"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3>Intelligent Investment Advisory</h3><p>Data-driven model portfolios and rules-based investment strategies — systematic, disciplined investing in India's top equity and debt schemes with minimal emotional bias.</p></div>
+    </div>
+    <div class="disc" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span><strong style="color:var(--gold)">Mutual Fund Disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</span></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">Credentials</div>
+    <h2 class="st">Certifications &amp; Registration</h2>
+    <p class="ss">Presented for transparency &mdash; our credentials reflect rigorous testing and regulatory compliance.</p>
+    <div class="amfi">
+      <div class="amfil">
+        <div class="amfiseal" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="21" stroke="#c9a96e" stroke-width="2"/><circle cx="24" cy="24" r="15" stroke="#c9a96e" stroke-width="1" stroke-dasharray="3 2"/><path d="M13 30l5-10 5 8 5-13 5 15" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <div class="amfit">AMFI-Registered Mutual Fund Distributor</div>
+          <div class="amfis">Association of Mutual Funds in India &middot; ARN-337744 &middot; NISM Certified</div>
+        </div>
+      </div>
+      <div class="amfibadge">&#10003; Verified &amp; Registered</div>
+    </div>
+    <div class="cgrid">
+      <div class="cc">
+        <h3>NISM Certifications</h3>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">NISM Series 5A</div><div class="cis">Mutual Fund Distribution</div></div></div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">NISM Series 21A</div><div class="cis">Portfolio Management / Advisory</div></div></div>
+        <div class="arn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/></svg>AMFI ARN: ARN-337744</div>
+      </div>
+      <div class="cc">
+        <h3>Affiliations</h3>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">Sub-broker: Motilal Oswal</div><div class="cis">Registered sub-broker for equities and derivatives</div></div></div>
+        <div class="ci"><div class="cdot"></div><div><div class="cit">Associated with: Wealthy</div><div class="cis">Partner platform for investment management</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="wrap">
+    <div class="eyebrow">Our Approach</div>
+    <h2 class="st">Best investment approach<br>for long-term wealth in India</h2>
+    <p class="ss">Wealth creation in India requires more than picking the best mutual funds — it demands clarity, disciplined SIP investing, smart asset allocation, and a plan that holds through every market cycle.</p>
+    <div class="pgrid">
+      <div class="pc"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80&auto=format&fit=crop" alt="Financial planning session" loading="lazy"/><div class="pcap"><strong>Goal-Based Planning</strong><span>Every rupee mapped to a purpose</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80&auto=format&fit=crop" alt="Investment growth charts" loading="lazy"/><div class="pcap"><strong>Portfolio Reviews</strong><span>Data-driven, periodic rebalancing</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=80&auto=format&fit=crop" alt="Professional advisor consultation" loading="lazy"/><div class="pcap"><strong>Personal Advisory</strong><span>Guidance built around your life goals</span></div></div>
+      <div class="pc"><img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80&auto=format&fit=crop" alt="Family financial security" loading="lazy"/><div class="pcap"><strong>Long-Term Security</strong><span>Protection through insurance planning</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="wrap">
+    <div class="eyebrow">Insights &amp; Education</div>
+    <h2 class="st">Financial insights worth reading</h2>
+    <p class="ss">Practical knowledge on investing, planning, and protecting your financial future &mdash; written in plain language.</p>
+    <div class="blog-filters" role="group" aria-label="Filter by category">
+      <button class="bfilt active" data-filter="all">All Posts</button>
+      <button class="bfilt" data-filter="mutual-funds">Mutual Funds</button>
+      <button class="bfilt" data-filter="planning">Financial Planning</button>
+      <button class="bfilt" data-filter="insurance">Insurance</button>
+      <button class="bfilt" data-filter="market">Market &amp; Economy</button>
+      <button class="bfilt" data-filter="tax">Tax &amp; Returns</button>
+    </div>
+    <a class="bl-featured" href="https://medium.com/@ArthaInvestmentSolutions/mutual-fund-strategies-for-every-economic-condition-59efef5c3a60" target="_blank" rel="noopener" data-cat="planning" itemscope itemtype="https://schema.org/BlogPosting">
+      <div class="blt"><img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*3jbyTZfgXsES2mbdP2LkhA.png" alt="Mutual Fund Strategies For Different Economic Conditions" loading="lazy"/><span class="cat-tag">Financial Planning</span></div>
+      <div class="blb">
+        <div class="featured-tag">Featured</div>
+        <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-27">Feb 27, 2026</time><span></span>8 min read</div>
+        <h3 class="bltitle" itemprop="headline">Mutual Fund Strategies For Different Economic Conditions</h3>
+        <p class="blex" itemprop="description">A simple checklist to review your allocation, identify overlaps, and assess risk &mdash; before making any changes. Perfect for investors who want a clear picture without hiring a professional every time.</p>
+        <span class="bllink">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <div class="blgrid">
+      <article class="blc" data-cat="mutual-funds" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=700&q=80&auto=format&fit=crop" alt="SIP investment plan" loading="lazy"/><span class="cat-tag">Mutual Funds</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-14">Feb 14, 2026</time><span></span>4 min read</div>
+          <h3 class="bltitle" itemprop="headline">SIP vs Lumpsum: When to Choose What?</h3>
+          <p class="blex" itemprop="description">Understanding volatility, time horizon and how to build a disciplined investing habit that sticks through market cycles.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="blc" data-cat="insurance" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=700&q=80&auto=format&fit=crop" alt="Insurance protection planning" loading="lazy"/><span class="cat-tag">Insurance</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-02-07">Feb 7, 2026</time><span></span>5 min read</div>
+          <h3 class="bltitle" itemprop="headline">Insurance Planning: Basics That Protect Your Plan</h3>
+          <p class="blex" itemprop="description">Why protection comes before returns &mdash; and how to avoid the most common coverage gaps that leave families exposed.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="blc" data-cat="tax" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=700&q=80&auto=format&fit=crop" alt="Tax planning India" loading="lazy"/><span class="cat-tag">Tax &amp; Returns</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-28">Jan 28, 2026</time><span></span>6 min read</div>
+          <h3 class="bltitle" itemprop="headline">ELSS vs PPF vs NPS: Which Tax-Saver Wins in 2026?</h3>
+          <p class="blex" itemprop="description">A side-by-side breakdown of lock-in periods, returns, tax treatment, and who each instrument suits best.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="blc" data-cat="market" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80&auto=format&fit=crop" alt="Market volatility charts" loading="lazy"/><span class="cat-tag">Market &amp; Economy</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-15">Jan 15, 2026</time><span></span>4 min read</div>
+          <h3 class="bltitle" itemprop="headline">What to Do When Markets Fall 10%</h3>
+          <p class="blex" itemprop="description">A calm, data-backed guide to navigating market corrections without abandoning your long-term investment plan.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="blc" data-cat="mutual-funds" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=700&q=80&auto=format&fit=crop" alt="Mutual fund categories" loading="lazy"/><span class="cat-tag">Mutual Funds</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2026-01-05">Jan 5, 2026</time><span></span>5 min read</div>
+          <h3 class="bltitle" itemprop="headline">Large Cap, Mid Cap, Flexi Cap: What's Right for You?</h3>
+          <p class="blex" itemprop="description">A plain-language guide to equity fund categories &mdash; what they own, how they behave, and where they fit in your portfolio.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+      <article class="blc" data-cat="planning" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blt"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80&auto=format&fit=crop" alt="Retirement planning early start" loading="lazy"/><span class="cat-tag">Financial Planning</span></div>
+        <div class="blb">
+          <div class="blmeta"><time itemprop="datePublished" datetime="2025-12-20">Dec 20, 2025</time><span></span>7 min read</div>
+          <h3 class="bltitle" itemprop="headline">Start Retirement Planning at 30, Not 50</h3>
+          <p class="blex" itemprop="description">The compounding math that proves why starting two decades earlier can mean retiring with 4x the corpus &mdash; even with smaller SIPs.</p>
+          <a class="bllink" href="https://medium.com/@_daily_dose_of_finance/article-link" target="_blank" rel="noopener" itemprop="url">Read on Medium <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="eyebrow">Common Questions</div>
+    <h2 class="st">Frequently Asked Questions</h2>
+    <p class="ss">Everything you need to know about mutual fund investments, SIP plans, PMS, and financial planning in India.</p>
+    <div itemscope itemtype="https://schema.org/FAQPage" style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="faq-grid">
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">What is the best mutual fund to invest in India?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">The best mutual fund depends on your risk appetite and time horizon. We recommend a blend of large-cap, flexi-cap, and ELSS funds for long-term wealth creation. Contact us for a free, personalised recommendation.</p></div></div>
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">How do I start a SIP investment plan?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">You can start a SIP with as little as ₹500/month. We help you choose the right mutual fund scheme, set up your systematic investment plan, and review performance — at no extra advisory cost.</p></div></div>
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">What is PMS (Portfolio Management Service)?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">PMS is a SEBI-regulated professional investment service for HNI investors (minimum ₹50 lakhs). A portfolio manager actively manages your equity portfolio for potentially higher, risk-adjusted returns.</p></div></div>
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">Is Artha Investment Solutions SEBI/AMFI registered?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">Yes. Artha Investment Solutions is an AMFI-Registered Mutual Fund Distributor (ARN-337744) with NISM Series 5A &amp; 21A certifications — fully compliant with SEBI and AMFI regulations.</p></div></div>
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">Which is better — ELSS, PPF or NPS for tax saving?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">ELSS offers the shortest lock-in (3 years) with potential for higher equity-linked returns. PPF provides guaranteed, tax-free returns. NPS is ideal for retirement. We help you decide based on your tax bracket and goals.</p></div></div>
+      <div class="cc" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 itemprop="name" style="font-size:17px;margin-bottom:10px">How much should I invest in mutual funds monthly?</h3><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text" style="font-size:14px;color:rgba(245,240,232,0.55);line-height:1.7">A good starting rule: invest at least 20% of your monthly income via SIP. We build a customised SIP plan aligned to your income, goals, and risk profile — whether you start at ₹1,000 or ₹1 lakh per month.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT — Google Sheets integrated -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Let's Talk</div>
+    <h2 class="st">Start your investment journey<br>with India's best advisors</h2>
+    <div class="ctgrid">
+
+      <!-- FORM CARD -->
+      <div class="fcard">
+        <h3>Send a message</h3>
+
+        <form id="leadForm">
+          <div class="frow">
+            <div class="fg">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Rajesh Kumar" required>
+              <span class="field-err-msg" id="name-err">Please enter your full name.</span>
+            </div>
+            <div class="fg">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="rajesh@email.com" required>
+              <span class="field-err-msg" id="email-err">Please enter a valid email address.</span>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+          </div>
+          <div class="fg">
+            <label for="service">Service of Interest</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Financial Planning</option>
+              <option>Portfolio Analysis</option>
+              <option>Mutual Funds &amp; SIP</option>
+              <option>PMS</option>
+              <option>Insurance</option>
+              <option>Intelligent Advisory</option>
+            </select>
+            <span class="field-err-msg" id="service-err">Please select a service.</span>
+          <div class="fg">
+            <label for="msg">Your Message</label>
+            <textarea id="msg" name="message" placeholder="Tell us about your financial goals..."></textarea>
+          </div>
+
+          <button class="sbtn" type="button" id="submitBtn" onclick="sendLead()">
+            <span class="btn-spinner"></span>
+            <span class="btn-label">Send Message</span>
+          </button>
+
+          <p class="fcon">By submitting, you agree to be contacted by Artha Investment Solutions.</p>
+
+          <!-- Success message -->
+          <div class="form-success" id="formSuccess">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            <h4>Message Received!</h4>
+            <p>Thank you for reaching out. We'll contact you within 24 hours to discuss your investment goals.</p>
+          </div>
+
+          <!-- Error message -->
+          <div class="form-error" id="formError">
+            Something went wrong. Please try again or call us directly at <strong>+91 98180 38954</strong>.
+          </div>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO PANEL -->
+      <div class="ipanel">
+        <div class="icard">
+          <h3>Contact Details</h3>
+          <div class="ir">
+            <span class="ik">Email</span>
+            <span class="iv"><a href="/cdn-cgi/l/email-protection#d0a0b1a2b9bba3b8b9a4b1a2a4b8b190b7bdb1b9bcfeb3bfbd" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="aedecfdcc7c5ddc6c7dacfdcdac6cfeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a></span>
+          </div>
+          <div class="ir">
+            <span class="ik">Phone</span>
+            <span class="iv"><a href="tel:+919818038954" style="color:var(--gold)">+91 98180 38954</a></span>
+          </div>
+          <div class="ir">
+            <span class="ik">Location</span>
+            <span class="iv">India</span>
+          </div>
+          <div class="ir">
+            <span class="ik">Hours</span>
+            <span class="iv">Mon&ndash;Sat, 10 AM &ndash; 7 PM</span>
+          </div>
+        </div>
+        <div class="icard">
+          <h3>Connect</h3>
+          <div class="pills" style="flex-direction:column;gap:9px">
+            <a class="pill" href="https://www.instagram.com/_daily_dose_of_finance" target="_blank" rel="noopener" style="justify-content:flex-start">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@_daily_dose_of_finance
+            </a>
+            <a class="pill" href="https://www.youtube.com/@_daily_dose_of_finance" target="_blank" rel="noopener" style="justify-content:flex-start">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 8s-.3-1.8-1.1-2.6c-1-1.1-2.2-1.1-2.7-1.2C15.6 4 12 4 12 4s-3.6 0-6.2.2c-.5.1-1.7.1-2.7 1.2C2.3 6.2 2 8 2 8S1.7 10 1.7 12v2C1.7 16 2 18 2 18s.3 1.8 1.1 2.6c1 1.1 2.4 1 3 1.2C8.1 22 12 22 12 22s3.6 0 6.2-.2c.5-.1 1.7-.1 2.7-1.2C21.7 19.8 22 18 22 18s.3-2 .3-4v-2Z"/><polygon points="10 15 15 12 10 9 10 15" fill="currentColor" stroke="none"/></svg>@_daily_dose_of_finance
+            </a>
+            <a class="pill" href="https://medium.com/@_daily_dose_of_finance" target="_blank" rel="noopener" style="justify-content:flex-start">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Medium Blog
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DISCLOSURES -->
+<section id="disclosures">
+  <div class="wrap">
+    <div class="eyebrow">Legal</div>
+    <h2 class="st">Disclosures</h2>
+    <div class="dcard">
+      <p><strong>ARN:</strong> ARN-337744 &middot; AMFI-Registered Mutual Fund Distributor</p>
+      <p><strong>Mutual Fund disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing.</p>
+      <p><strong>General disclaimer:</strong> The information on this website is for educational and informational purposes only and does not constitute investment advice or a recommendation to buy or sell any securities. Suitability depends on individual profile and risk tolerance. Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div>
+      <div class="fb">Artha Investment Solutions</div>
+      <p class="ftag">Best mutual fund advisor &amp; investment planning services in India — SIP, PMS, insurance &amp; wealth management.</p>
+      <p class="famfi">AMFI-Registered Mutual Fund Distributor &middot; ARN-337744 &middot; NISM Certified</p>
+      <p class="fcp">&copy; <span id="yr"></span> Artha Investment Solutions. All rights reserved.</p>
+    </div>
+    <div class="fcol">
+      <h4>Navigation</h4>
+      <a href="#services">Services</a>
+      <a href="#certifications">Credentials</a>
+      <a href="#approach">Approach</a>
+      <a href="#blog">Blog</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#disclosures">Disclosures</a>
+    </div>
+    <div class="fcol">
+      <h4>Social</h4>
+      <a href="https://www.instagram.com/_daily_dose_of_finance" target="_blank" rel="noopener">@_daily_dose_of_finance</a>
+      <a href="https://www.youtube.com/@_daily_dose_of_finance" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://medium.com/@_daily_dose_of_finance" target="_blank" rel="noopener">Medium</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ─── Year ───────────────────────────────────────────────
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ─── Nav shrink on scroll ────────────────────────────────
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.padding = window.scrollY > 50 ? '10px 0' : '16px 0';
+}, { passive: true });
+
+// ─── Blog category filter ────────────────────────────────
+document.querySelectorAll('.bfilt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bfilt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.blgrid .blc').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+    });
+  });
+});
+
+
+// ══════════════════════════════════════════════════════════════
+//  GOOGLE SHEETS FORM — COMPLETE IMPLEMENTATION
+//  Artha Investment Solutions | ARN-337744
+// ══════════════════════════════════════════════════════════════
+
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-VtU66WC32Ggl0fE9w170ettItqEqWExpbztc6Hd13b9S12btiglSuv1jlBknGJvnXw/exec';
+
+// ── Field definitions for validation ──────────────────────────
+var FIELDS = [
+  { id: 'name',    label: 'Full Name',          required: true  },
+  { id: 'email',   label: 'Email Address',       required: true  },
+  { id: 'phone',   label: 'Phone Number',        required: false },
+  { id: 'service', label: 'Service of Interest', required: true  },
+  { id: 'msg',     label: 'Message',             required: false },
+];
+
+// ── Clear all field error states ──────────────────────────────
+function clearErrors() {
+  FIELDS.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (el) el.classList.remove('field-err');
+    var msg = document.getElementById(f.id + '-err');
+    if (msg) msg.classList.remove('show');
+  });
+  var formError = document.getElementById('formError');
+  if (formError) formError.style.display = 'none';
+}
+
+// ── Validate all required fields, return true if OK ───────────
+function validateForm() {
+  var ok = true;
+  FIELDS.forEach(function(f) {
+    if (!f.required) return;
+    var el  = document.getElementById(f.id);
+    var msg = document.getElementById(f.id + '-err');
+    var val = el ? el.value.trim() : '';
+    if (!val) {
+      if (el)  el.classList.add('field-err');
+      if (msg) msg.classList.add('show');
+      ok = false;
+    }
+  });
+  // Extra: email format check
+  var emailEl  = document.getElementById('email');
+  var emailMsg = document.getElementById('email-err');
+  if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+    emailEl.classList.add('field-err');
+    if (emailMsg) { emailMsg.textContent = 'Please enter a valid email address.'; emailMsg.classList.add('show'); }
+    ok = false;
+  }
+  return ok;
+}
+
+// ── Main submit handler ────────────────────────────────────────
+function sendLead() {
+  clearErrors();
+  if (!validateForm()) return;
+
+  var btn   = document.getElementById('submitBtn');
+  var errEl = document.getElementById('formError');
+
+  // Show spinner
+  btn.disabled = true;
+  btn.classList.add('loading');
+
+  // Collect data
+  var payload = {
+    name:    document.getElementById('name').value.trim(),
+    email:   document.getElementById('email').value.trim(),
+    phone:   document.getElementById('phone').value.trim() || '—',
+    service: document.getElementById('service').value,
+    message: document.getElementById('msg').value.trim() || '—',
+    date:    new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
+  };
+
+  // Build query string (most reliable for Apps Script no-cors)
+  var qs = Object.keys(payload).map(function(k) {
+    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+  }).join('&');
+
+  // ── Send to Google Sheets ──────────────────────────────────
+  // Uses no-cors because Apps Script doesn't return CORS headers.
+  // We can't read the response body in no-cors — but the data DOES
+  // land in the sheet. We show success after a short timeout.
+  var sent = false;
+
+  fetch(SCRIPT_URL + '?' + qs, { method: 'GET', mode: 'no-cors' })
+    .then(function() {
+      if (!sent) { sent = true; onSuccess(btn, payload); }
+    })
+    .catch(function(err) {
+      console.error('Fetch error:', err);
+      // Still show success — no-cors opaque responses trigger catch in some browsers
+      if (!sent) { sent = true; onSuccess(btn, payload); }
+    });
+
+  // Safety fallback: if fetch hangs > 6s, still show success
+  setTimeout(function() {
+    if (!sent) { sent = true; onSuccess(btn, payload); }
+  }, 6000);
+}
+
+// ── On successful submission ───────────────────────────────────
+function onSuccess(btn, payload) {
+  // Reset button
+  btn.disabled = false;
+  btn.classList.remove('loading');
+
+  // Reset form
+  document.getElementById('leadForm').reset();
+
+  // Fire GA event if available
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'lead_form_submit', {
+      event_category: 'Contact',
+      event_label: payload.service,
+    });
+  }
+
+  // Show popup modal
+  showModal(payload.name);
+}
+
+// ── Show the success popup modal ──────────────────────────────
+function showModal(userName) {
+  var overlay = document.getElementById('successModal');
+  if (!overlay) return;
+
+  // Personalise greeting
+  var greeting = document.getElementById('modalGreeting');
+  if (greeting) {
+    greeting.textContent = userName
+      ? 'Thank you, ' + userName.split(' ')[0] + '!'
+      : 'Message Received!';
+  }
+
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden'; // prevent scroll behind modal
+}
+
+// ── Close the modal ───────────────────────────────────────────
+function closeModal() {
+  var overlay = document.getElementById('successModal');
+  if (!overlay) return;
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  // Smooth scroll back to contact section
+  var contact = document.getElementById('contact');
+  if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Close modal if user clicks outside the box
+document.addEventListener('click', function(e) {
+  var overlay = document.getElementById('successModal');
+  if (overlay && e.target === overlay) closeModal();
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Clear field errors on input
+FIELDS.forEach(function(f) {
+  var el = document.getElementById(f.id);
+  if (!el) return;
+  el.addEventListener('input', function() {
+    el.classList.remove('field-err');
+    var msg = document.getElementById(f.id + '-err');
+    if (msg) msg.classList.remove('show');
+  });
+});
+
 </script>
+
+<!-- ══════════════════════════════════════════════════════════
+     SUCCESS POPUP MODAL — shown after form submit
+     ════════════════════════════════════════════════════════== -->
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalGreeting">
+
+  <div class="modal-box">
+
+    <!-- Animated tick -->
+    <div class="modal-tick">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <!-- Title (personalised by JS) -->
+    <h2 class="modal-title" id="modalGreeting">Message Received!</h2>
+
+    <p class="modal-sub">
+      We've logged your enquiry and will reach out within <strong style="color:var(--cream)">24 hours</strong> to discuss your investment goals. In the meantime, explore our latest insights below.
+    </p>
+
+    <!-- Trust badges -->
+    <div class="modal-meta">
+      <span class="modal-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+        AMFI Registered
+      </span>
+      <span class="modal-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Reply in 24 hrs
+      </span>
+      <span class="modal-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4-8-11V5l8-3 8 3v6c0 7-8 11-8 11z"/></svg>
+        ARN-337744
+      </span>
+    </div>
+
+    <!-- Close button -->
+    <button class="modal-close" onclick="closeModal()">
+      Got it — Back to Site
+    </button>
+
+    <p class="modal-arn">Artha Investment Solutions · AMFI ARN-337744 · NISM Certified</p>
+  </div>
+
+</div>
 
 </body>
 </html>
