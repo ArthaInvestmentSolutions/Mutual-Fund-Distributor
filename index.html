@@ -548,7 +548,7 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
           <h3>Contact Details</h3>
           <div class="ir">
             <span class="ik">Email</span>
-            <span class="iv"><a href="/cdn-cgi/l/email-protection#89f9e8fbe0e2fae1e0fde8fbfde1e8c9eee4e8e0e5a7eae6e4" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="b7c7d6c5dedcc4dfdec3d6c5c3dfd6f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></span>
+            <span class="iv"><a href="mailto:parikshitartha@gmail.com" style="color:var(--gold)">parikshitartha@gmail.com</a></span>
           </div>
           <div class="ir">
             <span class="ik">Phone</span>
@@ -624,7 +624,7 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ─── Year ───────────────────────────────────────────────
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -647,37 +647,48 @@ document.querySelectorAll('.bfilt').forEach(btn => {
 });
 
 // ─── Google Sheets Form Integration ─────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1JRJl_SBDsCOG3B8irrNo2dHediPrFO5UM2I7w5OD5Gvgn2-WeuO2gDp-Mbf3xccftA/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZixXKRuDhHSFpOLQSM8RPTVh_kchXUCeyVij2fP7qY3a0vLDjnvWvahlM1In9lcA64A/exec';
 
-document.getElementById('leadForm').addEventListener('submit', async function(e) {
+document.getElementById('leadForm').addEventListener('submit', function(e) {
   e.preventDefault();
+  e.stopPropagation();
 
-  const btn    = document.getElementById('submitBtn');
-  const success = document.getElementById('formSuccess');
-  const error   = document.getElementById('formError');
+  var btn     = document.getElementById('submitBtn');
+  var success = document.getElementById('formSuccess');
+  var error   = document.getElementById('formError');
+  var form    = this;
 
-  // Reset state
+  // Reset
   success.style.display = 'none';
   error.style.display   = 'none';
   btn.disabled    = true;
   btn.textContent = 'Sending…';
 
-  // Collect form data
-  const payload = {
-    name:    document.getElementById('name').value.trim(),
-    email:   document.getElementById('email').value.trim(),
-    phone:   document.getElementById('phone').value.trim(),
-    service: document.getElementById('service').value,
-    message: document.getElementById('msg').value.trim()
-  };
+  // FormData works reliably with Google Apps Script (no JSON header issues)
+  var fd = new FormData();
+  fd.append('name',    document.getElementById('name').value.trim());
+  fd.append('email',   document.getElementById('email').value.trim());
+  fd.append('phone',   document.getElementById('phone').value.trim());
+  fd.append('service', document.getElementById('service').value);
+  fd.append('message', document.getElementById('msg').value.trim());
 
-  try {
-    const res = await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode:   'no-cors',   // required for Apps Script
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: fd })
+    .then(function() {
+      success.style.display = 'block';
+      form.reset();
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'lead_form_submit', { event_category: 'Lead' });
+      }
+    })
+    .catch(function() {
+      error.style.display = 'block';
+    })
+    .finally(function() {
+      btn.disabled    = false;
+      btn.textContent = 'Send Message';
     });
+});
 
     // no-cors means we can't read the response — if no error thrown, it worked
     success.style.display = 'block';
