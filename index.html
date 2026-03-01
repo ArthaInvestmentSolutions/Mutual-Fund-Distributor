@@ -150,18 +150,18 @@ h1.ht em{font-style:italic;color:var(--gold)}
 @media(max-width:640px){.loc-strip{flex-direction:column}.loc-item{border-right:none;border-bottom:1px solid var(--line2)}.loc-item:last-child{border-bottom:none}}
 
 /* SIP CALCULATOR CARD */
-.sipcalc{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
-.sipcalc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.sipcalc-title{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:16px;display:flex;align-items:center;gap:7px}
-.sipcalc-title svg{width:12px;height:12px;color:var(--gold)}
+
+
+
+
 
 /* toggle row: Months / Years */
-.sip-toggle{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
-.sip-tog{flex:1;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:none;border:none;color:rgba(245,240,232,0.4);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
-.sip-tog.active{background:var(--gold-d);color:var(--gold)}
+
+
+
 
 /* sliders */
-.sip-field{margin-bottom:14px}
+
 .sip-fl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
 .sip-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.38)}
 .sip-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--gold)}
@@ -358,6 +358,104 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
 input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!important;background:rgba(255,80,80,0.04)!important}
 .field-err-msg{font-size:11px;color:#ff8080;margin-top:4px;display:none}
 .field-err-msg.show{display:block}
+
+/* ── SIP CALCULATOR SECTION ───────────────────── */
+.sip-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:780px){.sip-wrap{grid-template-columns:1fr}}
+
+.sip-controls{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:30px;display:flex;flex-direction:column;gap:22px}
+
+
+.sip-mode{flex:1;padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:none;border:none;color:rgba(245,240,232,0.42);cursor:pointer;transition:all .2s}
+.sip-mode.active{background:var(--gold-d);color:var(--gold)}
+.sip-mode:hover:not(.active){color:rgba(245,240,232,0.7)}
+
+.sip-slider-group{display:flex;flex-direction:column;gap:8px}
+.sip-slider-head{display:flex;justify-content:space-between;align-items:baseline}
+.sip-slider-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.38)}
+.sip-slider-value{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);line-height:1}
+.sip-range{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:rgba(245,240,232,0.1);border-radius:2px;border:none;outline:none;padding:0;cursor:pointer}
+.sip-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid var(--ink2);box-shadow:0 0 0 2px var(--gold);cursor:pointer;transition:transform .15s}
+.sip-range:hover::-webkit-slider-thumb{transform:scale(1.2)}
+.sip-range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid var(--ink2);cursor:pointer}
+.sip-range-ends{display:flex;justify-content:space-between;font-size:10px;color:rgba(245,240,232,0.22);font-weight:500}
+
+.sip-results-panel{display:flex;flex-direction:column;gap:14px}
+
+.sip-corpus-card{background:linear-gradient(135deg,rgba(201,169,110,0.1),rgba(201,169,110,0.03));border:1px solid var(--line);border-radius:var(--rl);padding:28px;text-align:center;position:relative;overflow:hidden}
+.sip-corpus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sip-corpus-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,0.34);margin-bottom:8px}
+.sip-corpus-value{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px;transition:all .2s}
+.sip-corpus-sub{font-size:12px;color:rgba(245,240,232,0.38);letter-spacing:.02em}
+
+.sip-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden}
+.sip-stat{background:var(--ink2);padding:16px 12px;text-align:center}
+.sip-stat-mid{background:var(--ink3)}
+.sip-stat-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:4px;transition:all .2s}
+.sip-stat-val.gold{color:var(--gold)}
+.sip-stat-lbl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.28)}
+
+.sip-bar-wrap{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:18px 20px}
+.sip-bar-label-row{display:flex;justify-content:space-between;font-size:11px;color:rgba(245,240,232,0.5);margin-bottom:10px;font-weight:600}
+.sip-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.gold-dot{background:var(--gold)}
+.grey-dot{background:rgba(245,240,232,0.15);border:1px solid var(--line)}
+.sip-bar-track{height:8px;background:rgba(245,240,232,0.07);border-radius:4px;overflow:hidden}
+.sip-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold));border-radius:4px;transition:width .4s ease;min-width:4px}
+
+.sip-start-btn{display:block;padding:14px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r);text-align:center;transition:all .2s}
+.sip-start-btn:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,169,110,0.2)}
+.sip-disclaimer{font-size:10px;color:rgba(245,240,232,0.2);text-align:center;line-height:1.6}
+
+
+/* ── HERO SIP CALCULATOR CARD ─────────────────────────────── */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HERO CHART CARD */
+.chartcard{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
+.chartcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.clabel{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.clabel svg{color:var(--gold)}
+.clive{color:var(--green);font-size:9px;letter-spacing:.12em}
+.cval{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:4px;transition:all .25s}
+.cdelta{font-size:12px;color:var(--green);font-weight:600;margin-bottom:0;transition:all .25s}
+.cbars{display:flex;align-items:flex-end;gap:4px;height:64px;margin-top:14px;margin-bottom:0}
+.bar{flex:1;background:var(--gold-d);border-radius:3px 3px 0 0;border:1px solid rgba(201,169,110,0.18);border-bottom:none}
+.cxl{display:flex;justify-content:space-between;margin-top:4px;margin-bottom:12px}
+.cxl span{font-size:9px;color:rgba(245,240,232,0.18)}
+.srow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.sbox{background:rgba(245,240,232,0.04);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px}
+.snum{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--gold);font-weight:600;transition:all .25s}
+.slbl{font-size:10px;color:rgba(245,240,232,0.38);margin-top:1px}
+
+/* HERO CALC SLIDERS */
+.hc-sliders{display:flex;flex-direction:column;gap:7px;padding:12px 0;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.hc-row{display:grid;grid-template-columns:68px 1fr 56px;align-items:center;gap:8px}
+.hc-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,0.34);white-space:nowrap}
+.hc-slider-wrap{position:relative}
+.hc-range{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:rgba(245,240,232,0.1);border-radius:2px;outline:none;border:none;padding:0;cursor:pointer;margin:0}
+.hc-range::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--ink2);box-shadow:0 0 0 1px var(--gold);cursor:pointer;transition:transform .15s}
+.hc-range:hover::-webkit-slider-thumb{transform:scale(1.3)}
+.hc-range::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--ink2);cursor:pointer}
+.hc-val{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--gold);text-align:right;white-space:nowrap}
+
 </style>
 </head>
 <body>
@@ -397,195 +495,164 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
         <a class="pill" href="#blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Blog</a>
       </div>
     </div>
-    <div class="hvisual" id="calculator">
-      <div class="sipcalc">
-        <div class="sipcalc-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          SIP Return Calculator
+    <div class="hvisual" aria-hidden="false">
+      <div class="chartcard">
+        <div class="clabel">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          SIP Return Calculator &middot; <span class="clive">Live</span>
         </div>
 
-        <!-- Period toggle -->
-        <div class="sip-toggle">
-          <button class="sip-tog active" id="togMonths" onclick="setSipPeriod('months')">Monthly SIP</button>
-          <button class="sip-tog" id="togYears" onclick="setSipPeriod('years')">Annual SIP</button>
-        </div>
+        <div class="cval" id="h_corpus">&#8377;11.61 L</div>
+        <div class="cdelta" id="h_delta">&#9650; &#8377;5.61 L gains &middot; 1.94x growth</div>
 
-        <!-- Installment amount -->
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Installment Amount</span>
-            <span class="sip-val">&#8377;<span id="dispAmt">5,000</span><span class="sip-unit">/period</span></span>
-          </div>
-          <input type="range" id="slAmt" min="500" max="100000" step="500" value="5000" oninput="calcSIP()">
+        <!-- Animated bar chart — proportional to gains vs invested -->
+        <div class="cbars" id="h_bars">
+          <div class="bar" style="height:30%"></div>
+          <div class="bar" style="height:42%"></div>
+          <div class="bar" style="height:38%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:48%"></div>
+          <div class="bar" style="height:67%"></div>
+          <div class="bar" style="height:58%"></div>
+          <div class="bar" style="height:80%;background:rgba(201,169,110,0.42)"></div>
         </div>
+        <div class="cxl" id="h_xaxis"></div>
 
-        <!-- Rate of return -->
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Expected Return (p.a.)</span>
-            <span class="sip-val"><span id="dispRate">12</span><span class="sip-unit">% p.a.</span></span>
+        <!-- Sliders -->
+        <div class="hc-sliders">
+          <div class="hc-row">
+            <span class="hc-lbl">Monthly SIP</span>
+            <div class="hc-slider-wrap">
+              <input type="range" class="hc-range" id="h_rAmt" min="500" max="100000" step="500" value="5000" oninput="heroCalc()">
+            </div>
+            <strong class="hc-val">&#8377;<span id="h_amt">5,000</span></strong>
           </div>
-          <input type="range" id="slRate" min="1" max="30" step="0.5" value="12" oninput="calcSIP()">
-        </div>
-
-        <!-- Duration -->
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Duration</span>
-            <span class="sip-val"><span id="dispDur">10</span><span class="sip-unit" id="durUnit">yrs</span></span>
+          <div class="hc-row">
+            <span class="hc-lbl">Return p.a.</span>
+            <div class="hc-slider-wrap">
+              <input type="range" class="hc-range" id="h_rRate" min="1" max="30" step="0.5" value="12" oninput="heroCalc()">
+            </div>
+            <strong class="hc-val"><span id="h_rate">12</span>%</strong>
           </div>
-          <input type="range" id="slDur" min="1" max="30" step="1" value="10" oninput="calcSIP()">
-        </div>
-
-        <!-- No. of installments per period -->
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Installments / Period</span>
-            <span class="sip-val"><span id="dispFreq">1</span><span class="sip-unit" id="freqUnit">per month</span></span>
-          </div>
-          <input type="range" id="slFreq" min="1" max="4" step="1" value="1" oninput="calcSIP()">
-        </div>
-
-        <!-- Results row -->
-        <div class="sip-results">
-          <div class="sip-res">
-            <div class="sip-res-val" id="resInvested">—</div>
-            <div class="sip-res-lbl">Invested</div>
-          </div>
-          <div class="sip-res">
-            <div class="sip-res-val" id="resGains">—</div>
-            <div class="sip-res-lbl">Est. Gains</div>
-          </div>
-          <div class="sip-res">
-            <div class="sip-res-val highlight" id="resTotal">—</div>
-            <div class="sip-res-lbl">Total Value</div>
+          <div class="hc-row">
+            <span class="hc-lbl">Duration</span>
+            <div class="hc-slider-wrap">
+              <input type="range" class="hc-range" id="h_rDur" min="1" max="40" step="1" value="10" oninput="heroCalc()">
+            </div>
+            <strong class="hc-val"><span id="h_dur">10</span> yrs</strong>
           </div>
         </div>
 
-        <!-- Donut chart -->
-        <div class="sip-donut-wrap">
-          <div class="sip-donut">
-            <svg width="64" height="64" viewBox="0 0 64 64">
-              <circle class="sip-donut-bg" cx="32" cy="32" r="28"/>
-              <circle class="sip-donut-fill" id="donutFill" cx="32" cy="32" r="28"
-                stroke-dasharray="0 176" stroke-dashoffset="0"/>
-            </svg>
-            <div class="sip-donut-pct" id="donutPct">0%</div>
+        <div class="srow">
+          <div class="sbox">
+            <div class="snum" id="h_invested">&#8377;6 L</div>
+            <div class="slbl">Invested</div>
           </div>
-          <div class="sip-legend">
-            <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--gold)"></span>Est. Returns<span class="sip-leg-val" id="legGainsPct">—</span></div>
-            <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--line2);border:1px solid var(--line)"></span>Invested<span class="sip-leg-val" id="legInvPct">—</span></div>
+          <div class="sbox" style="border-color:var(--line)">
+            <div class="snum" id="h_gains" style="color:var(--green)">&#8377;5.61 L</div>
+            <div class="slbl">Est. Gains</div>
           </div>
         </div>
 
-        <a href="#contact" class="sip-cta">Start This SIP — Free Consultation</a>
+        <a href="#calculator" style="display:block;margin-top:14px;text-align:center;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,169,110,0.5);transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(201,169,110,0.5)'">Full Calculator &darr;</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SIP CALCULATOR — full width section, visible on all screen sizes -->
+
+<!-- SIP CALCULATOR -->
 <section id="calculator" style="background:var(--ink2)">
   <div class="wrap">
     <div class="eyebrow">SIP Return Calculator</div>
     <h2 class="st">How much will your SIP grow?</h2>
-    <p class="ss">Adjust the sliders to estimate your returns. Select monthly or annual mode, set your rate, duration and number of installments per period.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start" class="calc-full-grid">
+    <p class="ss">Adjust the sliders below — see your estimated corpus update instantly. AMFI-registered guidance to help you invest smarter.</p>
+    <div class="sip-wrap">
 
-      <!-- LEFT: controls -->
-      <div class="sipcalc" style="border-radius:var(--rl)">
-        <div class="sipcalc-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          Adjust your SIP parameters
+      <!-- CONTROLS -->
+      <div class="sip-controls">
+
+        <div class="sip-toggle-row">
+          <button class="sip-mode active" id="modeMonthly" onclick="sipSetMode('monthly')">Monthly SIP</button>
+          <button class="sip-mode" id="modeAnnual" onclick="sipSetMode('annual')">Annual SIP</button>
         </div>
 
-        <div class="sip-toggle">
-          <button class="sip-tog active" id="togMonths2" onclick="setSipPeriod2('months')">Monthly SIP</button>
-          <button class="sip-tog" id="togYears2" onclick="setSipPeriod2('years')">Annual SIP</button>
-        </div>
-
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Installment Amount</span>
-            <span class="sip-val">&#8377;<span id="dispAmt2">5,000</span><span class="sip-unit">/period</span></span>
+        <div class="sip-slider-group">
+          <div class="sip-slider-head">
+            <span class="sip-slider-label">Monthly Investment</span>
+            <span class="sip-slider-value">&#8377;<span id="vAmt">5,000</span></span>
           </div>
-          <input type="range" id="slAmt2" min="500" max="100000" step="500" value="5000" oninput="calcSIP2()">
+          <input class="sip-range" type="range" id="rAmt" min="500" max="200000" step="500" value="5000">
+          <div class="sip-range-ends"><span>&#8377;500</span><span>&#8377;2L</span></div>
         </div>
 
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Expected Return (p.a.)</span>
-            <span class="sip-val"><span id="dispRate2">12</span><span class="sip-unit">% p.a.</span></span>
+        <div class="sip-slider-group">
+          <div class="sip-slider-head">
+            <span class="sip-slider-label">Expected Return (p.a.)</span>
+            <span class="sip-slider-value"><span id="vRate">12</span>%</span>
           </div>
-          <input type="range" id="slRate2" min="1" max="30" step="0.5" value="12" oninput="calcSIP2()">
+          <input class="sip-range" type="range" id="rRate" min="1" max="30" step="0.5" value="12">
+          <div class="sip-range-ends"><span>1%</span><span>30%</span></div>
         </div>
 
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Duration</span>
-            <span class="sip-val"><span id="dispDur2">10</span><span class="sip-unit" id="durUnit2">yrs</span></span>
+        <div class="sip-slider-group">
+          <div class="sip-slider-head">
+            <span class="sip-slider-label">Time Period</span>
+            <span class="sip-slider-value"><span id="vDur">10</span> <span id="vDurUnit">years</span></span>
           </div>
-          <input type="range" id="slDur2" min="1" max="30" step="1" value="10" oninput="calcSIP2()">
+          <input class="sip-range" type="range" id="rDur" min="1" max="40" step="1" value="10">
+          <div class="sip-range-ends"><span>1 yr</span><span>40 yrs</span></div>
         </div>
 
-        <div class="sip-field">
-          <div class="sip-fl">
-            <span class="sip-lbl">Installments / Period</span>
-            <span class="sip-val"><span id="dispFreq2">1</span><span class="sip-unit" id="freqUnit2">per month</span></span>
+        <div class="sip-slider-group">
+          <div class="sip-slider-head">
+            <span class="sip-slider-label" id="lbInstall">Installments per Month</span>
+            <span class="sip-slider-value"><span id="vFreq">1</span></span>
           </div>
-          <input type="range" id="slFreq2" min="1" max="4" step="1" value="1" oninput="calcSIP2()">
+          <input class="sip-range" type="range" id="rFreq" min="1" max="4" step="1" value="1">
+          <div class="sip-range-ends"><span>1</span><span id="freqMax">4</span></div>
         </div>
+
       </div>
 
-      <!-- RIGHT: results -->
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <!-- big result card -->
-        <div class="cc" style="text-align:center;padding:32px 28px">
-          <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,0.34);margin-bottom:8px">Estimated Corpus</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px" id="bigTotal2">—</div>
-          <div style="font-size:13px;color:rgba(245,240,232,0.4)" id="bigSub2">after 10 years</div>
+      <!-- RESULTS -->
+      <div class="sip-results-panel">
+
+        <div class="sip-corpus-card">
+          <div class="sip-corpus-label">Estimated Corpus</div>
+          <div class="sip-corpus-value" id="rCorpus">&#8377;11.61 L</div>
+          <div class="sip-corpus-sub" id="rCorpusSub">after 10 years at 12% p.a.</div>
         </div>
 
-        <!-- 3-col stat row -->
-        <div class="sip-results" style="grid-template-columns:1fr 1fr 1fr">
-          <div class="sip-res">
-            <div class="sip-res-val" id="resInvested2">—</div>
-            <div class="sip-res-lbl">Invested</div>
+        <div class="sip-stats">
+          <div class="sip-stat">
+            <div class="sip-stat-val" id="rInvested">&#8377;6.00 L</div>
+            <div class="sip-stat-lbl">Amount Invested</div>
           </div>
-          <div class="sip-res">
-            <div class="sip-res-val" id="resGains2">—</div>
-            <div class="sip-res-lbl">Est. Gains</div>
+          <div class="sip-stat sip-stat-mid">
+            <div class="sip-stat-val gold" id="rGains">&#8377;5.61 L</div>
+            <div class="sip-stat-lbl">Est. Returns</div>
           </div>
-          <div class="sip-res">
-            <div class="sip-res-val highlight" id="resTotal2">—</div>
-            <div class="sip-res-lbl">Total Value</div>
-          </div>
-        </div>
-
-        <!-- donut + legend -->
-        <div class="sipcalc" style="padding:20px">
-          <div class="sip-donut-wrap" style="margin-top:0;padding-top:0;border-top:none">
-            <div class="sip-donut" style="width:80px;height:80px">
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <circle class="sip-donut-bg" cx="40" cy="40" r="34" stroke-width="10"/>
-                <circle class="sip-donut-fill" id="donutFill2" cx="40" cy="40" r="34" stroke-width="10"
-                  stroke-dasharray="0 214" stroke-dashoffset="0"/>
-              </svg>
-              <div class="sip-donut-pct" id="donutPct2" style="font-size:15px">0%</div>
-            </div>
-            <div class="sip-legend">
-              <div style="font-size:12px;font-weight:600;color:rgba(245,240,232,0.36);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Wealth Breakdown</div>
-              <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--gold)"></span>Est. Gains<span class="sip-leg-val" id="legGainsPct2">—</span></div>
-              <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--line2);border:1px solid var(--line)"></span>Amount Invested<span class="sip-leg-val" id="legInvPct2">—</span></div>
-              <div style="margin-top:10px;font-size:12px;color:var(--gold);font-weight:600" id="xGrowth2">—x growth</div>
-            </div>
+          <div class="sip-stat">
+            <div class="sip-stat-val" id="rMultiple">1.94x</div>
+            <div class="sip-stat-lbl">Wealth Multiple</div>
           </div>
         </div>
 
-        <a href="#contact" class="sip-cta" style="font-size:12px;padding:13px">Start This SIP with Artha — Free Consultation &#8594;</a>
-        <p style="font-size:11px;color:rgba(245,240,232,0.26);text-align:center;margin-top:-8px">*Estimates only. Mutual Fund returns are market-linked. Past performance is not indicative of future results.</p>
+        <div class="sip-bar-wrap">
+          <div class="sip-bar-label-row">
+            <span><span class="sip-dot gold-dot"></span>Est. Returns (<span id="rGainsPct">48</span>%)</span>
+            <span><span class="sip-dot grey-dot"></span>Invested (<span id="rInvPct">52</span>%)</span>
+          </div>
+          <div class="sip-bar-track">
+            <div class="sip-bar-fill" id="rBarFill" style="width:48%"></div>
+          </div>
+        </div>
+
+        <a href="#contact" class="sip-start-btn">Start This SIP — Free Consultation &#8594;</a>
+        <p class="sip-disclaimer">*Estimates only. Mutual Fund investments are subject to market risks. Past performance is not indicative of future results.</p>
+
       </div>
-
     </div>
   </div>
 </section>
@@ -1080,158 +1147,228 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 
-// ══════════════════════════════════════════════════════════
-//  SIP CALCULATOR
-// ══════════════════════════════════════════════════════════
-var sipMode = 'months'; // 'months' or 'years'
 
-function setSipPeriod(mode) {
-  sipMode = mode;
-  document.getElementById('togMonths').classList.toggle('active', mode === 'months');
-  document.getElementById('togYears').classList.toggle('active', mode === 'years');
 
-  if (mode === 'months') {
-    document.getElementById('slDur').max  = 30;
-    document.getElementById('slDur').step = 1;
-    document.getElementById('durUnit').textContent = 'yrs';
-    document.getElementById('freqUnit').textContent = 'per month';
-    document.getElementById('slFreq').max = 4;
-  } else {
-    document.getElementById('slDur').max  = 30;
-    document.getElementById('slDur').step = 1;
-    document.getElementById('durUnit').textContent = 'yrs';
-    document.getElementById('freqUnit').textContent = 'per year';
-    document.getElementById('slFreq').max = 12;
-  }
-  calcSIP();
+// ── HERO CARD CALCULATOR ─────────────────────────────────────
+function heroFmt(n) {
+  if (n >= 1e7) return '₹' + (n/1e7).toFixed(2) + ' Cr';
+  if (n >= 1e5) return '₹' + (n/1e5).toFixed(2) + ' L';
+  if (n >= 1e3) return '₹' + (n/1e3).toFixed(1) + 'K';
+  return '₹' + Math.round(n).toLocaleString('en-IN');
 }
 
-function fmtINR(n) {
-  if (n >= 1e7) return '&#8377;' + (n / 1e7).toFixed(2) + ' Cr';
-  if (n >= 1e5) return '&#8377;' + (n / 1e5).toFixed(2) + ' L';
-  if (n >= 1e3) return '&#8377;' + (n / 1e3).toFixed(1) + 'K';
+function heroCalc() {
+  var P   = parseFloat(document.getElementById('h_rAmt').value);
+  var r   = parseFloat(document.getElementById('h_rRate').value);
+  var yrs = parseInt(document.getElementById('h_rDur').value);
+
+  // Update labels
+  document.getElementById('h_amt').textContent  = Math.round(P).toLocaleString('en-IN');
+  document.getElementById('h_rate').textContent = (r % 1 === 0) ? r : r.toFixed(1);
+  document.getElementById('h_dur').textContent  = yrs;
+
+  // SIP formula: monthly compounding
+  var n = yrs * 12;
+  var i = (r / 100) / 12;
+  var corpus   = (i === 0) ? P * n : P * ((Math.pow(1+i, n) - 1) / i) * (1+i);
+  var invested = P * n;
+  var gains    = corpus - invested;
+  var multiple = (corpus / invested).toFixed(2);
+  var gainsPct = Math.round((gains / corpus) * 100);
+
+  // Update big numbers
+  document.getElementById('h_corpus').innerHTML   = heroFmt(corpus);
+  document.getElementById('h_delta').innerHTML    = '▲ ' + heroFmt(gains) + ' gains &middot; ' + multiple + 'x growth';
+  document.getElementById('h_invested').innerHTML = heroFmt(invested);
+  document.getElementById('h_gains').innerHTML    = heroFmt(gains);
+
+  // Update year labels on x-axis
+  var xEl = document.getElementById('h_xaxis');
+  if (xEl) {
+    var step = Math.max(1, Math.round(yrs / 7));
+    var labels = [];
+    var startYr = new Date().getFullYear();
+    for (var t = 0; t <= yrs; t += step) {
+      labels.push('<span>' + (startYr + t) + '</span>');
+    }
+    xEl.innerHTML = labels.join('');
+  }
+
+  // Update bars — show corpus growth curve (compounding visual)
+  var bars = document.getElementById('h_bars');
+  if (bars) {
+    var barEls = bars.querySelectorAll('.bar');
+    var maxH = 0;
+    var vals = [];
+    for (var b = 0; b < barEls.length; b++) {
+      var t2 = Math.max(1, Math.round((b + 1) * yrs / barEls.length));
+      var ni = t2 * 12;
+      var fv = (i === 0) ? P * ni : P * ((Math.pow(1+i, ni) - 1) / i) * (1+i);
+      vals.push(fv);
+      if (fv > maxH) maxH = fv;
+    }
+    barEls.forEach(function(bar, idx) {
+      var pct = maxH > 0 ? Math.round((vals[idx] / maxH) * 90) + 5 : 10;
+      bar.style.height = pct + '%';
+      bar.style.background = (idx === barEls.length - 1) ? 'rgba(201,169,110,0.42)' : 'var(--gold-d)';
+    });
+  }
+}
+
+// Init hero calc
+heroCalc();
+
+// ═══════════════════════════════════════════════
+//  SIP CALCULATOR — clean rewrite
+// ═══════════════════════════════════════════════
+var sipCurrentMode = 'monthly'; // 'monthly' or 'annual'
+
+function sipSetMode(mode) {
+  sipCurrentMode = mode;
+  document.getElementById('modeMonthly').classList.toggle('active', mode === 'monthly');
+  document.getElementById('modeAnnual').classList.toggle('active', mode === 'annual');
+
+  if (mode === 'monthly') {
+    document.getElementById('rAmt').max    = 200000;
+    document.getElementById('rAmt').step   = 500;
+    document.querySelector('.sip-slider-group:first-child .sip-slider-label').textContent = 'Monthly Investment';
+    document.getElementById('lbInstall').textContent  = 'Installments per Month';
+    document.getElementById('rFreq').max   = 4;
+    document.getElementById('freqMax').textContent = '4';
+    document.getElementById('vDurUnit').textContent  = 'years';
+  } else {
+    document.getElementById('rAmt').max    = 2400000;
+    document.getElementById('rAmt').step   = 5000;
+    document.querySelector('.sip-slider-group:first-child .sip-slider-label').textContent = 'Annual Investment';
+    document.getElementById('lbInstall').textContent  = 'Installments per Year';
+    document.getElementById('rFreq').max   = 12;
+    document.getElementById('freqMax').textContent = '12';
+    document.getElementById('vDurUnit').textContent  = 'years';
+  }
+  sipCalc();
+}
+
+function sipFmt(n) {
+  if (isNaN(n) || !isFinite(n)) return '&#8377;0';
+  if (n >= 10000000) return '&#8377;' + (n / 10000000).toFixed(2) + ' Cr';
+  if (n >= 100000)   return '&#8377;' + (n / 100000).toFixed(2) + ' L';
+  if (n >= 1000)     return '&#8377;' + (n / 1000).toFixed(2) + ' K';
   return '&#8377;' + Math.round(n).toLocaleString('en-IN');
 }
 
-function calcSIP() {
-  var amt      = parseFloat(document.getElementById('slAmt').value);
-  var ratePA   = parseFloat(document.getElementById('slRate').value);
-  var durYrs   = parseFloat(document.getElementById('slDur').value);
-  var freq     = parseInt(document.getElementById('slFreq').value);
+function sipCalc() {
+  // Read raw slider values
+  var P   = parseFloat(document.getElementById('rAmt').value);   // per-installment amount
+  var r   = parseFloat(document.getElementById('rRate').value);  // annual rate %
+  var yrs = parseInt(document.getElementById('rDur').value);      // duration in years
+  var f   = parseInt(document.getElementById('rFreq').value);     // installments per period
 
-  // Update display labels
-  document.getElementById('dispAmt').textContent  = Math.round(amt).toLocaleString('en-IN');
-  document.getElementById('dispRate').textContent = ratePA % 1 === 0 ? ratePA : ratePA.toFixed(1);
-  document.getElementById('dispDur').textContent  = durYrs;
-  document.getElementById('dispFreq').textContent = freq;
+  // Update all display labels immediately
+  document.getElementById('vAmt').textContent  = Math.round(P).toLocaleString('en-IN');
+  document.getElementById('vRate').textContent = (r % 1 === 0) ? r : r.toFixed(1);
+  document.getElementById('vDur').textContent  = yrs;
+  document.getElementById('vFreq').textContent = f;
 
-  // Compute:
-  // periodsPerYear = freq installments per period (month or year)
-  // total installments = freq × periodsInDuration
-  var totalPeriods, ratePerPeriod;
+  // ── Core maths ──────────────────────────────────────────
+  // n = total number of installments
+  // i = rate per installment period
+  var n, i;
 
-  if (sipMode === 'months') {
-    // freq installments per month
-    var installsPerMonth = freq;
-    totalPeriods   = Math.round(durYrs * 12 * installsPerMonth);
-    ratePerPeriod  = (ratePA / 100) / (12 * installsPerMonth);
+  if (sipCurrentMode === 'monthly') {
+    // f installments per month → f*12*yrs total installments
+    // annual rate / (12 * f) = rate per installment
+    n = f * 12 * yrs;
+    i = (r / 100) / (12 * f);
   } else {
-    // freq installments per year
-    var installsPerYear = freq;
-    totalPeriods   = Math.round(durYrs * installsPerYear);
-    ratePerPeriod  = (ratePA / 100) / installsPerYear;
+    // f installments per year → f*yrs total installments
+    // annual rate / f = rate per installment
+    n = f * yrs;
+    i = (r / 100) / f;
   }
 
-  // Future value of SIP = P × [((1+r)^n - 1) / r] × (1+r)
-  var invested, futureVal;
-  invested = amt * totalPeriods;
+  // FV of annuity-due: P * [ ((1+i)^n - 1) / i ] * (1+i)
+  var invested, corpus;
+  invested = P * n;
 
-  if (ratePerPeriod === 0) {
-    futureVal = invested;
+  if (i === 0 || n === 0) {
+    corpus = invested;
   } else {
-    futureVal = amt * (Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod * (1 + ratePerPeriod);
+    corpus = P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
   }
 
-  var gains = futureVal - invested;
-  var gainsPct = futureVal > 0 ? Math.round((gains / futureVal) * 100) : 0;
+  var gains     = corpus - invested;
+  var gainsPct  = corpus > 0 ? Math.round((gains / corpus) * 100) : 0;
+  var invPct    = 100 - gainsPct;
+  var multiple  = invested > 0 ? (corpus / invested).toFixed(2) : '1.00';
+
+  // ── Update results ───────────────────────────────────────
+  document.getElementById('rCorpus').innerHTML    = sipFmt(corpus);
+  document.getElementById('rCorpusSub').textContent = 'after ' + yrs + ' year' + (yrs > 1 ? 's' : '') + ' at ' + (r % 1 === 0 ? r : r.toFixed(1)) + '% p.a.';
+  document.getElementById('rInvested').innerHTML  = sipFmt(invested);
+  document.getElementById('rGains').innerHTML     = sipFmt(gains);
+  document.getElementById('rMultiple').textContent = multiple + 'x';
+  document.getElementById('rGainsPct').textContent = gainsPct;
+  document.getElementById('rInvPct').textContent   = invPct;
+  document.getElementById('rBarFill').style.width  = gainsPct + '%';
+}
+
+// Attach all sliders
+['rAmt','rRate','rDur','rFreq'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', sipCalc);
+});
+
+// Run once on load
+sipCalc();
+
+
+
+// ── HERO MINI SIP CALCULATOR ────────────────────────────────
+function heroCalc() {
+  var P   = parseFloat(document.getElementById('h_rAmt').value);
+  var r   = parseFloat(document.getElementById('h_rRate').value);
+  var yrs = parseInt(document.getElementById('h_rDur').value);
+
+  // Update slider labels
+  document.getElementById('h_amt').textContent  = Math.round(P).toLocaleString('en-IN');
+  document.getElementById('h_rate').textContent = (r % 1 === 0) ? r : r.toFixed(1);
+  document.getElementById('h_dur').textContent  = yrs;
+
+  // Monthly SIP formula: FV = P * [((1+i)^n - 1) / i] * (1+i)
+  var n = yrs * 12;
+  var i = (r / 100) / 12;
+  var corpus   = (i === 0) ? P * n : P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+  var invested = P * n;
+  var gains    = corpus - invested;
+  var gainsPct = corpus > 0 ? Math.round((gains / corpus) * 100) : 0;
   var invPct   = 100 - gainsPct;
 
-  // Update result boxes
-  document.getElementById('resInvested').innerHTML = fmtINR(invested);
-  document.getElementById('resGains').innerHTML    = fmtINR(gains);
-  document.getElementById('resTotal').innerHTML    = fmtINR(futureVal);
-
-  // Update donut
-  var circumference = 2 * Math.PI * 28; // r=28
-  var fillLen = (gainsPct / 100) * circumference;
-  document.getElementById('donutFill').setAttribute('stroke-dasharray', fillLen + ' ' + circumference);
-  document.getElementById('donutPct').textContent = gainsPct + '%';
-
-  // Legend
-  document.getElementById('legGainsPct').textContent = gainsPct + '%';
-  document.getElementById('legInvPct').textContent   = invPct + '%';
-}
-
-// Init on load
-calcSIP();
-
-// ── SECOND CALCULATOR (full-width section) ──────────────────
-var sipMode2 = 'months';
-
-function setSipPeriod2(mode) {
-  sipMode2 = mode;
-  document.getElementById('togMonths2').classList.toggle('active', mode === 'months');
-  document.getElementById('togYears2').classList.toggle('active', mode === 'years');
-  var freqMax = (mode === 'months') ? 4 : 12;
-  document.getElementById('slFreq2').max = freqMax;
-  if (parseInt(document.getElementById('slFreq2').value) > freqMax)
-    document.getElementById('slFreq2').value = freqMax;
-  document.getElementById('freqUnit2').textContent = (mode === 'months') ? 'per month' : 'per year';
-  calcSIP2();
-}
-
-function calcSIP2() {
-  var amt     = parseFloat(document.getElementById('slAmt2').value);
-  var ratePA  = parseFloat(document.getElementById('slRate2').value);
-  var durYrs  = parseFloat(document.getElementById('slDur2').value);
-  var freq    = parseInt(document.getElementById('slFreq2').value);
-
-  document.getElementById('dispAmt2').textContent  = Math.round(amt).toLocaleString('en-IN');
-  document.getElementById('dispRate2').textContent = ratePA % 1 === 0 ? ratePA : ratePA.toFixed(1);
-  document.getElementById('dispDur2').textContent  = durYrs;
-  document.getElementById('dispFreq2').textContent = freq;
-  document.getElementById('bigSub2').textContent   = 'after ' + durYrs + (durYrs === 1 ? ' year' : ' years');
-
-  var totalPeriods, ratePerPeriod;
-  if (sipMode2 === 'months') {
-    totalPeriods  = Math.round(durYrs * 12 * freq);
-    ratePerPeriod = (ratePA / 100) / (12 * freq);
-  } else {
-    totalPeriods  = Math.round(durYrs * freq);
-    ratePerPeriod = (ratePA / 100) / freq;
+  // Format helper
+  function fmt(v) {
+    if (v >= 1e7) return '\u20b9' + (v/1e7).toFixed(2) + ' Cr';
+    if (v >= 1e5) return '\u20b9' + (v/1e5).toFixed(2) + ' L';
+    if (v >= 1e3) return '\u20b9' + (v/1e3).toFixed(1) + 'K';
+    return '\u20b9' + Math.round(v).toLocaleString('en-IN');
   }
 
-  var invested   = amt * totalPeriods;
-  var futureVal  = ratePerPeriod === 0 ? invested
-    : amt * (Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod * (1 + ratePerPeriod);
-  var gains      = futureVal - invested;
-  var gainsPct   = futureVal > 0 ? Math.round((gains / futureVal) * 100) : 0;
-  var invPct     = 100 - gainsPct;
-  var xGrowth    = invested > 0 ? (futureVal / invested).toFixed(2) : '—';
-
-  document.getElementById('bigTotal2').innerHTML    = fmtINR(futureVal);
-  document.getElementById('resInvested2').innerHTML = fmtINR(invested);
-  document.getElementById('resGains2').innerHTML    = fmtINR(gains);
-  document.getElementById('resTotal2').innerHTML    = fmtINR(futureVal);
-  document.getElementById('donutPct2').textContent  = gainsPct + '%';
-  document.getElementById('legGainsPct2').textContent = gainsPct + '%';
-  document.getElementById('legInvPct2').textContent   = invPct + '%';
-  document.getElementById('xGrowth2').textContent     = xGrowth + 'x growth';
-
-  var circumference2 = 2 * Math.PI * 34;
-  var fillLen2 = (gainsPct / 100) * circumference2;
-  document.getElementById('donutFill2').setAttribute('stroke-dasharray', fillLen2 + ' ' + circumference2);
+  // Update display
+  document.getElementById('h_corpus').innerHTML = fmt(corpus);
+  document.getElementById('h_sub').innerHTML    = fmt(invested) + ' invested &rarr; ' + fmt(gains) + ' gains';
+  document.getElementById('h_bar').style.width  = gainsPct + '%';
+  document.getElementById('h_gpct').textContent = gainsPct;
+  document.getElementById('h_ipct').textContent = invPct;
 }
 
-calcSIP2();
+// Attach sliders
+['h_rAmt','h_rRate','h_rDur'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', heroCalc);
+});
 
+// Init
+heroCalc();
+
+</script>
+
+</body>
+</html>
