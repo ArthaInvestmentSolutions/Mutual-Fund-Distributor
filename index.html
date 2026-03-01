@@ -149,22 +149,48 @@ h1.ht em{font-style:italic;color:var(--gold)}
 .loc-tag{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.34)}
 @media(max-width:640px){.loc-strip{flex-direction:column}.loc-item{border-right:none;border-bottom:1px solid var(--line2)}.loc-item:last-child{border-bottom:none}}
 
-/* HERO CHART CARD */
-.chartcard{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
-.chartcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.clabel{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:3px}
-.cval{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--cream);line-height:1;margin-bottom:4px}
-.cdelta{font-size:13px;color:var(--green);font-weight:600}
-.cbars{display:flex;align-items:flex-end;gap:5px;height:76px;margin-top:18px}
-.bar{flex:1;background:var(--gold-d);border-radius:3px 3px 0 0;border:1px solid rgba(201,169,110,0.2);border-bottom:none;animation:gb 1s ease-out backwards}
-@keyframes gb{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1)}}
-.bar:nth-child(1){height:42%;animation-delay:.05s}.bar:nth-child(2){height:60%;animation-delay:.1s}.bar:nth-child(3){height:52%;animation-delay:.15s}.bar:nth-child(4){height:76%;animation-delay:.2s}.bar:nth-child(5){height:65%;animation-delay:.25s}.bar:nth-child(6){height:83%;animation-delay:.3s}.bar:nth-child(7){height:70%;animation-delay:.35s}.bar:nth-child(8){height:93%;animation-delay:.4s;background:rgba(201,169,110,0.42)}
-.cxl{display:flex;justify-content:space-between;margin-top:6px}
-.cxl span{font-size:9px;color:rgba(245,240,232,0.2)}
-.srow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.sbox{background:rgba(245,240,232,0.04);border:1px solid var(--line2);border-radius:var(--r);padding:12px 14px}
-.snum{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold);font-weight:600}
-.slbl{font-size:11px;color:rgba(245,240,232,0.38);margin-top:1px}
+/* SIP CALCULATOR CARD */
+.sipcalc{background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden}
+.sipcalc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sipcalc-title{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.36);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.sipcalc-title svg{width:12px;height:12px;color:var(--gold)}
+
+/* toggle row: Months / Years */
+.sip-toggle{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.sip-tog{flex:1;padding:6px 10px;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:none;border:none;color:rgba(245,240,232,0.4);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.sip-tog.active{background:var(--gold-d);color:var(--gold)}
+
+/* sliders */
+.sip-field{margin-bottom:14px}
+.sip-fl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.sip-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.38)}
+.sip-val{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--gold)}
+.sip-unit{font-size:10px;color:rgba(245,240,232,0.3);margin-left:2px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--line2);border:none;padding:0;outline:none;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--ink2);box-shadow:0 0 0 1px var(--gold);cursor:pointer;transition:transform .15s}
+input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.25)}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--ink2);cursor:pointer}
+
+/* results */
+.sip-results{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:16px}
+.sip-res{background:rgba(245,240,232,0.04);border:1px solid var(--line2);border-radius:var(--r);padding:10px 12px;text-align:center}
+.sip-res-val{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--cream);line-height:1.1;margin-bottom:3px;transition:color .3s}
+.sip-res-val.highlight{color:var(--gold)}
+.sip-res-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.28)}
+
+/* donut chart */
+.sip-donut-wrap{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line2)}
+.sip-donut{position:relative;width:64px;height:64px;flex-shrink:0}
+.sip-donut svg{transform:rotate(-90deg)}
+.sip-donut-bg{fill:none;stroke:var(--line2);stroke-width:8}
+.sip-donut-fill{fill:none;stroke:var(--gold);stroke-width:8;stroke-linecap:round;transition:stroke-dasharray .5s ease}
+.sip-donut-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:var(--gold)}
+.sip-legend{flex:1;display:flex;flex-direction:column;gap:5px}
+.sip-leg{display:flex;align-items:center;gap:7px;font-size:11px;color:rgba(245,240,232,0.5)}
+.sip-leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sip-leg-val{margin-left:auto;font-weight:600;color:var(--cream);font-size:11px}
+.sip-cta{display:block;width:100%;margin-top:14px;padding:9px;background:var(--gold);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:var(--r);cursor:pointer;text-align:center;transition:all .2s;text-decoration:none}
+.sip-cta:hover{background:var(--gold-l)}
 
 /* SECTIONS */
 section{padding:92px 0}
@@ -301,6 +327,8 @@ footer{border-top:1px solid var(--line2);padding:46px 0}
 @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .a1{animation:fu .7s .05s ease both}.a2{animation:fu .7s .15s ease both}.a3{animation:fu .7s .25s ease both}.a4{animation:fu .7s .35s ease both}
 
+@media(max-width:760px){.calc-full-grid{grid-template-columns:1fr!important}}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(10,14,26,0.88);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:opacity .35s ease;padding:24px}
 .modal-overlay.show{opacity:1;pointer-events:auto}
@@ -339,6 +367,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
     <a href="#top" class="logo">Artha Investment Solutions<small>AMFI-Registered MFD &middot; ARN-337744 &middot; Delhi NCR</small></a>
     <div class="nl">
       <a href="#services">Services</a>
+      <a href="#calculator">SIP Calculator</a>
       <a href="#locations">Locations</a>
       <a href="#certifications">Credentials</a>
       <a href="#blog">Blog</a>
@@ -368,21 +397,198 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
         <a class="pill" href="#blog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>Blog</a>
       </div>
     </div>
-    <div class="hvisual" aria-hidden="true">
-      <div class="chartcard">
-        <div class="clabel">Portfolio Growth — Delhi NCR Client</div>
-        <div class="cval">&#8377;18.4L</div>
-        <div class="cdelta">&#9650; 12.8% CAGR &middot; 5 Year</div>
-        <div class="cbars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-        <div class="cxl"><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
-        <div class="srow">
-          <div class="sbox"><div class="snum">6+</div><div class="slbl">Services</div></div>
-          <div class="sbox"><div class="snum">NISM</div><div class="slbl">Certified</div></div>
+    <div class="hvisual" id="calculator">
+      <div class="sipcalc">
+        <div class="sipcalc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          SIP Return Calculator
         </div>
+
+        <!-- Period toggle -->
+        <div class="sip-toggle">
+          <button class="sip-tog active" id="togMonths" onclick="setSipPeriod('months')">Monthly SIP</button>
+          <button class="sip-tog" id="togYears" onclick="setSipPeriod('years')">Annual SIP</button>
+        </div>
+
+        <!-- Installment amount -->
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Installment Amount</span>
+            <span class="sip-val">&#8377;<span id="dispAmt">5,000</span><span class="sip-unit">/period</span></span>
+          </div>
+          <input type="range" id="slAmt" min="500" max="100000" step="500" value="5000" oninput="calcSIP()">
+        </div>
+
+        <!-- Rate of return -->
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Expected Return (p.a.)</span>
+            <span class="sip-val"><span id="dispRate">12</span><span class="sip-unit">% p.a.</span></span>
+          </div>
+          <input type="range" id="slRate" min="1" max="30" step="0.5" value="12" oninput="calcSIP()">
+        </div>
+
+        <!-- Duration -->
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Duration</span>
+            <span class="sip-val"><span id="dispDur">10</span><span class="sip-unit" id="durUnit">yrs</span></span>
+          </div>
+          <input type="range" id="slDur" min="1" max="30" step="1" value="10" oninput="calcSIP()">
+        </div>
+
+        <!-- No. of installments per period -->
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Installments / Period</span>
+            <span class="sip-val"><span id="dispFreq">1</span><span class="sip-unit" id="freqUnit">per month</span></span>
+          </div>
+          <input type="range" id="slFreq" min="1" max="4" step="1" value="1" oninput="calcSIP()">
+        </div>
+
+        <!-- Results row -->
+        <div class="sip-results">
+          <div class="sip-res">
+            <div class="sip-res-val" id="resInvested">—</div>
+            <div class="sip-res-lbl">Invested</div>
+          </div>
+          <div class="sip-res">
+            <div class="sip-res-val" id="resGains">—</div>
+            <div class="sip-res-lbl">Est. Gains</div>
+          </div>
+          <div class="sip-res">
+            <div class="sip-res-val highlight" id="resTotal">—</div>
+            <div class="sip-res-lbl">Total Value</div>
+          </div>
+        </div>
+
+        <!-- Donut chart -->
+        <div class="sip-donut-wrap">
+          <div class="sip-donut">
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle class="sip-donut-bg" cx="32" cy="32" r="28"/>
+              <circle class="sip-donut-fill" id="donutFill" cx="32" cy="32" r="28"
+                stroke-dasharray="0 176" stroke-dashoffset="0"/>
+            </svg>
+            <div class="sip-donut-pct" id="donutPct">0%</div>
+          </div>
+          <div class="sip-legend">
+            <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--gold)"></span>Est. Returns<span class="sip-leg-val" id="legGainsPct">—</span></div>
+            <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--line2);border:1px solid var(--line)"></span>Invested<span class="sip-leg-val" id="legInvPct">—</span></div>
+          </div>
+        </div>
+
+        <a href="#contact" class="sip-cta">Start This SIP — Free Consultation</a>
       </div>
     </div>
   </div>
 </div>
+
+<!-- SIP CALCULATOR — full width section, visible on all screen sizes -->
+<section id="calculator" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="eyebrow">SIP Return Calculator</div>
+    <h2 class="st">How much will your SIP grow?</h2>
+    <p class="ss">Adjust the sliders to estimate your returns. Select monthly or annual mode, set your rate, duration and number of installments per period.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start" class="calc-full-grid">
+
+      <!-- LEFT: controls -->
+      <div class="sipcalc" style="border-radius:var(--rl)">
+        <div class="sipcalc-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Adjust your SIP parameters
+        </div>
+
+        <div class="sip-toggle">
+          <button class="sip-tog active" id="togMonths2" onclick="setSipPeriod2('months')">Monthly SIP</button>
+          <button class="sip-tog" id="togYears2" onclick="setSipPeriod2('years')">Annual SIP</button>
+        </div>
+
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Installment Amount</span>
+            <span class="sip-val">&#8377;<span id="dispAmt2">5,000</span><span class="sip-unit">/period</span></span>
+          </div>
+          <input type="range" id="slAmt2" min="500" max="100000" step="500" value="5000" oninput="calcSIP2()">
+        </div>
+
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Expected Return (p.a.)</span>
+            <span class="sip-val"><span id="dispRate2">12</span><span class="sip-unit">% p.a.</span></span>
+          </div>
+          <input type="range" id="slRate2" min="1" max="30" step="0.5" value="12" oninput="calcSIP2()">
+        </div>
+
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Duration</span>
+            <span class="sip-val"><span id="dispDur2">10</span><span class="sip-unit" id="durUnit2">yrs</span></span>
+          </div>
+          <input type="range" id="slDur2" min="1" max="30" step="1" value="10" oninput="calcSIP2()">
+        </div>
+
+        <div class="sip-field">
+          <div class="sip-fl">
+            <span class="sip-lbl">Installments / Period</span>
+            <span class="sip-val"><span id="dispFreq2">1</span><span class="sip-unit" id="freqUnit2">per month</span></span>
+          </div>
+          <input type="range" id="slFreq2" min="1" max="4" step="1" value="1" oninput="calcSIP2()">
+        </div>
+      </div>
+
+      <!-- RIGHT: results -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <!-- big result card -->
+        <div class="cc" style="text-align:center;padding:32px 28px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,0.34);margin-bottom:8px">Estimated Corpus</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px" id="bigTotal2">—</div>
+          <div style="font-size:13px;color:rgba(245,240,232,0.4)" id="bigSub2">after 10 years</div>
+        </div>
+
+        <!-- 3-col stat row -->
+        <div class="sip-results" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="sip-res">
+            <div class="sip-res-val" id="resInvested2">—</div>
+            <div class="sip-res-lbl">Invested</div>
+          </div>
+          <div class="sip-res">
+            <div class="sip-res-val" id="resGains2">—</div>
+            <div class="sip-res-lbl">Est. Gains</div>
+          </div>
+          <div class="sip-res">
+            <div class="sip-res-val highlight" id="resTotal2">—</div>
+            <div class="sip-res-lbl">Total Value</div>
+          </div>
+        </div>
+
+        <!-- donut + legend -->
+        <div class="sipcalc" style="padding:20px">
+          <div class="sip-donut-wrap" style="margin-top:0;padding-top:0;border-top:none">
+            <div class="sip-donut" style="width:80px;height:80px">
+              <svg width="80" height="80" viewBox="0 0 80 80">
+                <circle class="sip-donut-bg" cx="40" cy="40" r="34" stroke-width="10"/>
+                <circle class="sip-donut-fill" id="donutFill2" cx="40" cy="40" r="34" stroke-width="10"
+                  stroke-dasharray="0 214" stroke-dashoffset="0"/>
+              </svg>
+              <div class="sip-donut-pct" id="donutPct2" style="font-size:15px">0%</div>
+            </div>
+            <div class="sip-legend">
+              <div style="font-size:12px;font-weight:600;color:rgba(245,240,232,0.36);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Wealth Breakdown</div>
+              <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--gold)"></span>Est. Gains<span class="sip-leg-val" id="legGainsPct2">—</span></div>
+              <div class="sip-leg"><span class="sip-leg-dot" style="background:var(--line2);border:1px solid var(--line)"></span>Amount Invested<span class="sip-leg-val" id="legInvPct2">—</span></div>
+              <div style="margin-top:10px;font-size:12px;color:var(--gold);font-weight:600" id="xGrowth2">—x growth</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="sip-cta" style="font-size:12px;padding:13px">Start This SIP with Artha — Free Consultation &#8594;</a>
+        <p style="font-size:11px;color:rgba(245,240,232,0.26);text-align:center;margin-top:-8px">*Estimates only. Mutual Fund returns are market-linked. Past performance is not indicative of future results.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section id="services">
@@ -646,7 +852,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
       <div class="ipanel">
         <div class="icard">
           <h3>Contact Details</h3>
-          <div class="ir"><span class="ik">Email</span><span class="iv"><a href="mailto:parikshitartha@gmail.com" style="color:var(--gold)">parikshitartha@gmail.com</a></span></div>
+          <div class="ir"><span class="ik">Email</span><span class="iv"><a href="/cdn-cgi/l/email-protection#3e4e5f4c57554d56574a5f4c4a565f7e59535f5752105d5153" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="522233203b39213a3b263320263a3312353f333b3e7c313d3f">[email&#160;protected]</span></a></span></div>
           <div class="ir"><span class="ik">Phone</span><span class="iv"><a href="tel:+919818038954" style="color:var(--gold)">+91 98180 38954</a></span></div>
           <div class="ir"><span class="ik">Areas</span><span class="iv">Delhi &middot; Gurgaon &middot; Noida &middot; Faridabad</span></div>
           <div class="ir"><span class="ik">Hours</span><span class="iv">Mon&ndash;Sat, 10 AM &ndash; 7 PM</span></div>
@@ -689,6 +895,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
     <div class="fcol">
       <h4>Navigation</h4>
       <a href="#services">Services</a>
+      <a href="#calculator">SIP Calculator</a>
       <a href="#locations">Locations</a>
       <a href="#certifications">Credentials</a>
       <a href="#blog">Blog</a>
@@ -725,7 +932,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── Year ────────────────────────────────────────────────
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -750,7 +957,7 @@ document.querySelectorAll('.bfilt').forEach(btn => {
 // ══════════════════════════════════════════════════════════
 //  GOOGLE SHEETS FORM — TRIPLE METHOD
 // ══════════════════════════════════════════════════════════
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRfXX_-Q7SKQSz6sHhTapJ6qVdQxkfbXwhRgmDzpbxkBN7cId0XU98TyFtaArhoCGk/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-VtU66WC32Ggl0fE9w170ettItqEqWExpbztc6Hd13b9S12btiglSuv1jlBknGJvnXw/exec';
 
 var FIELDS = [
   { id: 'fname',    required: true  },
@@ -873,17 +1080,158 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 
-// Clear errors on input
-FIELDS.forEach(function(f) {
-  var el = document.getElementById(f.id);
-  if (!el) return;
-  el.addEventListener('input', function() {
-    el.classList.remove('field-err');
-    var msg = document.getElementById(f.id + '-err');
-    if (msg) msg.classList.remove('show');
-  });
-});
-</script>
+// ══════════════════════════════════════════════════════════
+//  SIP CALCULATOR
+// ══════════════════════════════════════════════════════════
+var sipMode = 'months'; // 'months' or 'years'
 
-</body>
-</html>
+function setSipPeriod(mode) {
+  sipMode = mode;
+  document.getElementById('togMonths').classList.toggle('active', mode === 'months');
+  document.getElementById('togYears').classList.toggle('active', mode === 'years');
+
+  if (mode === 'months') {
+    document.getElementById('slDur').max  = 30;
+    document.getElementById('slDur').step = 1;
+    document.getElementById('durUnit').textContent = 'yrs';
+    document.getElementById('freqUnit').textContent = 'per month';
+    document.getElementById('slFreq').max = 4;
+  } else {
+    document.getElementById('slDur').max  = 30;
+    document.getElementById('slDur').step = 1;
+    document.getElementById('durUnit').textContent = 'yrs';
+    document.getElementById('freqUnit').textContent = 'per year';
+    document.getElementById('slFreq').max = 12;
+  }
+  calcSIP();
+}
+
+function fmtINR(n) {
+  if (n >= 1e7) return '&#8377;' + (n / 1e7).toFixed(2) + ' Cr';
+  if (n >= 1e5) return '&#8377;' + (n / 1e5).toFixed(2) + ' L';
+  if (n >= 1e3) return '&#8377;' + (n / 1e3).toFixed(1) + 'K';
+  return '&#8377;' + Math.round(n).toLocaleString('en-IN');
+}
+
+function calcSIP() {
+  var amt      = parseFloat(document.getElementById('slAmt').value);
+  var ratePA   = parseFloat(document.getElementById('slRate').value);
+  var durYrs   = parseFloat(document.getElementById('slDur').value);
+  var freq     = parseInt(document.getElementById('slFreq').value);
+
+  // Update display labels
+  document.getElementById('dispAmt').textContent  = Math.round(amt).toLocaleString('en-IN');
+  document.getElementById('dispRate').textContent = ratePA % 1 === 0 ? ratePA : ratePA.toFixed(1);
+  document.getElementById('dispDur').textContent  = durYrs;
+  document.getElementById('dispFreq').textContent = freq;
+
+  // Compute:
+  // periodsPerYear = freq installments per period (month or year)
+  // total installments = freq × periodsInDuration
+  var totalPeriods, ratePerPeriod;
+
+  if (sipMode === 'months') {
+    // freq installments per month
+    var installsPerMonth = freq;
+    totalPeriods   = Math.round(durYrs * 12 * installsPerMonth);
+    ratePerPeriod  = (ratePA / 100) / (12 * installsPerMonth);
+  } else {
+    // freq installments per year
+    var installsPerYear = freq;
+    totalPeriods   = Math.round(durYrs * installsPerYear);
+    ratePerPeriod  = (ratePA / 100) / installsPerYear;
+  }
+
+  // Future value of SIP = P × [((1+r)^n - 1) / r] × (1+r)
+  var invested, futureVal;
+  invested = amt * totalPeriods;
+
+  if (ratePerPeriod === 0) {
+    futureVal = invested;
+  } else {
+    futureVal = amt * (Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod * (1 + ratePerPeriod);
+  }
+
+  var gains = futureVal - invested;
+  var gainsPct = futureVal > 0 ? Math.round((gains / futureVal) * 100) : 0;
+  var invPct   = 100 - gainsPct;
+
+  // Update result boxes
+  document.getElementById('resInvested').innerHTML = fmtINR(invested);
+  document.getElementById('resGains').innerHTML    = fmtINR(gains);
+  document.getElementById('resTotal').innerHTML    = fmtINR(futureVal);
+
+  // Update donut
+  var circumference = 2 * Math.PI * 28; // r=28
+  var fillLen = (gainsPct / 100) * circumference;
+  document.getElementById('donutFill').setAttribute('stroke-dasharray', fillLen + ' ' + circumference);
+  document.getElementById('donutPct').textContent = gainsPct + '%';
+
+  // Legend
+  document.getElementById('legGainsPct').textContent = gainsPct + '%';
+  document.getElementById('legInvPct').textContent   = invPct + '%';
+}
+
+// Init on load
+calcSIP();
+
+// ── SECOND CALCULATOR (full-width section) ──────────────────
+var sipMode2 = 'months';
+
+function setSipPeriod2(mode) {
+  sipMode2 = mode;
+  document.getElementById('togMonths2').classList.toggle('active', mode === 'months');
+  document.getElementById('togYears2').classList.toggle('active', mode === 'years');
+  var freqMax = (mode === 'months') ? 4 : 12;
+  document.getElementById('slFreq2').max = freqMax;
+  if (parseInt(document.getElementById('slFreq2').value) > freqMax)
+    document.getElementById('slFreq2').value = freqMax;
+  document.getElementById('freqUnit2').textContent = (mode === 'months') ? 'per month' : 'per year';
+  calcSIP2();
+}
+
+function calcSIP2() {
+  var amt     = parseFloat(document.getElementById('slAmt2').value);
+  var ratePA  = parseFloat(document.getElementById('slRate2').value);
+  var durYrs  = parseFloat(document.getElementById('slDur2').value);
+  var freq    = parseInt(document.getElementById('slFreq2').value);
+
+  document.getElementById('dispAmt2').textContent  = Math.round(amt).toLocaleString('en-IN');
+  document.getElementById('dispRate2').textContent = ratePA % 1 === 0 ? ratePA : ratePA.toFixed(1);
+  document.getElementById('dispDur2').textContent  = durYrs;
+  document.getElementById('dispFreq2').textContent = freq;
+  document.getElementById('bigSub2').textContent   = 'after ' + durYrs + (durYrs === 1 ? ' year' : ' years');
+
+  var totalPeriods, ratePerPeriod;
+  if (sipMode2 === 'months') {
+    totalPeriods  = Math.round(durYrs * 12 * freq);
+    ratePerPeriod = (ratePA / 100) / (12 * freq);
+  } else {
+    totalPeriods  = Math.round(durYrs * freq);
+    ratePerPeriod = (ratePA / 100) / freq;
+  }
+
+  var invested   = amt * totalPeriods;
+  var futureVal  = ratePerPeriod === 0 ? invested
+    : amt * (Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod * (1 + ratePerPeriod);
+  var gains      = futureVal - invested;
+  var gainsPct   = futureVal > 0 ? Math.round((gains / futureVal) * 100) : 0;
+  var invPct     = 100 - gainsPct;
+  var xGrowth    = invested > 0 ? (futureVal / invested).toFixed(2) : '—';
+
+  document.getElementById('bigTotal2').innerHTML    = fmtINR(futureVal);
+  document.getElementById('resInvested2').innerHTML = fmtINR(invested);
+  document.getElementById('resGains2').innerHTML    = fmtINR(gains);
+  document.getElementById('resTotal2').innerHTML    = fmtINR(futureVal);
+  document.getElementById('donutPct2').textContent  = gainsPct + '%';
+  document.getElementById('legGainsPct2').textContent = gainsPct + '%';
+  document.getElementById('legInvPct2').textContent   = invPct + '%';
+  document.getElementById('xGrowth2').textContent     = xGrowth + 'x growth';
+
+  var circumference2 = 2 * Math.PI * 34;
+  var fillLen2 = (gainsPct / 100) * circumference2;
+  document.getElementById('donutFill2').setAttribute('stroke-dasharray', fillLen2 + ' ' + circumference2);
+}
+
+calcSIP2();
+
