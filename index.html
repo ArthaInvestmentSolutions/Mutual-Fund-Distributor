@@ -1222,39 +1222,233 @@ document.querySelectorAll('.bfilt').forEach(btn => {
 // ─── Google Sheets Form Integration ─────────────────────
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-VtU66WC32Ggl0fE9w170ettItqEqWExpbztc6Hd13b9S12btiglSuv1jlBknGJvnXw/exec';
 
-function sendLead() {
-  var name    = document.getElementById('name').value.trim();
-  var email   = document.getElementById('email').value.trim();
-  var phone   = document.getElementById('phone').value.trim();
-  var service = document.getElementById('service').value;
-  var message = document.getElementById('msg').value.trim();
+var FIELDS = [
+  { id: 'fname',    required: true  },
+  { id: 'femail',   required: true  },
+  { id: 'fphone',   required: false },
+  { id: 'fcity',    required: false },
+  { id: 'fservice', required: true  },
+  { id: 'fmsg',     required: false },
+];
 
-  // Basic validation
-  if (!name || !email || !service) {
-    alert('Please fill in your name, email and service of interest.');
-    return;
+function clearErrors() {
+  FIELDS.forEach(function(f) {
+    var el = document.getElementById(f.id);
+    if (el) el.classList.remove('field-err');
+    var msg = document.getElementById(f.id + '-err');
+    if (msg) msg.classList.remove('show');
+  });
+  document.getElementById('formError').style.display = 'none';
+}
+
+function validateForm() {
+  var ok = true;
+  FIELDS.forEach(function(f) {
+    if (!f.required) return;
+    var el = document.getElementById(f.id);
+    var msg = document.getElementById(f.id + '-err');
+    if (!el || !el.value.trim()) {
+      if (el) el.classList.add('field-err');
+      if (msg) msg.classList.add('show');
+      ok = false;
+    }
+  });
+  var em = document.getElementById('femail');
+  var emMsg = document.getElementById('femail-err');
+  if (em && em.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) {
+    em.classList.add('field-err');
+    if (emMsg) { emMsg.textContent = 'Please enter a valid email.'; emMsg.classList.add('show'); }
+    ok = false;
+  }
+  return ok;
+}
+
+function sendLead() {
+  clearErrors();
+  if (!validateForm()) return;
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.classList.add('loading');
+
+  var payload = {
+    name:    document.getElementById('fname').value.trim(),
+    email:   document.getElementById('femail').value.trim(),
+    phone:   document.getElementById('fphone').value.trim() || 'Not provided',
+    city:    document.getElementById('fcity').value || 'Not specified',
+    service: document.getElementById('fservice').value,
+    message: document.getElementById('fmsg').value.trim() || 'No message',
+    date:    new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
+  };
+
+  var qs = Object.keys(payload).map(function(k) {
+    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+  }).join('&');
+
+  var url = SCRIPT_URL + '?' + qs;
+  var delivered = false;
+
+  function done() {
+    if (delivered) return;
+    delivered = true;
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    document.getElementById('leadForm').reset();
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'lead_form_submit', { event_category: 'Contact', event_label: payload.city + ' — ' + payload.service });
+    }
+    showModal(payload.name);
   }
 
-  var btn     = document.getElementById('submitBtn');
-  var success = document.getElementById('formSuccess');
-  var error   = document.getElementById('formError');
+  // Method 1: fetch no-cors
+  try { fetch(url, { method: 'GET', mode: 'no-cors' }).then(function() { setTimeout(done, 300); }).catch(function(){}); } catch(e) {}
 
-  success.style.display = 'none';
-  error.style.display   = 'none';
-  btn.disabled    = true;
-  btn.textContent = 'Sending…';
+  // Method 2: Image ping — bypasses CORS completely
+  try {
+    var img = new Image();
+    img.onload = img.onerror = function() { setTimeout(done, 300); };
+    img.src = url;
+  } catch(e) {}
 
-  // Build URL with query params — most reliable method for Apps Script
-  var params = 'name='    + encodeURIComponent(name)
-             + '&email='   + encodeURIComponent(email)
-             + '&phone='   + encodeURIComponent(phone)
-             + '&service=' + encodeURIComponent(service)
-             + '&message=' + encodeURIComponent(message);
+  // Method 3: iframe fallback
+  try {
+    var ifr = document.createElement('iframe');
+    ifr.style.display = 'none';
+    ifr.src = url;
+    document.body.appendChild(ifr);
+    setTimeout(function() { try { document.body.removeChild(ifr); } catch(e) {} }, 5000);
+  } catch(e) {}
 
-  fetch(SCRIPT_URL + '?' + params, { method: 'GET', mode: 'no-cors' })
-    .then(function() {
-      success.style.display = 'block';
-      document.getElementById('leadForm').reset();
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'lead_f
+  // Guaranteed fallback after 3s
+  setTimeout(done, 3000);
+}
+
+function showModal(userName) {
+  var overlay = document.getElementById('successModal');
+  var greeting = document.getElementById('modalGreeting');
+  if (greeting) greeting.textContent = userName ? 'Thank you, ' + userName.split(' ')[0] + '!' : 'Message Received!';
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('successModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('successModal')) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+
+// ═══════════════════════════════════════════════
+//  SIP CALCULATOR — clean rewrite
+// ═══════════════════════════════════════════════
+var sipCurrentMode = 'monthly'; // 'monthly' or 'annual'
+
+function sipSetMode(mode) {
+  sipCurrentMode = mode;
+  document.getElementById('modeMonthly').classList.toggle('active', mode === 'monthly');
+  document.getElementById('modeAnnual').classList.toggle('active', mode === 'annual');
+
+  if (mode === 'monthly') {
+    document.getElementById('rAmt').max    = 200000;
+    document.getElementById('rAmt').step   = 500;
+    document.querySelector('.sip-slider-group:first-child .sip-slider-label').textContent = 'Monthly Investment';
+    document.getElementById('lbInstall').textContent  = 'Installments per Month';
+    document.getElementById('rFreq').max   = 4;
+    document.getElementById('freqMax').textContent = '4';
+    document.getElementById('vDurUnit').textContent  = 'years';
+  } else {
+    document.getElementById('rAmt').max    = 2400000;
+    document.getElementById('rAmt').step   = 5000;
+    document.querySelector('.sip-slider-group:first-child .sip-slider-label').textContent = 'Annual Investment';
+    document.getElementById('lbInstall').textContent  = 'Installments per Year';
+    document.getElementById('rFreq').max   = 12;
+    document.getElementById('freqMax').textContent = '12';
+    document.getElementById('vDurUnit').textContent  = 'years';
+  }
+  sipCalc();
+}
+
+function sipFmt(n) {
+  if (isNaN(n) || !isFinite(n)) return '&#8377;0';
+  if (n >= 10000000) return '&#8377;' + (n / 10000000).toFixed(2) + ' Cr';
+  if (n >= 100000)   return '&#8377;' + (n / 100000).toFixed(2) + ' L';
+  if (n >= 1000)     return '&#8377;' + (n / 1000).toFixed(2) + ' K';
+  return '&#8377;' + Math.round(n).toLocaleString('en-IN');
+}
+
+function sipCalc() {
+  // Read raw slider values
+  var P   = parseFloat(document.getElementById('rAmt').value);   // per-installment amount
+  var r   = parseFloat(document.getElementById('rRate').value);  // annual rate %
+  var yrs = parseInt(document.getElementById('rDur').value);      // duration in years
+  var f   = parseInt(document.getElementById('rFreq').value);     // installments per period
+
+  // Update all display labels immediately
+  document.getElementById('vAmt').textContent  = Math.round(P).toLocaleString('en-IN');
+  document.getElementById('vRate').textContent = (r % 1 === 0) ? r : r.toFixed(1);
+  document.getElementById('vDur').textContent  = yrs;
+  document.getElementById('vFreq').textContent = f;
+
+  // ── Core maths ──────────────────────────────────────────
+  // n = total number of installments
+  // i = rate per installment period
+  var n, i;
+
+  if (sipCurrentMode === 'monthly') {
+    // f installments per month → f*12*yrs total installments
+    // annual rate / (12 * f) = rate per installment
+    n = f * 12 * yrs;
+    i = (r / 100) / (12 * f);
+  } else {
+    // f installments per year → f*yrs total installments
+    // annual rate / f = rate per installment
+    n = f * yrs;
+    i = (r / 100) / f;
+  }
+
+  // FV of annuity-due: P * [ ((1+i)^n - 1) / i ] * (1+i)
+  var invested, corpus;
+  invested = P * n;
+
+  if (i === 0 || n === 0) {
+    corpus = invested;
+  } else {
+    corpus = P * ((Math.pow(1 + i, n) - 1) / i) * (1 + i);
+  }
+
+  var gains     = corpus - invested;
+  var gainsPct  = corpus > 0 ? Math.round((gains / corpus) * 100) : 0;
+  var invPct    = 100 - gainsPct;
+  var multiple  = invested > 0 ? (corpus / invested).toFixed(2) : '1.00';
+
+  // ── Update results ───────────────────────────────────────
+  document.getElementById('rCorpus').innerHTML    = sipFmt(corpus);
+  document.getElementById('rCorpusSub').textContent = 'after ' + yrs + ' year' + (yrs > 1 ? 's' : '') + ' at ' + (r % 1 === 0 ? r : r.toFixed(1)) + '% p.a.';
+  document.getElementById('rInvested').innerHTML  = sipFmt(invested);
+  document.getElementById('rGains').innerHTML     = sipFmt(gains);
+  document.getElementById('rMultiple').textContent = multiple + 'x';
+  document.getElementById('rGainsPct').textContent = gainsPct;
+  document.getElementById('rInvPct').textContent   = invPct;
+  document.getElementById('rBarFill').style.width  = gainsPct + '%';
+}
+
+// Attach all sliders
+['rAmt','rRate','rDur','rFreq'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('input', sipCalc);
+});
+
+// Run once on load
+sipCalc();
+
+
+</script>
+
+</body>
+</html>
