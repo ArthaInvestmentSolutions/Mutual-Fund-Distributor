@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e1a'/%3E%3Crect width='64' height='64' rx='12' fill='none' stroke='%23c9a96e' stroke-width='3'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-size='36' font-weight='bold' fill='%23c9a96e'%3EA%3C/text%3E%3C/svg%3E"/>
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e1a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2C serif' font-size='36' font-weight='bold' fill='%23c9a96e'%3EA%3C/text%3E%3C/svg%3E"/>
 <meta name="msapplication-TileColor" content="#0a0e1a"/>
@@ -31,7 +30,7 @@
 <meta property="og:title" content="Artha Investment Solutions | Best Mutual Fund Advisor in Delhi NCR | ARN-337744"/>
 <meta property="og:description" content="AMFI-registered investment advisor serving Delhi, Faridabad, Gurgaon &amp; Noida. Expert SIP, PMS, insurance &amp; wealth management. ARN-337744."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://arthainvestmentsolutions.com"/>
+<meta property="og:url" content="https://arthainvestmentsolutions.com/"/>
 <meta property="og:locale" content="en_IN"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Best Mutual Fund Advisor in Delhi NCR | Artha Investment Solutions | ARN-337744"/>
@@ -51,7 +50,7 @@
     {"@type": "City", "name": "Noida"},
     {"@type": "Country", "name": "India"}
   ],
-  "url": "https://arthainvestmentsolutions.github.io/",
+  "url": "https://arthainvestmentsolutions.com/",
   "identifier": "ARN-337744",
   "telephone": "+919818038954",
   "email": "parikshitartha@gmail.com",
@@ -532,6 +531,67 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 .rev-submitted{display:none;text-align:center;padding:32px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px}
 .rev-submitted svg{width:48px;height:48px;color:var(--green);margin:0 auto 16px;display:block}
 
+
+/* ── WHATSAPP FLOATING BUTTON ─────────────────────────── */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:12px 20px 12px 14px;border-radius:999px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 32px rgba(37,211,102,0.35);text-decoration:none;transition:all .25s;white-space:nowrap}
+.wa-float:hover{background:#20b858;transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,0.45)}
+.wa-float svg{width:22px;height:22px;flex-shrink:0}
+@media(max-width:600px){.wa-float{padding:12px;border-radius:50%;bottom:20px;right:20px}.wa-float span{display:none}}
+
+/* ── SOCIAL PROOF STRIP ───────────────────────────────── */
+.proof-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;margin-bottom:48px}
+@media(max-width:640px){.proof-strip{grid-template-columns:1fr 1fr}}
+.proof-item{background:var(--ink2);padding:28px 20px;text-align:center;position:relative;overflow:hidden;transition:background .2s}
+.proof-item:hover{background:var(--ink3)}
+.proof-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.proof-item:hover::before{opacity:1}
+.proof-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+.proof-lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.38);line-height:1.5}
+
+/* ── PRODUCTS SECTION ─────────────────────────────────── */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden}
+@media(max-width:860px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.prod-grid{grid-template-columns:1fr}}
+.prod-card{background:var(--ink2);padding:28px 24px;transition:background .25s;cursor:default}
+.prod-card:hover{background:var(--ink3)}
+.prod-icon{width:44px;height:44px;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:16px;transition:border-color .25s}
+.prod-card:hover .prod-icon{border-color:var(--gold)}
+.prod-icon svg{width:20px;height:20px}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.prod-desc{font-size:13px;color:rgba(245,240,232,0.48);line-height:1.68;margin-bottom:12px}
+.prod-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-d);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.prod-min{font-size:11px;color:rgba(245,240,232,0.3);margin-top:8px}
+
+
+/* ── WHATSAPP FLOATING BUTTON ─────────────────────────── */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:12px 20px 12px 14px;border-radius:999px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 8px 32px rgba(37,211,102,0.35);text-decoration:none;transition:all .25s;white-space:nowrap}
+.wa-float:hover{background:#20b858;transform:translateY(-3px);box-shadow:0 14px 40px rgba(37,211,102,0.45)}
+.wa-float svg{width:22px;height:22px;flex-shrink:0}
+@media(max-width:600px){.wa-float span{display:none}.wa-float{padding:13px;border-radius:50%}}
+
+/* ── SOCIAL PROOF STRIP ───────────────────────────────── */
+.proof-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden;margin-bottom:56px}
+@media(max-width:640px){.proof-strip{grid-template-columns:1fr 1fr}}
+.proof-item{background:var(--ink2);padding:30px 20px;text-align:center;position:relative;overflow:hidden;transition:background .2s}
+.proof-item:hover{background:var(--ink3)}
+.proof-item::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.proof-item:hover::before{opacity:1}
+.proof-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:7px}
+.proof-lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,0.38);line-height:1.6}
+
+/* ── PRODUCTS SECTION ─────────────────────────────────── */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:var(--rl);overflow:hidden}
+@media(max-width:860px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.prod-grid{grid-template-columns:1fr}}
+.prod-card{background:var(--ink2);padding:28px 24px;transition:background .25s}
+.prod-card:hover{background:var(--ink3)}
+.prod-icon{width:44px;height:44px;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:16px;transition:border-color .25s}
+.prod-card:hover .prod-icon{border-color:var(--gold)}
+.prod-icon svg{width:20px;height:20px}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.prod-desc{font-size:13px;color:rgba(245,240,232,0.48);line-height:1.68;margin-bottom:12px}
+.prod-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-d);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+
 </style>
 </head>
 <body>
@@ -541,6 +601,8 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
     <a href="#top" class="logo">Artha Investment Solutions<small>AMFI-Registered MFD &middot; ARN-337744 &middot; Delhi NCR</small></a>
     <div class="nl">
       <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#products">Products</a>
       <a href="#services">Services</a>
       <a href="#calculator">SIP Calculator</a>
       <a href="#locations">Locations</a>
@@ -826,6 +888,210 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 </section>
 
 
+
+<!-- SOCIAL PROOF STRIP -->
+<section id="proof" style="padding:56px 0;border-bottom:1px solid var(--line2)">
+  <div class="wrap">
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">20+</div>
+        <div class="proof-lbl">Clients<br>Advised</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">&#8377;10Cr+</div>
+        <div class="proof-lbl">Portfolios<br>Reviewed</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">&#8377;40L</div>
+        <div class="proof-lbl">Minimum<br>Ticket Size</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">6+</div>
+        <div class="proof-lbl">Investment<br>Products</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="eyebrow">What We Offer</div>
+    <h2 class="st">Every investment product.<br>One trusted advisor.</h2>
+    <p class="ss">From your first &#8377;500 SIP to a &#8377;50L+ PMS portfolio — Artha covers the full spectrum so you never need to go anywhere else.</p>
+    <div class="prod-grid">
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <div class="prod-name">Mutual Funds &amp; SIP</div>
+        <div class="prod-desc">Equity, debt, flexi-cap and ELSS funds. SIP, STP and lumpsum strategies with regular monitoring and rebalancing.</div>
+        <span class="prod-tag">&#8377;500/month onwards</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="prod-name">PMS &amp; AIF</div>
+        <div class="prod-desc">Portfolio Management Services and Alternative Investment Funds for HNI investors seeking superior risk-adjusted returns.</div>
+        <span class="prod-tag">&#8377;50L minimum</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="prod-name">Bonds &amp; Fixed Income</div>
+        <div class="prod-desc">Corporate bonds, government securities and debentures for stable, predictable returns. Ideal for conservative or retired investors.</div>
+        <span class="prod-tag">Capital protection</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="prod-name">Fixed Deposits</div>
+        <div class="prod-desc">Bank and corporate FDs with competitive rates. We compare across issuers to get you the best guaranteed return for your tenure.</div>
+        <span class="prod-tag">Guaranteed returns</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="prod-name">Stocks &amp; Pre-IPO</div>
+        <div class="prod-desc">Direct equity via Motilal Oswal sub-broker platform. Access to Pre-IPO opportunities and Sovereign Gold Bonds for long-term wealth.</div>
+        <span class="prod-tag">Sub-broker: Motilal Oswal</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/><path d="M9 12l2 2 4-5"/></svg></div>
+        <div class="prod-name">Term &amp; Health Insurance</div>
+        <div class="prod-desc">Pure term plans and health covers tailored to your income and liabilities. Protection-first approach before any investment is made.</div>
+        <span class="prod-tag">Family protection</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM1 10h22"/></svg></div>
+        <div class="prod-name">NPS &amp; ELSS</div>
+        <div class="prod-desc">National Pension System and ELSS funds for maximum 80C and 80CCD(1B) tax deductions. Save up to &#8377;75,000 in taxes annually.</div>
+        <span class="prod-tag">&#8377;75K tax saving</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="prod-name">Financial Planning</div>
+        <div class="prod-desc">Goal-based plans for retirement, children's education, home purchase, emergency fund and wealth creation — mapped to your timeline.</div>
+        <span class="prod-tag">Holistic planning</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <div class="prod-name">Portfolio Review</div>
+        <div class="prod-desc">In-depth analysis of your existing investments — overlap detection, risk audit, asset allocation review and a rebalancing roadmap.</div>
+        <span class="prod-tag">&#8377;40L+ portfolios</span>
+      </div>
+
+    </div>
+    <div class="disc" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span><strong style="color:var(--gold)">Disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully before investing. PMS minimum investment &#8377;50 lakhs as per SEBI regulations.</span></div>
+  </div>
+</section>
+
+
+
+<!-- SOCIAL PROOF -->
+<section id="proof" style="padding:64px 0">
+  <div class="wrap">
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">20+</div>
+        <div class="proof-lbl">Clients<br>Advised</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">&#8377;10Cr+</div>
+        <div class="proof-lbl">Portfolios<br>Reviewed</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">&#8377;40L</div>
+        <div class="proof-lbl">Min. Ticket<br>Size</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">9+</div>
+        <div class="proof-lbl">Investment<br>Products</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--ink2)">
+  <div class="wrap">
+    <div class="eyebrow">Investment Products</div>
+    <h2 class="st">Every product. One advisor.</h2>
+    <p class="ss">From your first &#8377;500 SIP to a &#8377;50L+ PMS portfolio — Artha covers the full spectrum so you never need to go anywhere else.</p>
+    <div class="prod-grid">
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <div class="prod-name">Mutual Funds &amp; SIP</div>
+        <div class="prod-desc">Equity, debt, flexi-cap and ELSS funds. SIP, STP and lumpsum with regular rebalancing.</div>
+        <span class="prod-tag">&#8377;500/month onwards</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="prod-name">PMS &amp; AIF</div>
+        <div class="prod-desc">Portfolio Management Services and Alternative Investment Funds for HNI investors seeking superior returns.</div>
+        <span class="prod-tag">&#8377;50L minimum</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="prod-name">Bonds &amp; Debentures</div>
+        <div class="prod-desc">Corporate bonds, government securities and debentures for stable, predictable fixed-income returns.</div>
+        <span class="prod-tag">Capital protection</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <div class="prod-name">Fixed Deposits</div>
+        <div class="prod-desc">Bank and corporate FDs compared across issuers to get you the best guaranteed return for your tenure.</div>
+        <span class="prod-tag">Guaranteed returns</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="prod-name">Stocks &amp; Pre-IPO</div>
+        <div class="prod-desc">Direct equity via Motilal Oswal. Access to Pre-IPO opportunities and Sovereign Gold Bonds.</div>
+        <span class="prod-tag">Motilal Oswal sub-broker</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 4v6c0 5-3 8-7 8s-7-3-7-8V6l7-4Z"/><path d="M9 12l2 2 4-5"/></svg></div>
+        <div class="prod-name">Term &amp; Health Insurance</div>
+        <div class="prod-desc">Pure term and health covers tailored to your income and liabilities. Protection before investment.</div>
+        <span class="prod-tag">Family protection</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM1 10h22"/></svg></div>
+        <div class="prod-name">NPS &amp; ELSS</div>
+        <div class="prod-desc">National Pension System and ELSS for 80C and 80CCD(1B) deductions. Save up to &#8377;75,000 in taxes annually.</div>
+        <span class="prod-tag">&#8377;75K tax saving</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <div class="prod-name">Portfolio Review</div>
+        <div class="prod-desc">Overlap detection, risk audit, asset allocation analysis and a clear rebalancing roadmap for existing investors.</div>
+        <span class="prod-tag">&#8377;40L+ portfolios</span>
+      </div>
+
+      <div class="prod-card">
+        <div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <div class="prod-name">Financial Planning</div>
+        <div class="prod-desc">Goal-based plans for retirement, children's education, home purchase and emergency fund — mapped to your life.</div>
+        <span class="prod-tag">Holistic planning</span>
+      </div>
+
+    </div>
+    <div class="disc" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg><span><strong style="color:var(--gold)">Disclosure:</strong> Mutual Fund investments are subject to market risks. Read all scheme related documents carefully. PMS minimum &#8377;50 lakhs per SEBI regulations.</span></div>
+  </div>
+</section>
+
+
 <!-- SERVICES -->
 <section id="services">
   <div class="wrap">
@@ -1088,9 +1354,10 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
       <div class="ipanel">
         <div class="icard">
           <h3>Contact Details</h3>
-           <div class="ir"><span class="ik">Email</span><span class="iv"><a id="contactEmail" href="#" style="color:var(--gold)">parikshitartha@gmail.com</a></span></div>
-      
+          <div class="ir"><span class="ik">Email</span><span class="iv"><a id="contactEmail" href="#" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="156574677c7e667d7c617467617d74557278747c793b767a78">[email&#160;protected]</span></a></span></div>
           <div class="ir"><span class="ik">Phone</span><span class="iv"><a href="tel:+919818038954" style="color:var(--gold)">+91 98180 38954</a></span></div>
+          <div class="ir"><span class="ik">WhatsApp</span><span class="iv"><a href="https://wa.me/919205100321?text=Hi%20Parikshit%2C%20I%20would%20like%20a%20free%20consultation." target="_blank" rel="noopener" style="color:var(--gold)">+91 92051 00321</a></span></div>
+          <div class="ir"><span class="ik">WhatsApp</span><span class="iv"><a href="https://wa.me/919205100321?text=Hi%20Parikshit%2C%20I%20found%20your%20website%20and%20would%20like%20a%20free%20consultation." target="_blank" rel="noopener" style="color:var(--gold)">+91 92051 00321</a></span></div>
           <div class="ir"><span class="ik">Areas</span><span class="iv">Delhi &middot; Gurgaon &middot; Noida &middot; Faridabad</span></div>
           <div class="ir"><span class="ik">Hours</span><span class="iv">Mon&ndash;Sat, 10 AM &ndash; 7 PM</span></div>
         </div>
@@ -1303,7 +1570,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 
 
 <!-- Modal -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ─── Year ────────────────────────────────────────────────
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -1629,7 +1896,14 @@ FIELDS.forEach(function(f) {
     if (msg) msg.classList.remove('show');
   });
 });
-// ── REVIEWS ──────────────────────────────────────────────
+// ── Email anti-obfuscation (Cloudflare cannot scan JS-constructed strings) ──
+(function(){
+  var u='parikshitartha';var d='gmail.com';var e=u+'@'+d;
+  var a=document.getElementById('contactEmail');
+  if(a){a.href='mailto:'+e;a.textContent=e;}
+})();
+
+
 var revStars = 0;
 
 function setStars(n) {
@@ -1692,5 +1966,10 @@ function submitReview() {
 
 </script>
 
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/919205100321?text=Hi%20Parikshit%2C%20I%20found%20your%20website%20and%20would%20like%20a%20free%20consultation." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.524 5.845L0 24l6.335-1.505A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.371l-.36-.214-3.732.887.926-3.63-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
 </body>
 </html>
