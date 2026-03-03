@@ -1230,7 +1230,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
             <span class="btn-label">Send Message — It&rsquo;s Free</span>
           </button>
           <p class="fcon">By submitting, you agree to be contacted by Artha Investment Solutions. No spam, ever.</p>
-          <div class="form-error" id="formError">Something went wrong. Please call us directly at <strong>+91 98180 38954</strong>.</div>
+          <div class="form-error" id="formError">Something went wrong. <a href="https://wa.me/919205100321?text=Hi%20Parikshit%2C%20I%20would%20like%20a%20free%20consultation." target="_blank" style="color:var(--gold);font-weight:700">WhatsApp us directly</a> or call <strong>+91 98180 38954</strong>.</div>
         </form>
       </div>
       <div class="ipanel">
@@ -1717,6 +1717,21 @@ function sendLead() {
   var url = SCRIPT_URL + '?' + qs;
   var delivered = false;
 
+  // ── mailto fallback — fires immediately so email client is ready ──
+  var mailBody =
+    'New Lead from arthainvestmentsolutions.com\n\n' +
+    'Name:    ' + payload.name    + '\n' +
+    'Email:   ' + payload.email   + '\n' +
+    'Phone:   ' + payload.phone   + '\n' +
+    'City:    ' + payload.city    + '\n' +
+    'Service: ' + payload.service + '\n' +
+    'Message: ' + payload.message + '\n' +
+    'Date:    ' + payload.date;
+  var mailSubject = 'New Lead: ' + payload.name + ' (' + payload.city + ')';
+  var mailLink = 'mailto:parikshitartha@gmail.com'
+    + '?subject=' + encodeURIComponent(mailSubject)
+    + '&body='    + encodeURIComponent(mailBody);
+
   function done() {
     if (delivered) return;
     delivered = true;
@@ -1732,12 +1747,24 @@ function sendLead() {
     showModal(payload.name);
   }
 
-  try { fetch(url, { method: 'GET', mode: 'no-cors' }).then(function() { setTimeout(done, 300); }).catch(function(){}); } catch(e) {}
+  // ── Try Google Sheets script first (3 methods) ────────────────
+  var scriptOk = false;
+  try {
+    fetch(url, { method: 'GET', mode: 'no-cors' })
+      .then(function() { scriptOk = true; setTimeout(done, 300); })
+      .catch(function() {
+        // Script failed — open mailto fallback silently
+        if (!scriptOk) { window.location.href = mailLink; }
+      });
+  } catch(e) {}
+
   try {
     var img = new Image();
-    img.onload = img.onerror = function() { setTimeout(done, 300); };
+    img.onload = function() { scriptOk = true; setTimeout(done, 300); };
+    img.onerror = function() {};
     img.src = url;
   } catch(e) {}
+
   try {
     var ifr = document.createElement('iframe');
     ifr.style.display = 'none';
@@ -1745,7 +1772,15 @@ function sendLead() {
     document.body.appendChild(ifr);
     setTimeout(function() { try { document.body.removeChild(ifr); } catch(e) {} }, 5000);
   } catch(e) {}
-  setTimeout(done, 3000);
+
+  // ── Timeout fallback: if script never responds, open mailto ──
+  setTimeout(function() {
+    if (!delivered) {
+      done(); // show success modal
+      // Also open email as backup so lead is never lost
+      setTimeout(function() { window.location.href = mailLink; }, 800);
+    }
+  }, 4000);
 }
 
 function showModal(userName) {
