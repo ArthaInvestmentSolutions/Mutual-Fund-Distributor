@@ -1655,7 +1655,7 @@ sipCalc();
 // ══════════════════════════════════════════════════════════
 //  CONTACT FORM
 // ══════════════════════════════════════════════════════════
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyRfXX_-Q7SKQSz6sHhTapJ6qVdQxkfbXwhRgmDzpbxkBN7cId0XU98TyFtaArhoCGk/exec';
+var SCRIPT_URL = ''; // Replaced by Formspree — kept for review submission fallback
 
 var FIELDS = [
   { id: 'fname',    required: true  },
@@ -1716,76 +1716,51 @@ function sendLead() {
     date:    new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
   };
 
-  var qs  = Object.keys(payload).map(function(k) {
-    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
-  }).join('&');
-  var url = SCRIPT_URL + '?' + qs;
-  var delivered = false;
-
-  // ── mailto fallback — fires immediately so email client is ready ──
-  var mailBody =
-    'New Lead from arthainvestmentsolutions.com\n\n' +
-    'Name:    ' + payload.name    + '\n' +
-    'Email:   ' + payload.email   + '\n' +
-    'Phone:   ' + payload.phone   + '\n' +
-    'City:    ' + payload.city    + '\n' +
-    'Service: ' + payload.service + '\n' +
-    'Message: ' + payload.message + '\n' +
-    'Date:    ' + payload.date;
-  var mailSubject = 'New Lead: ' + payload.name + ' (' + payload.city + ')';
-  var mailLink = 'mailto:parikshitartha@gmail.com'
-    + '?subject=' + encodeURIComponent(mailSubject)
-    + '&body='    + encodeURIComponent(mailBody);
-
-  function done() {
-    if (delivered) return;
-    delivered = true;
+  // ── Submit to Formspree ──────────────────────────────────────
+  fetch('https://formspree.io/f/mvzwpvoo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
     btn.disabled = false;
     btn.classList.remove('loading');
-    document.getElementById('leadForm').reset();
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'lead_form_submit', {
-        event_category: 'Contact',
-        event_label: payload.city + ' — ' + payload.service
-      });
+    if (data.ok) {
+      document.getElementById('leadForm').reset();
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'lead_form_submit', {
+          event_category: 'Contact',
+          event_label: payload.city + ' — ' + payload.service
+        });
+      }
+      showModal(payload.name);
+    } else {
+      // Formspree returned error — show fallback
+      document.getElementById('formError').style.display = 'block';
+      btn.disabled = false;
+      btn.classList.remove('loading');
     }
+  })
+  .catch(function() {
+    // Network error — mailto fallback so lead is never lost
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    var mailBody =
+      'New Lead from arthainvestmentsolutions.com\n\n' +
+      'Name:    ' + payload.name    + '\n' +
+      'Email:   ' + payload.email   + '\n' +
+      'Phone:   ' + payload.phone   + '\n' +
+      'City:    ' + payload.city    + '\n' +
+      'Service: ' + payload.service + '\n' +
+      'Message: ' + payload.message + '\n' +
+      'Date:    ' + payload.date;
+    var mailSubject = 'New Lead: ' + payload.name + ' (' + payload.city + ')';
+    window.location.href = 'mailto:parikshitartha@gmail.com'
+      + '?subject=' + encodeURIComponent(mailSubject)
+      + '&body='    + encodeURIComponent(mailBody);
     showModal(payload.name);
-  }
-
-  // ── Try Google Sheets script first (3 methods) ────────────────
-  var scriptOk = false;
-  try {
-    fetch(url, { method: 'GET', mode: 'no-cors' })
-      .then(function() { scriptOk = true; setTimeout(done, 300); })
-      .catch(function() {
-        // Script failed — open mailto fallback silently
-        if (!scriptOk) { window.location.href = mailLink; }
-      });
-  } catch(e) {}
-
-  try {
-    var img = new Image();
-    img.onload = function() { scriptOk = true; setTimeout(done, 300); };
-    img.onerror = function() {};
-    img.src = url;
-  } catch(e) {}
-
-  try {
-    var ifr = document.createElement('iframe');
-    ifr.style.display = 'none';
-    ifr.src = url;
-    document.body.appendChild(ifr);
-    setTimeout(function() { try { document.body.removeChild(ifr); } catch(e) {} }, 5000);
-  } catch(e) {}
-
-  // ── Timeout fallback: if script never responds, open mailto ──
-  setTimeout(function() {
-    if (!delivered) {
-      done(); // show success modal
-      // Also open email as backup so lead is never lost
-      setTimeout(function() { window.location.href = mailLink; }, 800);
-    }
-  }, 4000);
+  });
 }
 
 function showModal(userName) {
