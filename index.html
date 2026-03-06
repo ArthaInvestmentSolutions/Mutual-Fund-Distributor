@@ -507,22 +507,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 .about-cred-lbl{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,0.3)}
 
 /* ── REVIEWS SECTION ─────────────────────────────────────── */
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
-@media(max-width:860px){.rev-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.rev-grid{grid-template-columns:1fr}}
 
-.rev-card{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:26px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
-.rev-card:hover{border-color:var(--line);transform:translateY(-3px)}
-.rev-card::before{content:'"';position:absolute;top:-8px;right:16px;font-family:'Cormorant Garamond',serif;font-size:96px;color:var(--gold);opacity:.07;line-height:1;pointer-events:none}
-.rev-stars{display:flex;gap:3px;margin-bottom:14px}
-.rev-stars svg{width:13px;height:13px;color:var(--gold);fill:var(--gold)}
-.rev-text{font-size:14px;color:rgba(245,240,232,0.62);line-height:1.75;margin-bottom:18px;font-style:italic}
-.rev-author{display:flex;align-items:center;gap:11px}
-.rev-avatar{width:38px;height:38px;border-radius:50%;background:var(--gold-d);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold);flex-shrink:0}
-.rev-name{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:1px}
-.rev-meta{font-size:11px;color:rgba(245,240,232,0.32);font-weight:500}
-
-/* Review form */
 .rev-form-wrap{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:36px;margin-top:8px}
 .rev-form-wrap h3{font-size:22px;color:var(--cream);margin-bottom:6px}
 .rev-form-sub{font-size:14px;color:rgba(245,240,232,0.42);margin-bottom:24px}
@@ -596,6 +581,46 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 .prod-name{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--cream);margin-bottom:6px}
 .prod-desc{font-size:13px;color:rgba(245,240,232,0.48);line-height:1.68;margin-bottom:12px}
 .prod-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-d);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+
+
+/* ── REVIEWS CAROUSEL ─────────────────────────────────── */
+.rev-carousel-wrap{position:relative;margin-bottom:40px}
+.rev-carousel{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:4px 2px 16px;cursor:grab}
+.rev-carousel::-webkit-scrollbar{display:none}
+.rev-carousel.grabbing{cursor:grabbing}
+.rev-card{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:28px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;flex:0 0 320px;min-width:320px}
+@media(max-width:600px){.rev-card{flex:0 0 280px;min-width:280px}}
+.rev-card:hover{border-color:var(--line);transform:translateY(-3px)}
+.rev-card::before{content:'"';position:absolute;top:-8px;right:16px;font-family:'Cormorant Garamond',serif;font-size:96px;color:var(--gold);opacity:.07;line-height:1;pointer-events:none}
+.rev-stars{display:flex;gap:3px;margin-bottom:14px}
+.rev-stars svg{width:13px;height:13px;color:var(--gold);fill:var(--gold)}
+.rev-text{font-size:14px;color:rgba(245,240,232,0.62);line-height:1.75;margin-bottom:18px;font-style:italic}
+.rev-author{display:flex;align-items:center;gap:11px}
+.rev-avatar{width:38px;height:38px;border-radius:50%;background:var(--gold-d);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--gold);flex-shrink:0}
+.rev-name{font-size:14px;font-weight:600;color:var(--cream);margin-bottom:1px}
+.rev-meta{font-size:11px;color:rgba(245,240,232,0.32)}
+
+/* Carousel nav arrows */
+.rev-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.rev-nav-btns{display:flex;gap:8px}
+.rev-nav-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--ink2);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;flex-shrink:0}
+.rev-nav-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.rev-nav-btn svg{width:16px;height:16px}
+.rev-count{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.3)}
+
+/* Review form */
+.rev-form-wrap{background:var(--ink2);border:1px solid var(--line2);border-radius:var(--rl);padding:36px;margin-top:8px}
+.rev-form-wrap h3{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);margin-bottom:6px}
+.rev-form-sub{font-size:14px;color:rgba(245,240,232,0.42);margin-bottom:24px}
+.rev-star-pick{display:flex;gap:6px;margin-bottom:20px}
+.rev-star-btn{background:none;border:none;cursor:pointer;padding:2px;transition:transform .15s}
+.rev-star-btn:hover{transform:scale(1.2)}
+.rev-star-btn svg{width:28px;height:28px;stroke:var(--gold);fill:none;transition:fill .15s}
+.rev-star-btn.lit svg{fill:var(--gold)}
+.rev-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:540px){.rev-form-row{grid-template-columns:1fr}}
+.rev-submitted{display:none;text-align:center;padding:32px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px}
+.rev-submitted svg{width:48px;height:48px;color:var(--green);margin:0 auto 16px;display:block}
 
 </style>
 </head>
@@ -1268,63 +1293,51 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
     <h2 class="st">What investors say about Artha</h2>
     <p class="ss">Real feedback from investors across Delhi, Gurgaon, Noida and Faridabad.</p>
 
-    <!-- Existing reviews -->
-    <div class="rev-grid" id="reviewsGrid">
+    <!-- Carousel nav -->
+    <div class="rev-nav">
+      <div class="rev-count" id="revCount">3 reviews</div>
+      <div class="rev-nav-btns">
+        <button class="rev-nav-btn" onclick="revScroll(-1)" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="rev-nav-btn" onclick="revScroll(1)" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
 
-      <div class="rev-card">
-        <div class="rev-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">Parikshit helped me start my first SIP at just &#8377;2,000/month. Two years later I have a proper financial plan, term insurance and an ELSS portfolio. He explains everything in plain Hindi or English — no jargon.</p>
-        <div class="rev-author">
-          <div class="rev-avatar">R</div>
-          <div>
-            <div class="rev-name">Rahul Verma</div>
-            <div class="rev-meta">Software Engineer &middot; Noida</div>
+    <!-- Scrollable carousel -->
+    <div class="rev-carousel-wrap">
+      <div class="rev-carousel" id="revCarousel">
+
+        <div class="rev-card">
+          <div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="rev-text">Parikshit helped me start my first SIP at just &#8377;2,000/month. Two years later I have a proper financial plan, term insurance and an ELSS portfolio. He explains everything in plain Hindi or English — no jargon.</p>
+          <div class="rev-author">
+            <div class="rev-avatar">R</div>
+            <div><div class="rev-name">Rahul Verma</div><div class="rev-meta">Software Engineer &middot; Noida</div></div>
           </div>
         </div>
-      </div>
 
-      <div class="rev-card">
-        <div class="rev-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">I was confused between ELSS, PPF and NPS for tax saving. Parikshit sat with me for an hour, understood my salary structure and suggested the right mix. Saved &#8377;46,000 in taxes last year. Highly recommended.</p>
-        <div class="rev-author">
-          <div class="rev-avatar">P</div>
-          <div>
-            <div class="rev-name">Priya Sharma</div>
-            <div class="rev-meta">Marketing Manager &middot; Gurgaon</div>
+        <div class="rev-card">
+          <div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="rev-text">I was confused between ELSS, PPF and NPS for tax saving. Parikshit sat with me for an hour, understood my salary structure and suggested the right mix. Saved &#8377;46,000 in taxes last year. Highly recommended.</p>
+          <div class="rev-author">
+            <div class="rev-avatar">P</div>
+            <div><div class="rev-name">Priya Sharma</div><div class="rev-meta">Marketing Manager &middot; Gurgaon</div></div>
           </div>
         </div>
-      </div>
 
-      <div class="rev-card">
-        <div class="rev-stars">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <p class="rev-text">As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind. Very professional.</p>
-        <div class="rev-author">
-          <div class="rev-avatar">A</div>
-          <div>
-            <div class="rev-name">Amit Gupta</div>
-            <div class="rev-meta">Business Owner &middot; Faridabad</div>
+        <div class="rev-card">
+          <div class="rev-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="rev-text">As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind. Very professional.</p>
+          <div class="rev-author">
+            <div class="rev-avatar">A</div>
+            <div><div class="rev-name">Amit Gupta</div><div class="rev-meta">Business Owner &middot; Faridabad</div></div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
 
     <!-- Review submission form -->
@@ -1333,7 +1346,6 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
       <p class="rev-form-sub">Invested with Artha? Your review helps other Delhi NCR investors make informed decisions.</p>
 
       <div id="revFormInner">
-        <!-- Star picker -->
         <div style="margin-bottom:20px">
           <label style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.38);display:block;margin-bottom:10px">Your Rating</label>
           <div class="rev-star-pick" id="starPicker">
@@ -1364,7 +1376,7 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
           </div>
         </div>
 
-        <div class="fg" style="margin-bottom:16px">
+        <div class="fg" style="margin-bottom:12px">
           <label for="rv_role">Your Profession (optional)</label>
           <input type="text" id="rv_role" placeholder="e.g. Software Engineer, Business Owner">
         </div>
@@ -1801,10 +1813,68 @@ FIELDS.forEach(function(f) {
 
 
 var revStars = 0;
+var STORAGE_KEY = 'artha_reviews_v1';
+
+var seedReviews = [
+  { name:'Rahul Verma',  city:'Noida',     role:'Software Engineer', stars:5, text:'Parikshit helped me start my first SIP at just ₹2,000/month. Two years later I have a proper financial plan, term insurance and an ELSS portfolio. He explains everything in plain Hindi or English — no jargon.' },
+  { name:'Priya Sharma', city:'Gurgaon',   role:'Marketing Manager', stars:5, text:'I was confused between ELSS, PPF and NPS for tax saving. Parikshit sat with me for an hour, understood my salary structure and suggested the right mix. Saved ₹46,000 in taxes last year. Highly recommended.' },
+  { name:'Amit Gupta',   city:'Faridabad', role:'Business Owner',    stars:5, text:'As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind.' }
+];
+
+function makeStars(n) {
+  var s = '';
+  for (var i = 0; i < n; i++) {
+    s += '<svg viewBox="0 0 24 24" style="width:13px;height:13px;color:var(--gold);fill:var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+  }
+  return s;
+}
+
+function makeCard(r) {
+  var initials = r.name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
+  var meta = r.role ? r.role + (r.city ? ' · ' + r.city : '') : (r.city || '');
+  var card = document.createElement('div');
+  card.className = 'rev-card';
+  card.innerHTML =
+    '<div class="rev-stars">' + makeStars(r.stars) + '</div>' +
+    '<p class="rev-text">' + r.text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' +
+    '<div class="rev-author">' +
+      '<div class="rev-avatar">' + initials + '</div>' +
+      '<div><div class="rev-name">' + r.name + '</div>' +
+      '<div class="rev-meta">' + meta + '</div></div>' +
+    '</div>';
+  return card;
+}
+
+function loadReviews() {
+  var carousel = document.getElementById('revCarousel');
+  if (!carousel) return;
+  carousel.innerHTML = '';
+  var saved = [];
+  try { var raw = localStorage.getItem(STORAGE_KEY); if (raw) saved = JSON.parse(raw); } catch(e) {}
+  var all = seedReviews.concat(saved);
+  all.sort(function(a,b){ return b.stars - a.stars; });
+  all.forEach(function(r){ carousel.appendChild(makeCard(r)); });
+  var countEl = document.getElementById('revCount');
+  if (countEl) countEl.textContent = all.length + ' review' + (all.length !== 1 ? 's' : '');
+  enableDrag(carousel);
+}
+
+function enableDrag(el) {
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e){ isDown=true; el.classList.add('grabbing'); startX=e.pageX-el.offsetLeft; scrollLeft=el.scrollLeft; });
+  el.addEventListener('mouseleave', function(){ isDown=false; el.classList.remove('grabbing'); });
+  el.addEventListener('mouseup',    function(){ isDown=false; el.classList.remove('grabbing'); });
+  el.addEventListener('mousemove',  function(e){ if(!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft-(e.pageX-el.offsetLeft-startX)*1.5; });
+}
+
+function revScroll(dir) {
+  var c = document.getElementById('revCarousel');
+  if (c) c.scrollBy({ left: dir * 340, behavior: 'smooth' });
+}
 
 function setStars(n) {
   revStars = n;
-  document.querySelectorAll('.rev-star-btn').forEach(function(btn) {
+  document.querySelectorAll('.rev-star-btn').forEach(function(btn){
     btn.classList.toggle('lit', parseInt(btn.dataset.v) <= n);
   });
 }
@@ -1816,58 +1886,49 @@ function submitReview() {
   var text = document.getElementById('rv_text').value.trim();
   var err  = document.getElementById('revError');
 
-  // Validate
-  if (!name || !text || revStars === 0) {
-    err.style.display = 'block';
-    return;
-  }
+  if (!name || !text || revStars === 0) { err.style.display = 'block'; return; }
   err.style.display = 'none';
 
-  // Build star SVGs
-  var stars = '';
-  for (var i = 0; i < revStars; i++) {
-    stars += '<svg viewBox="0 0 24 24" style="width:13px;height:13px;color:var(--gold);fill:var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-  }
+  var review = { name:name, city:city, role:role, stars:revStars, text:text, date:new Date().toISOString() };
 
-  // Build meta string
-  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0, 2);
-  var metaStr  = role ? role + (city ? ' &middot; ' + city : '') : (city || '');
+  // Persist to localStorage
+  try {
+    var saved = [];
+    try { var raw = localStorage.getItem(STORAGE_KEY); if (raw) saved = JSON.parse(raw); } catch(e) {}
+    saved.push(review);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  } catch(e) {}
 
-  // Append card to grid instantly
-  var card = document.createElement('div');
-  card.className = 'rev-card';
-  card.innerHTML =
-    '<div class="rev-stars">' + stars + '</div>' +
-    '<p class="rev-text">' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</p>' +
-    '<div class="rev-author">' +
-      '<div class="rev-avatar">' + initials + '</div>' +
-      '<div>' +
-        '<div class="rev-name">' + name + '</div>' +
-        '<div class="rev-meta">' + metaStr + '</div>' +
-      '</div>' +
-    '</div>';
-  document.getElementById('reviewsGrid').appendChild(card);
+  // Reload carousel sorted by stars
+  loadReviews();
+  setTimeout(function(){
+    var c = document.getElementById('revCarousel');
+    if (c) c.scrollTo({ left: c.scrollWidth, behavior: 'smooth' });
+  }, 150);
 
-  // Send to Formspree so review lands in Gmail
+  // Email via Formspree
   fetch('https://formspree.io/f/mvzwpvoo', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
       name:    name,
-      email:   'review@arthainvestmentsolutions.com',
-      phone:   'N/A',
+      email:   'parikshitartha@gmail.com',
+      _replyto:'parikshitartha@gmail.com',
+      phone:   'Review Submission',
       city:    city || 'Not specified',
-      service: 'Review — ' + revStars + ' stars',
+      service: '⭐ New Review — ' + revStars + '/5 stars from ' + name,
       message: text,
       role:    role || 'Not provided',
       date:    new Date().toLocaleString('en-IN')
     })
-  }).catch(function() {}); // silent — card already shown
+  }).catch(function(){});
 
-  // Show thank you message
   document.getElementById('revFormInner').style.display = 'none';
   document.getElementById('revThanks').style.display = 'block';
 }
+
+document.addEventListener('DOMContentLoaded', loadReviews);
+
 
 </script>
 
