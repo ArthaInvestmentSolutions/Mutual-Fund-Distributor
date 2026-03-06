@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-
-  
 <!-- Favicons — upload all PNG files to GitHub repo root -->
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -1812,52 +1810,61 @@ function setStars(n) {
 }
 
 function submitReview() {
-  var name  = document.getElementById('rv_name').value.trim();
-  var city  = document.getElementById('rv_city').value;
-  var role  = document.getElementById('rv_role').value.trim();
-  var text  = document.getElementById('rv_text').value.trim();
-  var err   = document.getElementById('revError');
+  var name = document.getElementById('rv_name').value.trim();
+  var city = document.getElementById('rv_city').value;
+  var role = document.getElementById('rv_role') ? document.getElementById('rv_role').value.trim() : '';
+  var text = document.getElementById('rv_text').value.trim();
+  var err  = document.getElementById('revError');
 
+  // Validate
   if (!name || !text || revStars === 0) {
     err.style.display = 'block';
     return;
   }
   err.style.display = 'none';
 
-  // Add card to grid
+  // Build star SVGs
   var stars = '';
   for (var i = 0; i < revStars; i++) {
     stars += '<svg viewBox="0 0 24 24" style="width:13px;height:13px;color:var(--gold);fill:var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
   }
-  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
+
+  // Build meta string
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0, 2);
   var metaStr  = role ? role + (city ? ' &middot; ' + city : '') : (city || '');
 
+  // Append card to grid instantly
   var card = document.createElement('div');
   card.className = 'rev-card';
-  card.style.animation = 'fu .5s ease both';
   card.innerHTML =
     '<div class="rev-stars">' + stars + '</div>' +
-    '<p class="rev-text">' + text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' +
+    '<p class="rev-text">' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</p>' +
     '<div class="rev-author">' +
       '<div class="rev-avatar">' + initials + '</div>' +
-      '<div><div class="rev-name">' + name + '</div>' +
-      '<div class="rev-meta">' + metaStr + '</div></div>' +
+      '<div>' +
+        '<div class="rev-name">' + name + '</div>' +
+        '<div class="rev-meta">' + metaStr + '</div>' +
+      '</div>' +
     '</div>';
-
   document.getElementById('reviewsGrid').appendChild(card);
 
-  // Also send to Google Sheets via existing SCRIPT_URL
-  try {
-    var params = 'name=' + encodeURIComponent(name) +
-      '&email=review@artha&phone=N/A' +
-      '&city=' + encodeURIComponent(city || 'Not specified') +
-      '&service=Review (' + revStars + ' stars)' +
-      '&message=' + encodeURIComponent(text) +
-      '&date=' + encodeURIComponent(new Date().toLocaleString('en-IN'));
-    new Image().src = SCRIPT_URL + '?' + params;
-  } catch(e) {}
+  // Send to Formspree so review lands in Gmail
+  fetch('https://formspree.io/f/mvzwpvoo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name:    name,
+      email:   'review@arthainvestmentsolutions.com',
+      phone:   'N/A',
+      city:    city || 'Not specified',
+      service: 'Review — ' + revStars + ' stars',
+      message: text,
+      role:    role || 'Not provided',
+      date:    new Date().toLocaleString('en-IN')
+    })
+  }).catch(function() {}); // silent — card already shown
 
-  // Show thank you
+  // Show thank you message
   document.getElementById('revFormInner').style.display = 'none';
   document.getElementById('revThanks').style.display = 'block';
 }
