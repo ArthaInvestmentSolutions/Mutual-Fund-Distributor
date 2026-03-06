@@ -115,9 +115,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 0;background:rg
 .ni{max-width:1160px;margin:auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:.02em;flex-shrink:0}
 .logo small{display:block;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(201,169,110,0.5);margin-top:1px}
-.nl{display:flex;gap:24px;flex-wrap:wrap}
-.nl a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.58);transition:color .2s}
-.nl a:hover{color:var(--gold)}
 .ncta{flex-shrink:0;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--gold);color:var(--gold);border-radius:var(--r);transition:all .2s}
 .ncta:hover{background:var(--gold);color:var(--ink)}
 @media(max-width:900px){.nl{display:none}}
@@ -622,6 +619,29 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
 .rev-submitted{display:none;text-align:center;padding:32px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:22px}
 .rev-submitted svg{width:48px;height:48px;color:var(--green);margin:0 auto 16px;display:block}
 
+
+/* ── DROPDOWN NAV ─────────────────────────────────────── */
+.nl{display:flex;gap:4px;align-items:center;flex-wrap:nowrap}
+.nl>a{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.58);transition:color .2s;padding:6px 10px;border-radius:var(--r);white-space:nowrap}
+.nl>a:hover{color:var(--gold)}
+@media(max-width:900px){.nl{display:none}}
+
+/* Dropdown trigger */
+.nav-drop{position:relative}
+.nav-drop-btn{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.58);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:var(--r);transition:color .2s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.nav-drop-btn:hover,.nav-drop-btn.open{color:var(--gold)}
+.nav-drop-btn svg{width:12px;height:12px;transition:transform .2s;flex-shrink:0}
+.nav-drop-btn.open svg{transform:rotate(180deg)}
+
+/* Dropdown menu */
+.nav-drop-menu{position:absolute;top:calc(100% + 10px);right:0;background:var(--ink2);border:1px solid var(--line);border-radius:var(--rl);padding:8px;min-width:200px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s;z-index:999;box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+.nav-drop-menu::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:var(--rl) var(--rl) 0 0}
+.nav-drop.open .nav-drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-drop-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,0.55);border-radius:var(--r);transition:all .2s;white-space:nowrap}
+.nav-drop-menu a:hover{color:var(--gold);background:rgba(201,169,110,0.07)}
+.nav-drop-menu a svg{width:14px;height:14px;color:var(--gold);opacity:.7;flex-shrink:0}
+.nav-drop-divider{height:1px;background:var(--line2);margin:6px 0}
+
 </style>
 </head>
 <body>
@@ -632,14 +652,39 @@ input.field-err,select.field-err,textarea.field-err{border-color:#ff5050!importa
     <div class="nl">
       <a href="#about">About</a>
       <a href="#products">Products</a>
-      <a href="#products">Products</a>
       <a href="#calculator">SIP Calculator</a>
-      <a href="#locations">Locations</a>
-      <a href="#certifications">Credentials</a>
-      <a href="#blog">Blog</a>
       <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+
+      <!-- More dropdown -->
+      <div class="nav-drop" id="navDrop">
+        <button class="nav-drop-btn" id="navDropBtn" onclick="toggleNavDrop()" aria-expanded="false" aria-haspopup="true">
+          More
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-drop-menu" id="navDropMenu" role="menu">
+          <a href="#locations" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Locations
+          </a>
+          <a href="#certifications" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Credentials
+          </a>
+          <a href="#blog" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5" stroke-linecap="round"/></svg>
+            Blog
+          </a>
+          <div class="nav-drop-divider"></div>
+          <a href="#faq" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+            FAQ
+          </a>
+          <a href="#contact" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.14 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.45-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Contact
+          </a>
+        </div>
+      </div>
     </div>
     <a href="#contact" class="ncta">Free Consultation</a>
   </div>
@@ -1928,6 +1973,35 @@ function submitReview() {
 }
 
 document.addEventListener('DOMContentLoaded', loadReviews);
+
+// ── NAV DROPDOWN ─────────────────────────────────────────────
+function toggleNavDrop() {
+  var drop = document.getElementById('navDrop');
+  var btn  = document.getElementById('navDropBtn');
+  var isOpen = drop.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  var drop = document.getElementById('navDrop');
+  if (drop && !drop.contains(e.target)) {
+    drop.classList.remove('open');
+    var btn = document.getElementById('navDropBtn');
+    if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  }
+});
+
+// Close dropdown when a menu item is clicked
+document.querySelectorAll('.nav-drop-menu a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    var drop = document.getElementById('navDrop');
+    if (drop) drop.classList.remove('open');
+    var btn = document.getElementById('navDropBtn');
+    if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  });
+});
 
 
 </script>
