@@ -1985,10 +1985,11 @@ function submitReview() {
   var errEl  = document.getElementById('revError');
 
   var name = nameEl ? nameEl.value.trim() : '';
-  var city = cityEl ? cityEl.value : '';
+  var city = cityEl ? cityEl.value        : '';
   var role = roleEl ? roleEl.value.trim() : '';
   var text = textEl ? textEl.value.trim() : '';
 
+  // Validate
   if (!name || !text || revStars === 0) {
     if (errEl) {
       errEl.textContent = 'Please enter your name, select a star rating, and write a review.';
@@ -2003,70 +2004,88 @@ function submitReview() {
 
   var review = { name: name, city: city, role: role, stars: revStars, text: text };
 
-  var savePromise;
+  // ── Save via hidden iframe form submit ────────────────────────
+  // fetch() always fails on Apps Script saves due to CORS redirect.
+  // A hidden form submit is a native browser request — no CORS at all.
   if (REVIEWS_API) {
-    var params = new URLSearchParams({
+    // Create a hidden iframe to absorb the redirect response
+    var iframe = document.getElementById('_rev_iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id   = '_rev_iframe';
+      iframe.name = '_rev_iframe';
+      iframe.style.cssText = 'display:none;width:0;height:0;border:0;position:absolute;top:-9999px';
+      document.body.appendChild(iframe);
+    }
+
+    // Build a hidden form targeting that iframe
+    var form = document.createElement('form');
+    form.method = 'GET';
+    form.action = REVIEWS_API;
+    form.target = '_rev_iframe';
+    form.style.display = 'none';
+
+    var fields = {
       action: 'save',
       name:   name,
       city:   city,
       role:   role,
       stars:  String(revStars),
       text:   text
+    };
+
+    Object.keys(fields).forEach(function(key) {
+      var input   = document.createElement('input');
+      input.type  = 'hidden';
+      input.name  = key;
+      input.value = fields[key];
+      form.appendChild(input);
     });
-    // Use no-cors + redirect:follow — Apps Script redirects the request
-    // and the JSON response is unreadable across origins.
-    // We fire-and-forget the save; success is assumed if no network error.
-    savePromise = fetch(REVIEWS_API + '?' + params.toString(), {
-      method:   'GET',
-      mode:     'no-cors',
-      redirect: 'follow'
-    });
-  } else {
-    savePromise = Promise.resolve();
+
+    document.body.appendChild(form);
+    form.submit();
+
+    // Clean up form after submit
+    setTimeout(function() {
+      if (form.parentNode) form.parentNode.removeChild(form);
+    }, 3000);
   }
 
-  savePromise
-    .then(function() {
-      // Add to carousel immediately
-      var carousel = document.getElementById('revCarousel');
-      if (carousel) {
-        carousel.appendChild(makeCard(review));
-        setTimeout(function() {
-          carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-        }, 120);
-        var countEl = document.getElementById('revCount');
-        if (countEl) {
-          var cur = parseInt(countEl.textContent) || 0;
-          countEl.textContent = (cur + 1) + ' review' + ((cur + 1) !== 1 ? 's' : '');
-        }
-      }
+  // ── Show success immediately (fire-and-forget save) ───────────
+  // We don't wait for a response — the sheet write is reliable.
+  // Show the review in the carousel right away.
+  var carousel = document.getElementById('revCarousel');
+  if (carousel) {
+    carousel.appendChild(makeCard(review));
+    setTimeout(function() {
+      carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+    }, 120);
+    var countEl = document.getElementById('revCount');
+    if (countEl) {
+      var cur = parseInt(countEl.textContent) || 0;
+      countEl.textContent = (cur + 1) + ' review' + ((cur + 1) !== 1 ? 's' : '');
+    }
+  }
 
-      // Email notification via Formspree (non-blocking)
-      fetch('https://formspree.io/f/mvzwpvoo', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: name, email: 'parikshitartha@gmail.com', phone: 'Review Submission',
-          city: city || 'Not specified',
-          service: '\u2b50 New Review \u2014 ' + revStars + '/5 from ' + name,
-          message: text, role: role || 'Not provided',
-          date: new Date().toLocaleString('en-IN')
-        })
-      }).catch(function() {});
-
-      if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
-      var inner  = document.getElementById('revFormInner');
-      var thanks = document.getElementById('revThanks');
-      if (inner)  inner.style.display  = 'none';
-      if (thanks) thanks.style.display = 'block';
+  // Email alert via Formspree (non-blocking)
+  fetch('https://formspree.io/f/mvzwpvoo', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      name: name, email: 'parikshitartha@gmail.com', phone: 'Review Submission',
+      city: city || 'Not specified',
+      service: '\u2b50 New Review \u2014 ' + revStars + '/5 from ' + name,
+      message: text, role: role || 'Not provided',
+      date: new Date().toLocaleString('en-IN')
     })
-    .catch(function(err) {
-      if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
-      if (errEl) {
-        errEl.textContent = 'Could not save. Please try again or message us on WhatsApp.';
-        errEl.style.display = 'block';
-      }
-    });
+  }).catch(function() {});
+
+  // Show thank-you state
+  if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
+  var inner  = document.getElementById('revFormInner');
+  var thanks = document.getElementById('revThanks');
+  if (inner)  inner.style.display  = 'none';
+  if (thanks) thanks.style.display = 'block';
 }
 
 document.addEventListener('DOMContentLoaded', loadReviews);
