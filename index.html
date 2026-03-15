@@ -1863,7 +1863,7 @@ FIELDS.forEach(function(f) {
   if(a){a.href='mailto:'+e;a.textContent=e;}
 })();
 
-var REVIEWS_API = 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec;
+var REVIEWS_API = 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec';
 
 var revStars = 0;
 
@@ -1938,9 +1938,9 @@ function enableDrag(el) {
 function loadReviews() {
   renderReviews(seedReviews);
 
-  if (!REVIEWS_API || REVIEWS_API === 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec') return;
+  if (!REVIEWS_API) return;
 
-  fetch(REVIEWS_API, { method: 'GET', cache: 'no-cache' })
+  fetch(REVIEWS_API + '?action=get', { method: 'GET', cache: 'no-cache' })
     .then(function(res) { return res.json(); })
     .then(function(data) {
       if (!data.ok || !data.reviews || !data.reviews.length) return;
@@ -2004,14 +2004,16 @@ function submitReview() {
   var review = { name: name, city: city, role: role, stars: revStars, text: text };
 
   var savePromise;
-  if (REVIEWS_API && REVIEWS_API !== 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec') {
-var params = new URLSearchParams({
-  action: 'save', name: name, city: city,
-  role: role, stars: String(revStars), text: text
-});
-savePromise = fetch(REVIEWS_API + '?' + params.toString(), { method: 'GET' })
-  .then(function(res) { return res.json(); })
-  .then(function(data) { if (!data.ok) throw new Error(data.error || 'Save failed'); });
+  if (REVIEWS_API) {
+    var params = new URLSearchParams({
+      action: 'save',
+      name:   name,
+      city:   city,
+      role:   role,
+      stars:  String(revStars),
+      text:   text
+    });
+    savePromise = fetch(REVIEWS_API + '?' + params.toString(), { method: 'GET' })
       .then(function(res) { return res.json(); })
       .then(function(data) {
         if (!data.ok) throw new Error(data.error || 'Save failed');
