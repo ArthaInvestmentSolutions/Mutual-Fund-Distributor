@@ -1863,60 +1863,106 @@ FIELDS.forEach(function(f) {
   if(a){a.href='mailto:'+e;a.textContent=e;}
 })();
 
+var REVIEWS_API = 'https://script.google.com/macros/s/AKfycbz8kRn6U0Qg_tLPuTp8mDrkRNsXZNJg5lZY_CMXr2VUwep-dGRnrfHjmsx19yzvJzyg/exec';
 
 var revStars = 0;
-var STORAGE_KEY = 'artha_reviews_v1';
 
+// ── Seed reviews (shown instantly while Google Sheets loads) ──
 var seedReviews = [
-  { name:'Rahul Verma',  city:'Noida',     role:'Software Engineer', stars:5, text:'Parikshit helped me start my first SIP at just ₹2,000/month. Two years later I have a proper financial plan, term insurance and an ELSS portfolio. He explains everything in plain Hindi or English — no jargon.' },
-  { name:'Priya Sharma', city:'Gurgaon',   role:'Marketing Manager', stars:5, text:'I was confused between ELSS, PPF and NPS for tax saving. Parikshit sat with me for an hour, understood my salary structure and suggested the right mix. Saved ₹46,000 in taxes last year. Highly recommended.' },
-  { name:'Amit Gupta',   city:'Faridabad', role:'Business Owner',    stars:5, text:'As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind.' }
+  { name:'Rahul Verma',  city:'Noida',     role:'Software Engineer', stars:5,
+    text:'Parikshit helped me start my first SIP at just \u20b92,000/month. Two years later I have a proper financial plan, term insurance and an ELSS portfolio. He explains everything in plain Hindi or English \u2014 no jargon.' },
+  { name:'Priya Sharma', city:'Gurgaon',   role:'Marketing Manager', stars:5,
+    text:'I was confused between ELSS, PPF and NPS for tax saving. Parikshit sat with me for an hour, understood my salary structure and suggested the right mix. Saved \u20b946,000 in taxes last year. Highly recommended.' },
+  { name:'Amit Gupta',   city:'Faridabad', role:'Business Owner',    stars:5,
+    text:'As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind.' }
 ];
 
 function makeStars(n) {
   var s = '';
-  for (var i = 0; i < n; i++) {
+  for (var i = 0; i < Math.min(n, 5); i++) {
     s += '<svg viewBox="0 0 24 24" style="width:13px;height:13px;color:var(--gold);fill:var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
   }
   return s;
 }
 
 function makeCard(r) {
-  var initials = r.name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
-  var meta = r.role ? r.role + (r.city ? ' · ' + r.city : '') : (r.city || '');
+  var name     = String(r.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  var text     = String(r.text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  var initials = name.replace(/&lt;/g,'').replace(/&gt;/g,'')
+                     .split(' ').map(function(w){ return w[0] || ''; })
+                     .join('').toUpperCase().slice(0, 2);
+  var meta     = (r.role ? String(r.role).replace(/</g,'&lt;') : '') +
+                 (r.role && r.city ? ' \u00b7 ' : '') +
+                 (r.city ? String(r.city).replace(/</g,'&lt;') : '');
   var card = document.createElement('div');
   card.className = 'rev-card';
   card.innerHTML =
     '<div class="rev-stars">' + makeStars(r.stars) + '</div>' +
-    '<p class="rev-text">' + r.text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' +
+    '<p class="rev-text">' + text + '</p>' +
     '<div class="rev-author">' +
       '<div class="rev-avatar">' + initials + '</div>' +
-      '<div><div class="rev-name">' + r.name + '</div>' +
-      '<div class="rev-meta">' + meta + '</div></div>' +
+      '<div>' +
+        '<div class="rev-name">' + name + '</div>' +
+        '<div class="rev-meta">' + meta + '</div>' +
+      '</div>' +
     '</div>';
   return card;
 }
 
-function loadReviews() {
+function renderReviews(reviews) {
   var carousel = document.getElementById('revCarousel');
   if (!carousel) return;
   carousel.innerHTML = '';
-  var saved = [];
-  try { var raw = localStorage.getItem(STORAGE_KEY); if (raw) saved = JSON.parse(raw); } catch(e) {}
-  var all = seedReviews.concat(saved);
-  all.sort(function(a,b){ return b.stars - a.stars; });
-  all.forEach(function(r){ carousel.appendChild(makeCard(r)); });
+  reviews.forEach(function(r) { carousel.appendChild(makeCard(r)); });
   var countEl = document.getElementById('revCount');
-  if (countEl) countEl.textContent = all.length + ' review' + (all.length !== 1 ? 's' : '');
+  if (countEl) {
+    countEl.textContent = reviews.length + ' review' + (reviews.length !== 1 ? 's' : '');
+  }
   enableDrag(carousel);
 }
 
 function enableDrag(el) {
   var isDown = false, startX, scrollLeft;
-  el.addEventListener('mousedown', function(e){ isDown=true; el.classList.add('grabbing'); startX=e.pageX-el.offsetLeft; scrollLeft=el.scrollLeft; });
-  el.addEventListener('mouseleave', function(){ isDown=false; el.classList.remove('grabbing'); });
-  el.addEventListener('mouseup',    function(){ isDown=false; el.classList.remove('grabbing'); });
-  el.addEventListener('mousemove',  function(e){ if(!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft-(e.pageX-el.offsetLeft-startX)*1.5; });
+  el.addEventListener('mousedown',  function(e) {
+    isDown = true; el.classList.add('grabbing');
+    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  });
+  el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('grabbing'); });
+  el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('grabbing'); });
+  el.addEventListener('mousemove',  function(e) {
+    if (!isDown) return; e.preventDefault();
+    el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5;
+  });
+}
+
+function loadReviews() {
+  renderReviews(seedReviews);
+
+  if (!REVIEWS_API || REVIEWS_API === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+
+  fetch(REVIEWS_API, { method: 'GET', cache: 'no-cache' })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (!data.ok || !data.reviews || !data.reviews.length) return;
+
+      var seenKey = {};
+      data.reviews.forEach(function(r) {
+        seenKey[(r.name + '|' + r.text.slice(0, 30)).toLowerCase()] = true;
+      });
+      var filteredSeeds = seedReviews.filter(function(s) {
+        return !seenKey[(s.name + '|' + s.text.slice(0, 30)).toLowerCase()];
+      });
+
+      var all = filteredSeeds.concat(data.reviews);
+      all.sort(function(a, b) {
+        if (b.stars !== a.stars) return b.stars - a.stars;
+        return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+      });
+      renderReviews(all);
+    })
+    .catch(function(err) {
+      console.warn('[Artha Reviews] Google Sheets fetch failed:', err.message);
+    });
 }
 
 function revScroll(dir) {
@@ -1926,60 +1972,98 @@ function revScroll(dir) {
 
 function setStars(n) {
   revStars = n;
-  document.querySelectorAll('.rev-star-btn').forEach(function(btn){
+  document.querySelectorAll('.rev-star-btn').forEach(function(btn) {
     btn.classList.toggle('lit', parseInt(btn.dataset.v) <= n);
   });
 }
 
 function submitReview() {
-  var name = document.getElementById('rv_name').value.trim();
-  var city = document.getElementById('rv_city').value;
-  var role = document.getElementById('rv_role') ? document.getElementById('rv_role').value.trim() : '';
-  var text = document.getElementById('rv_text').value.trim();
-  var err  = document.getElementById('revError');
+  var nameEl = document.getElementById('rv_name');
+  var cityEl = document.getElementById('rv_city');
+  var roleEl = document.getElementById('rv_role');
+  var textEl = document.getElementById('rv_text');
+  var errEl  = document.getElementById('revError');
 
-  if (!name || !text || revStars === 0) { err.style.display = 'block'; return; }
-  err.style.display = 'none';
+  var name = nameEl ? nameEl.value.trim() : '';
+  var city = cityEl ? cityEl.value : '';
+  var role = roleEl ? roleEl.value.trim() : '';
+  var text = textEl ? textEl.value.trim() : '';
 
-  var review = { name:name, city:city, role:role, stars:revStars, text:text, date:new Date().toISOString() };
+  if (!name || !text || revStars === 0) {
+    if (errEl) {
+      errEl.textContent = 'Please enter your name, select a star rating, and write a review.';
+      errEl.style.display = 'block';
+    }
+    return;
+  }
+  if (errEl) errEl.style.display = 'none';
 
-  // Persist to localStorage
-  try {
-    var saved = [];
-    try { var raw = localStorage.getItem(STORAGE_KEY); if (raw) saved = JSON.parse(raw); } catch(e) {}
-    saved.push(review);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-  } catch(e) {}
+  var btn = document.querySelector('.rev-form-wrap .sbtn');
+  if (btn) { btn.disabled = true; btn.classList.add('loading'); }
 
-  // Reload carousel sorted by stars
-  loadReviews();
-  setTimeout(function(){
-    var c = document.getElementById('revCarousel');
-    if (c) c.scrollTo({ left: c.scrollWidth, behavior: 'smooth' });
-  }, 150);
+  var review = { name: name, city: city, role: role, stars: revStars, text: text };
 
-  // Email via Formspree
-  fetch('https://formspree.io/f/mvzwpvoo', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name:    name,
-      email:   'parikshitartha@gmail.com',
-      _replyto:'parikshitartha@gmail.com',
-      phone:   'Review Submission',
-      city:    city || 'Not specified',
-      service: '⭐ New Review — ' + revStars + '/5 stars from ' + name,
-      message: text,
-      role:    role || 'Not provided',
-      date:    new Date().toLocaleString('en-IN')
+  var savePromise;
+  if (REVIEWS_API && REVIEWS_API !== 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+    savePromise = fetch(REVIEWS_API, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(review)
     })
-  }).catch(function(){});
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!data.ok) throw new Error(data.error || 'Save failed');
+      });
+  } else {
+    savePromise = Promise.resolve();
+  }
 
-  document.getElementById('revFormInner').style.display = 'none';
-  document.getElementById('revThanks').style.display = 'block';
+  savePromise
+    .then(function() {
+      // Add to carousel immediately
+      var carousel = document.getElementById('revCarousel');
+      if (carousel) {
+        carousel.appendChild(makeCard(review));
+        setTimeout(function() {
+          carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+        }, 120);
+        var countEl = document.getElementById('revCount');
+        if (countEl) {
+          var cur = parseInt(countEl.textContent) || 0;
+          countEl.textContent = (cur + 1) + ' review' + ((cur + 1) !== 1 ? 's' : '');
+        }
+      }
+
+      // Email notification via Formspree (non-blocking)
+      fetch('https://formspree.io/f/mvzwpvoo', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name, email: 'parikshitartha@gmail.com', phone: 'Review Submission',
+          city: city || 'Not specified',
+          service: '\u2b50 New Review \u2014 ' + revStars + '/5 from ' + name,
+          message: text, role: role || 'Not provided',
+          date: new Date().toLocaleString('en-IN')
+        })
+      }).catch(function() {});
+
+      if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
+      var inner  = document.getElementById('revFormInner');
+      var thanks = document.getElementById('revThanks');
+      if (inner)  inner.style.display  = 'none';
+      if (thanks) thanks.style.display = 'block';
+    })
+    .catch(function(err) {
+      if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
+      if (errEl) {
+        errEl.textContent = 'Could not save. Please try again or message us on WhatsApp.';
+        errEl.style.display = 'block';
+      }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', loadReviews);
+
 
 // ── NAV DROPDOWN ─────────────────────────────────────────────
 function toggleNavDrop() {
