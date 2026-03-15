@@ -2005,11 +2005,13 @@ function submitReview() {
 
   var savePromise;
   if (REVIEWS_API && REVIEWS_API !== 'https://script.google.com/macros/s/AKfycbz8kRn6U0Qg_tLPuTp8mDrkRNsXZNJg5lZY_CMXr2VUwep-dGRnrfHjmsx19yzvJzyg/execE') {
-    savePromise = fetch(REVIEWS_API, {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(review)
-    })
+var params = new URLSearchParams({
+  action: 'save', name: name, city: city,
+  role: role, stars: String(revStars), text: text
+});
+savePromise = fetch(REVIEWS_API + '?' + params.toString(), { method: 'GET' })
+  .then(function(res) { return res.json(); })
+  .then(function(data) { if (!data.ok) throw new Error(data.error || 'Save failed'); });
       .then(function(res) { return res.json(); })
       .then(function(data) {
         if (!data.ok) throw new Error(data.error || 'Save failed');
