@@ -2004,7 +2004,7 @@ function submitReview() {
   var review = { name: name, city: city, role: role, stars: revStars, text: text };
 
   var savePromise;
-  if (REVIEWS_API && REVIEWS_API !== 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
+  if (REVIEWS_API && REVIEWS_API !== 'https://script.google.com/macros/s/AKfycbz8kRn6U0Qg_tLPuTp8mDrkRNsXZNJg5lZY_CMXr2VUwep-dGRnrfHjmsx19yzvJzyg/execE') {
     savePromise = fetch(REVIEWS_API, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
