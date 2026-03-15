@@ -1877,30 +1877,48 @@ var seedReviews = [
     text:'As a business owner in Faridabad, I needed someone who understood both wealth creation and risk protection. Parikshit structured a PMS strategy alongside a term plan that finally gave me peace of mind.' }
 ];
 
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function makeStars(n) {
-  var s = '';
-  for (var i = 0; i < Math.min(n, 5); i++) {
-    s += '<svg viewBox="0 0 24 24" style="width:13px;height:13px;color:var(--gold);fill:var(--gold)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+  n = Math.max(1, Math.min(5, parseInt(n, 10) || 5));
+  var html = '';
+  for (var i = 1; i <= 5; i++) {
+    html += '<svg viewBox="0 0 24 24" fill="' + (i <= n ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
   }
-  return s;
+  return html;
 }
 
 function makeCard(r) {
-  var name     = String(r.name || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  var text     = String(r.text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  var initials = name.replace(/&lt;/g,'').replace(/&gt;/g,'')
-                     .split(' ').map(function(w){ return w[0] || ''; })
-                     .join('').toUpperCase().slice(0, 2);
-  var meta     = (r.role ? String(r.role).replace(/</g,'&lt;') : '') +
-                 (r.role && r.city ? ' \u00b7 ' : '') +
-                 (r.city ? String(r.city).replace(/</g,'&lt;') : '');
+  var name = esc(r.name || 'Anonymous');
+  var role = esc(r.role || '');
+  var city = esc(r.city || '');
+  var text = esc(r.text || '');
+  var initials = (r.name || 'A')
+    .split(' ')
+    .map(function(p) { return p.charAt(0); })
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+  var meta = '';
+  if (role && city) meta = role + ' • ' + city;
+  else if (role) meta = role;
+  else if (city) meta = city;
+
   var card = document.createElement('div');
   card.className = 'rev-card';
   card.innerHTML =
     '<div class="rev-stars">' + makeStars(r.stars) + '</div>' +
     '<p class="rev-text">' + text + '</p>' +
     '<div class="rev-author">' +
-      '<div class="rev-avatar">' + initials + '</div>' +
+      '<div class="rev-avatar">' + esc(initials) + '</div>' +
       '<div>' +
         '<div class="rev-name">' + name + '</div>' +
         '<div class="rev-meta">' + meta + '</div>' +
@@ -1912,26 +1930,102 @@ function makeCard(r) {
 function renderReviews(reviews) {
   var carousel = document.getElementById('revCarousel');
   if (!carousel) return;
+
   carousel.innerHTML = '';
-  reviews.forEach(function(r) { carousel.appendChild(makeCard(r)); });
+  reviews.forEach(function(r) {
+    carousel.appendChild(makeCard(r));
+  });
+
   var countEl = document.getElementById('revCount');
   if (countEl) {
     countEl.textContent = reviews.length + ' review' + (reviews.length !== 1 ? 's' : '');
   }
+
   enableDrag(carousel);
 }
 
 function enableDrag(el) {
-  var isDown = false, startX, scrollLeft;
-  el.addEventListener('mousedown',  function(e) {
-    isDown = true; el.classList.add('grabbing');
-    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  if (el.dataset.dragBound === '1') return;
+  el.dataset.dragBound = '1';
+
+  var isDown = false, startX = 0, scrollLeft = 0;
+
+  el.addEventListener('mousedown', function(e) {
+    isDown = true;
+    el.classList.add('grabbing');
+    startX = e.pageX - el.offsetLeft;
+    scrollLeft = el.scrollLeft;
   });
-  el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('grabbing'); });
-  el.addEventListener('mouseup',    function() { isDown = false; el.classList.remove('grabbing'); });
-  el.addEventListener('mousemove',  function(e) {
-    if (!isDown) return; e.preventDefault();
+
+  el.addEventListener('mouseleave', function() {
+    isDown = false;
+    el.classList.remove('grabbing');
+  });
+
+  el.addEventListener('mouseup', function() {
+    isDown = false;
+    el.classList.remove('grabbing');
+  });
+
+  el.addEventListener('mousemove', function(e) {
+    if (!isDown) return;
+    e.preventDefault();
     el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5;
+  });
+}
+
+function sortReviews(all) {
+  all.sort(function(a, b) {
+    if ((b.stars || 0) !== (a.stars || 0)) return (b.stars || 0) - (a.stars || 0);
+    return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+  });
+  return all;
+}
+
+function mergeReviews(sheetReviews) {
+  var seenKey = {};
+  (sheetReviews || []).forEach(function(r) {
+    var key = ((r.name || '') + '|' + (r.text || '').slice(0, 30)).toLowerCase();
+    seenKey[key] = true;
+  });
+
+  var filteredSeeds = seedReviews.filter(function(s) {
+    var key = ((s.name || '') + '|' + (s.text || '').slice(0, 30)).toLowerCase();
+    return !seenKey[key];
+  });
+
+  return sortReviews(filteredSeeds.concat(sheetReviews || []));
+}
+
+function jsonpRequest(url) {
+  return new Promise(function(resolve, reject) {
+    var cbName = '__artha_jsonp_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
+    var script = document.createElement('script');
+    var timer;
+
+    window[cbName] = function(data) {
+      cleanup();
+      resolve(data);
+    };
+
+    function cleanup() {
+      if (timer) clearTimeout(timer);
+      if (script.parentNode) script.parentNode.removeChild(script);
+      try { delete window[cbName]; } catch (e) { window[cbName] = undefined; }
+    }
+
+    script.onerror = function() {
+      cleanup();
+      reject(new Error('Could not connect to reviews service.'));
+    };
+
+    timer = setTimeout(function() {
+      cleanup();
+      reject(new Error('Reviews service timed out.'));
+    }, 12000);
+
+    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + encodeURIComponent(cbName);
+    document.body.appendChild(script);
   });
 }
 
@@ -1940,25 +2034,10 @@ function loadReviews() {
 
   if (!REVIEWS_API) return;
 
-  fetch(REVIEWS_API + '?action=get', { method: 'GET', cache: 'no-cache' })
-    .then(function(res) { return res.json(); })
+  jsonpRequest(REVIEWS_API + '?action=get')
     .then(function(data) {
-      if (!data.ok || !data.reviews || !data.reviews.length) return;
-
-      var seenKey = {};
-      data.reviews.forEach(function(r) {
-        seenKey[(r.name + '|' + r.text.slice(0, 30)).toLowerCase()] = true;
-      });
-      var filteredSeeds = seedReviews.filter(function(s) {
-        return !seenKey[(s.name + '|' + s.text.slice(0, 30)).toLowerCase()];
-      });
-
-      var all = filteredSeeds.concat(data.reviews);
-      all.sort(function(a, b) {
-        if (b.stars !== a.stars) return b.stars - a.stars;
-        return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
-      });
-      renderReviews(all);
+      if (!data || !data.ok || !Array.isArray(data.reviews)) return;
+      renderReviews(mergeReviews(data.reviews));
     })
     .catch(function(err) {
       console.warn('[Artha Reviews] Google Sheets fetch failed:', err.message);
@@ -1973,8 +2052,35 @@ function revScroll(dir) {
 function setStars(n) {
   revStars = n;
   document.querySelectorAll('.rev-star-btn').forEach(function(btn) {
-    btn.classList.toggle('lit', parseInt(btn.dataset.v) <= n);
+    btn.classList.toggle('lit', parseInt(btn.dataset.v, 10) <= n);
   });
+}
+
+function showReviewError(msg) {
+  var errEl = document.getElementById('revError');
+  if (!errEl) return;
+  errEl.textContent = msg;
+  errEl.style.display = 'block';
+}
+
+function hideReviewError() {
+  var errEl = document.getElementById('revError');
+  if (!errEl) return;
+  errEl.style.display = 'none';
+}
+
+function setReviewButtonLoading(isLoading) {
+  var btn = document.querySelector('#revFormInner .sbtn');
+  if (!btn) return;
+  btn.disabled = !!isLoading;
+  btn.classList.toggle('loading', !!isLoading);
+}
+
+function showReviewThanks() {
+  var inner  = document.getElementById('revFormInner');
+  var thanks = document.getElementById('revThanks');
+  if (inner)  inner.style.display  = 'none';
+  if (thanks) thanks.style.display = 'block';
 }
 
 function submitReview() {
@@ -1982,110 +2088,87 @@ function submitReview() {
   var cityEl = document.getElementById('rv_city');
   var roleEl = document.getElementById('rv_role');
   var textEl = document.getElementById('rv_text');
-  var errEl  = document.getElementById('revError');
 
-  var name = nameEl ? nameEl.value.trim() : '';
-  var city = cityEl ? cityEl.value        : '';
-  var role = roleEl ? roleEl.value.trim() : '';
-  var text = textEl ? textEl.value.trim() : '';
+  var name = (nameEl && nameEl.value || '').trim();
+  var city = (cityEl && cityEl.value || '').trim();
+  var role = (roleEl && roleEl.value || '').trim();
+  var text = (textEl && textEl.value || '').trim();
 
-  // Validate
-  if (!name || !text || revStars === 0) {
-    if (errEl) {
-      errEl.textContent = 'Please enter your name, select a star rating, and write a review.';
-      errEl.style.display = 'block';
-    }
+  hideReviewError();
+
+  if (!name || !text || revStars < 1 || revStars > 5) {
+    showReviewError('Please fill in your name, rating and review before submitting.');
     return;
   }
-  if (errEl) errEl.style.display = 'none';
 
-  var btn = document.querySelector('.rev-form-wrap .sbtn');
-  if (btn) { btn.disabled = true; btn.classList.add('loading'); }
-
-  var review = { name: name, city: city, role: role, stars: revStars, text: text };
-
-  // ── Save via hidden iframe form submit ────────────────────────
-  // fetch() always fails on Apps Script saves due to CORS redirect.
-  // A hidden form submit is a native browser request — no CORS at all.
-  if (REVIEWS_API) {
-    // Create a hidden iframe to absorb the redirect response
-    var iframe = document.getElementById('_rev_iframe');
-    if (!iframe) {
-      iframe = document.createElement('iframe');
-      iframe.id   = '_rev_iframe';
-      iframe.name = '_rev_iframe';
-      iframe.style.cssText = 'display:none;width:0;height:0;border:0;position:absolute;top:-9999px';
-      document.body.appendChild(iframe);
-    }
-
-    // Build a hidden form targeting that iframe
-    var form = document.createElement('form');
-    form.method = 'GET';
-    form.action = REVIEWS_API;
-    form.target = '_rev_iframe';
-    form.style.display = 'none';
-
-    var fields = {
-      action: 'save',
-      name:   name,
-      city:   city,
-      role:   role,
-      stars:  String(revStars),
-      text:   text
-    };
-
-    Object.keys(fields).forEach(function(key) {
-      var input   = document.createElement('input');
-      input.type  = 'hidden';
-      input.name  = key;
-      input.value = fields[key];
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-    form.submit();
-
-    // Clean up form after submit
-    setTimeout(function() {
-      if (form.parentNode) form.parentNode.removeChild(form);
-    }, 3000);
+  if (!REVIEWS_API) {
+    showReviewError('Reviews service is not configured yet.');
+    return;
   }
 
-  // ── Show success immediately (fire-and-forget save) ───────────
-  // We don't wait for a response — the sheet write is reliable.
-  // Show the review in the carousel right away.
-  var carousel = document.getElementById('revCarousel');
-  if (carousel) {
-    carousel.appendChild(makeCard(review));
-    setTimeout(function() {
-      carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
-    }, 120);
-    var countEl = document.getElementById('revCount');
-    if (countEl) {
-      var cur = parseInt(countEl.textContent) || 0;
-      countEl.textContent = (cur + 1) + ' review' + ((cur + 1) !== 1 ? 's' : '');
-    }
-  }
+  setReviewButtonLoading(true);
 
-  // Email alert via Formspree (non-blocking)
-  fetch('https://formspree.io/f/mvzwpvoo', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      name: name, email: 'parikshitartha@gmail.com', phone: 'Review Submission',
-      city: city || 'Not specified',
-      service: '\u2b50 New Review \u2014 ' + revStars + '/5 from ' + name,
-      message: text, role: role || 'Not provided',
-      date: new Date().toLocaleString('en-IN')
+  var qs =
+    '?action=save' +
+    '&name='  + encodeURIComponent(name) +
+    '&city='  + encodeURIComponent(city) +
+    '&role='  + encodeURIComponent(role) +
+    '&stars=' + encodeURIComponent(revStars) +
+    '&text='  + encodeURIComponent(text);
+
+  jsonpRequest(REVIEWS_API + qs)
+    .then(function(data) {
+      if (!data || !data.ok) {
+        throw new Error((data && data.error) || 'Could not save your review.');
+      }
+
+      var newReview = {
+        timestamp: new Date().toISOString(),
+        name: name,
+        city: city,
+        role: role,
+        stars: revStars,
+        text: text
+      };
+
+      return jsonpRequest(REVIEWS_API + '?action=get')
+        .then(function(fetchData) {
+          if (fetchData && fetchData.ok && Array.isArray(fetchData.reviews)) {
+            renderReviews(mergeReviews(fetchData.reviews));
+          } else {
+            renderReviews(mergeReviews([newReview]));
+          }
+          showReviewThanks();
+
+          fetch('https://formspree.io/f/mvzwpvoo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              name: name,
+              email: 'parikshitartha@gmail.com',
+              phone: 'Review Submission',
+              city: city || 'Not specified',
+              service: '\u2b50 New Review \u2014 ' + revStars + '/5 from ' + name,
+              message: text,
+              role: role || 'Not provided',
+              date: new Date().toLocaleString('en-IN')
+            })
+          }).catch(function() {});
+        })
+        .catch(function() {
+          renderReviews(mergeReviews([newReview]));
+          showReviewThanks();
+        });
     })
-  }).catch(function() {});
-
-  // Show thank-you state
-  if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
-  var inner  = document.getElementById('revFormInner');
-  var thanks = document.getElementById('revThanks');
-  if (inner)  inner.style.display  = 'none';
-  if (thanks) thanks.style.display = 'block';
+    .catch(function(err) {
+      showReviewError(err.message || 'Something went wrong while submitting your review.');
+    })
+    .finally(function() {
+      setReviewButtonLoading(false);
+    });
 }
 
 document.addEventListener('DOMContentLoaded', loadReviews);
