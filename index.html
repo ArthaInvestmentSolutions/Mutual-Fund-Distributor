@@ -1863,7 +1863,7 @@ FIELDS.forEach(function(f) {
   if(a){a.href='mailto:'+e;a.textContent=e;}
 })();
 
-var REVIEWS_API = 'https://script.google.com/macros/s/AKfycbz8kRn6U0Qg_tLPuTp8mDrkRNsXZNJg5lZY_CMXr2VUwep-dGRnrfHjmsx19yzvJzyg/exec';
+var REVIEWS_API = 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec;
 
 var revStars = 0;
 
@@ -1938,7 +1938,7 @@ function enableDrag(el) {
 function loadReviews() {
   renderReviews(seedReviews);
 
-  if (!REVIEWS_API || REVIEWS_API === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') return;
+  if (!REVIEWS_API || REVIEWS_API === 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec') return;
 
   fetch(REVIEWS_API, { method: 'GET', cache: 'no-cache' })
     .then(function(res) { return res.json(); })
@@ -2004,7 +2004,7 @@ function submitReview() {
   var review = { name: name, city: city, role: role, stars: revStars, text: text };
 
   var savePromise;
-  if (REVIEWS_API && REVIEWS_API !== 'https://script.google.com/macros/s/AKfycbz8kRn6U0Qg_tLPuTp8mDrkRNsXZNJg5lZY_CMXr2VUwep-dGRnrfHjmsx19yzvJzyg/execE') {
+  if (REVIEWS_API && REVIEWS_API !== 'https://script.google.com/macros/s/AKfycbwLr3ygJmJnuRnIzfTTeBo3YDOHkdvpMa-53xtyT2Pn2sX_DPpln1WDPlJS7GKzWBlk/exec') {
 var params = new URLSearchParams({
   action: 'save', name: name, city: city,
   role: role, stars: String(revStars), text: text
